@@ -1,0 +1,15 @@
+//
+//  JustItMind-PCH.pch
+//  JustItMind
+//
+//  Created by Viksah on 9/24/15.
+//  Copyright (c) 2015 Viksah Kumar. All rights reserved.
+//
+
+#ifndef JustItMind_JustItMind_PCH_pch
+#define JustItMind_JustItMind_PCH_pch
+#import "SGConstants.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif

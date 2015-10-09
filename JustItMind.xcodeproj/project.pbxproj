@@ -7,13 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B00DB901BBB027700FD29D4 /* JIMContainerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00DB8F1BBB027700FD29D4 /* JIMContainerVC.m */; };
+		3B0FB3F51BB74D81006B4F1E /* JIMDiscoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0FB3F41BB74D81006B4F1E /* JIMDiscoverVC.m */; };
 		3B3B0A181BB362B400E58F19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B0A171BB362B400E58F19 /* main.m */; };
-		3B3B0A1B1BB362B400E58F19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B0A1A1BB362B400E58F19 /* AppDelegate.m */; };
-		3B3B0A1E1BB362B400E58F19 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B0A1D1BB362B400E58F19 /* ViewController.m */; };
 		3B3B0A211BB362B400E58F19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3B0A1F1BB362B400E58F19 /* Main.storyboard */; };
-		3B3B0A231BB362B400E58F19 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B3B0A221BB362B400E58F19 /* Images.xcassets */; };
 		3B3B0A261BB362B400E58F19 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3B0A241BB362B400E58F19 /* LaunchScreen.xib */; };
 		3B3B0A321BB362B500E58F19 /* JustItMindTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B0A311BB362B500E58F19 /* JustItMindTests.m */; };
+		3B3B0A431BB3636300E58F19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B0A401BB3636300E58F19 /* AppDelegate.m */; };
+		3B3B0A441BB3636300E58F19 /* JIMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B0A421BB3636300E58F19 /* JIMViewController.m */; };
+		3B3B0A4A1BB364B000E58F19 /* JIMParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B0A491BB364B000E58F19 /* JIMParentViewController.m */; };
+		3B3B0A4D1BB364D400E58F19 /* SGConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B0A4C1BB364D400E58F19 /* SGConstants.m */; };
+		3B3B0A501BB364E200E58F19 /* PFWebServiceCalls.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B0A4F1BB364E200E58F19 /* PFWebServiceCalls.m */; };
+		3B3B0A521BB369D400E58F19 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B3B0A511BB369D400E58F19 /* Images.xcassets */; };
+		3B9634FF1BC242B9006A1730 /* JIMProfileSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9634FE1BC242B9006A1730 /* JIMProfileSettingVC.m */; };
+		3B9ACC0D1BB4B15400FB9424 /* JIMHomeTabbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9ACC0C1BB4B15400FB9424 /* JIMHomeTabbarVC.m */; };
+		3B9B31F11BB36EA70090D0EA /* JIMProfileCreateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9B31F01BB36EA70090D0EA /* JIMProfileCreateVC.m */; };
+		3BF652A01BB9AA9E00BEB521 /* NewsFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BF6529F1BB9AA9E00BEB521 /* NewsFeed.storyboard */; };
+		3BF652A41BB9AD7D00BEB521 /* JIMNewsFeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF652A31BB9AD7D00BEB521 /* JIMNewsFeedVC.m */; };
+		3BFC25641BB7D37300B11C96 /* JIMDiscoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC25631BB7D37300B11C96 /* JIMDiscoverCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +38,41 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B00DB8E1BBB027700FD29D4 /* JIMContainerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMContainerVC.h; sourceTree = "<group>"; };
+		3B00DB8F1BBB027700FD29D4 /* JIMContainerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMContainerVC.m; sourceTree = "<group>"; };
+		3B0FB3F31BB74D81006B4F1E /* JIMDiscoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMDiscoverVC.h; sourceTree = "<group>"; };
+		3B0FB3F41BB74D81006B4F1E /* JIMDiscoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMDiscoverVC.m; sourceTree = "<group>"; };
 		3B3B0A121BB362B400E58F19 /* JustItMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustItMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3B0A161BB362B400E58F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B3B0A171BB362B400E58F19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3B3B0A191BB362B400E58F19 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		3B3B0A1A1BB362B400E58F19 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3B3B0A1C1BB362B400E58F19 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3B3B0A1D1BB362B400E58F19 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3B3B0A201BB362B400E58F19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3B3B0A221BB362B400E58F19 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3B3B0A251BB362B400E58F19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3B3B0A2B1BB362B500E58F19 /* JustItMindTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JustItMindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3B0A301BB362B500E58F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B3B0A311BB362B500E58F19 /* JustItMindTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JustItMindTests.m; sourceTree = "<group>"; };
+		3B3B0A3F1BB3636300E58F19 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3B3B0A401BB3636300E58F19 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3B3B0A411BB3636300E58F19 /* JIMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMViewController.h; sourceTree = "<group>"; };
+		3B3B0A421BB3636300E58F19 /* JIMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMViewController.m; sourceTree = "<group>"; };
+		3B3B0A481BB364B000E58F19 /* JIMParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMParentViewController.h; sourceTree = "<group>"; };
+		3B3B0A491BB364B000E58F19 /* JIMParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMParentViewController.m; sourceTree = "<group>"; };
+		3B3B0A4B1BB364D400E58F19 /* SGConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGConstants.h; sourceTree = "<group>"; };
+		3B3B0A4C1BB364D400E58F19 /* SGConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGConstants.m; sourceTree = "<group>"; };
+		3B3B0A4E1BB364E200E58F19 /* PFWebServiceCalls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFWebServiceCalls.h; sourceTree = "<group>"; };
+		3B3B0A4F1BB364E200E58F19 /* PFWebServiceCalls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFWebServiceCalls.m; sourceTree = "<group>"; };
+		3B3B0A511BB369D400E58F19 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3B3B0A531BB36A7000E58F19 /* JustItMind-PCH.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JustItMind-PCH.pch"; sourceTree = "<group>"; };
+		3B9634FD1BC242B9006A1730 /* JIMProfileSettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMProfileSettingVC.h; sourceTree = "<group>"; };
+		3B9634FE1BC242B9006A1730 /* JIMProfileSettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMProfileSettingVC.m; sourceTree = "<group>"; };
+		3B9ACC0B1BB4B15400FB9424 /* JIMHomeTabbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMHomeTabbarVC.h; sourceTree = "<group>"; };
+		3B9ACC0C1BB4B15400FB9424 /* JIMHomeTabbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMHomeTabbarVC.m; sourceTree = "<group>"; };
+		3B9B31EF1BB36EA70090D0EA /* JIMProfileCreateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMProfileCreateVC.h; sourceTree = "<group>"; };
+		3B9B31F01BB36EA70090D0EA /* JIMProfileCreateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMProfileCreateVC.m; sourceTree = "<group>"; };
+		3BF6529F1BB9AA9E00BEB521 /* NewsFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsFeed.storyboard; sourceTree = "<group>"; };
+		3BF652A21BB9AD7D00BEB521 /* JIMNewsFeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMNewsFeedVC.h; sourceTree = "<group>"; };
+		3BF652A31BB9AD7D00BEB521 /* JIMNewsFeedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMNewsFeedVC.m; sourceTree = "<group>"; };
+		3BFC25621BB7D37300B11C96 /* JIMDiscoverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMDiscoverCell.h; sourceTree = "<group>"; };
+		3BFC25631BB7D37300B11C96 /* JIMDiscoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMDiscoverCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +93,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B00DB8D1BBB025300FD29D4 /* ContainerVC */ = {
+			isa = PBXGroup;
+			children = (
+				3B00DB8E1BBB027700FD29D4 /* JIMContainerVC.h */,
+				3B00DB8F1BBB027700FD29D4 /* JIMContainerVC.m */,
+			);
+			name = ContainerVC;
+			sourceTree = "<group>";
+		};
+		3B0FB3F21BB74D36006B4F1E /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				3B0FB3F31BB74D81006B4F1E /* JIMDiscoverVC.h */,
+				3B0FB3F41BB74D81006B4F1E /* JIMDiscoverVC.m */,
+			);
+			name = Discover;
+			sourceTree = "<group>";
+		};
 		3B3B0A091BB362B400E58F19 = {
 			isa = PBXGroup;
 			children = (
@@ -81,13 +132,10 @@
 		3B3B0A141BB362B400E58F19 /* JustItMind */ = {
 			isa = PBXGroup;
 			children = (
-				3B3B0A191BB362B400E58F19 /* AppDelegate.h */,
-				3B3B0A1A1BB362B400E58F19 /* AppDelegate.m */,
-				3B3B0A1C1BB362B400E58F19 /* ViewController.h */,
-				3B3B0A1D1BB362B400E58F19 /* ViewController.m */,
-				3B3B0A1F1BB362B400E58F19 /* Main.storyboard */,
-				3B3B0A221BB362B400E58F19 /* Images.xcassets */,
-				3B3B0A241BB362B400E58F19 /* LaunchScreen.xib */,
+				3B3B0A511BB369D400E58F19 /* Images.xcassets */,
+				3B3B0A461BB3640D00E58F19 /* Storyboard */,
+				3B3B0A3E1BB3632100E58F19 /* Classes */,
+				3B3B0A451BB363E900E58F19 /* Resources */,
 				3B3B0A151BB362B400E58F19 /* Supporting Files */,
 			);
 			path = JustItMind;
@@ -98,6 +146,7 @@
 			children = (
 				3B3B0A161BB362B400E58F19 /* Info.plist */,
 				3B3B0A171BB362B400E58F19 /* main.m */,
+				3B3B0A531BB36A7000E58F19 /* JustItMind-PCH.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -117,6 +166,84 @@
 				3B3B0A301BB362B500E58F19 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3B3B0A3E1BB3632100E58F19 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3B00DB8D1BBB025300FD29D4 /* ContainerVC */,
+				3BF652A11BB9AD1000BEB521 /* NewsFeed */,
+				3BFC25611BB7D34A00B11C96 /* TableViewCells */,
+				3B0FB3F21BB74D36006B4F1E /* Discover */,
+				3B9B31F21BB36EB20090D0EA /* SignUP */,
+				3B3B0A471BB3643800E58F19 /* ParentClasses */,
+				3B3B0A3F1BB3636300E58F19 /* AppDelegate.h */,
+				3B3B0A401BB3636300E58F19 /* AppDelegate.m */,
+				3B3B0A4B1BB364D400E58F19 /* SGConstants.h */,
+				3B3B0A4C1BB364D400E58F19 /* SGConstants.m */,
+				3B3B0A4E1BB364E200E58F19 /* PFWebServiceCalls.h */,
+				3B3B0A4F1BB364E200E58F19 /* PFWebServiceCalls.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		3B3B0A451BB363E900E58F19 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3B3B0A461BB3640D00E58F19 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3B3B0A241BB362B400E58F19 /* LaunchScreen.xib */,
+				3B3B0A1F1BB362B400E58F19 /* Main.storyboard */,
+				3BF6529F1BB9AA9E00BEB521 /* NewsFeed.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		3B3B0A471BB3643800E58F19 /* ParentClasses */ = {
+			isa = PBXGroup;
+			children = (
+				3B3B0A481BB364B000E58F19 /* JIMParentViewController.h */,
+				3B3B0A491BB364B000E58F19 /* JIMParentViewController.m */,
+				3B9ACC0B1BB4B15400FB9424 /* JIMHomeTabbarVC.h */,
+				3B9ACC0C1BB4B15400FB9424 /* JIMHomeTabbarVC.m */,
+			);
+			name = ParentClasses;
+			sourceTree = "<group>";
+		};
+		3B9B31F21BB36EB20090D0EA /* SignUP */ = {
+			isa = PBXGroup;
+			children = (
+				3B9B31EF1BB36EA70090D0EA /* JIMProfileCreateVC.h */,
+				3B9B31F01BB36EA70090D0EA /* JIMProfileCreateVC.m */,
+				3B3B0A411BB3636300E58F19 /* JIMViewController.h */,
+				3B3B0A421BB3636300E58F19 /* JIMViewController.m */,
+				3B9634FD1BC242B9006A1730 /* JIMProfileSettingVC.h */,
+				3B9634FE1BC242B9006A1730 /* JIMProfileSettingVC.m */,
+			);
+			name = SignUP;
+			sourceTree = "<group>";
+		};
+		3BF652A11BB9AD1000BEB521 /* NewsFeed */ = {
+			isa = PBXGroup;
+			children = (
+				3BF652A21BB9AD7D00BEB521 /* JIMNewsFeedVC.h */,
+				3BF652A31BB9AD7D00BEB521 /* JIMNewsFeedVC.m */,
+			);
+			name = NewsFeed;
+			sourceTree = "<group>";
+		};
+		3BFC25611BB7D34A00B11C96 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				3BFC25621BB7D37300B11C96 /* JIMDiscoverCell.h */,
+				3BFC25631BB7D37300B11C96 /* JIMDiscoverCell.m */,
+			);
+			name = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,9 +326,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3B0A521BB369D400E58F19 /* Images.xcassets in Resources */,
 				3B3B0A211BB362B400E58F19 /* Main.storyboard in Resources */,
 				3B3B0A261BB362B400E58F19 /* LaunchScreen.xib in Resources */,
-				3B3B0A231BB362B400E58F19 /* Images.xcassets in Resources */,
+				3BF652A01BB9AA9E00BEB521 /* NewsFeed.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +347,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B3B0A1E1BB362B400E58F19 /* ViewController.m in Sources */,
-				3B3B0A1B1BB362B400E58F19 /* AppDelegate.m in Sources */,
+				3B3B0A431BB3636300E58F19 /* AppDelegate.m in Sources */,
+				3BF652A41BB9AD7D00BEB521 /* JIMNewsFeedVC.m in Sources */,
+				3BFC25641BB7D37300B11C96 /* JIMDiscoverCell.m in Sources */,
+				3B00DB901BBB027700FD29D4 /* JIMContainerVC.m in Sources */,
 				3B3B0A181BB362B400E58F19 /* main.m in Sources */,
+				3B9ACC0D1BB4B15400FB9424 /* JIMHomeTabbarVC.m in Sources */,
+				3B3B0A501BB364E200E58F19 /* PFWebServiceCalls.m in Sources */,
+				3B9B31F11BB36EA70090D0EA /* JIMProfileCreateVC.m in Sources */,
+				3B0FB3F51BB74D81006B4F1E /* JIMDiscoverVC.m in Sources */,
+				3B3B0A4A1BB364B000E58F19 /* JIMParentViewController.m in Sources */,
+				3B3B0A4D1BB364D400E58F19 /* SGConstants.m in Sources */,
+				3B9634FF1BC242B9006A1730 /* JIMProfileSettingVC.m in Sources */,
+				3B3B0A441BB3636300E58F19 /* JIMViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +481,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "JustItMind/JustItMind-PCH.pch";
 				INFOPLIST_FILE = JustItMind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -353,6 +493,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "JustItMind/JustItMind-PCH.pch";
 				INFOPLIST_FILE = JustItMind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -412,6 +554,7 @@
 				3B3B0A371BB362B500E58F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3B3B0A381BB362B500E58F19 /* Build configuration list for PBXNativeTarget "JustItMindTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +563,7 @@
 				3B3B0A3A1BB362B500E58F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
