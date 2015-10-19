@@ -1003,108 +1003,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifs-z5-2Rd">
-                                <rect key="frame" x="0.0" y="63" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpx-Pu-nep">
-                                        <rect key="frame" x="0.0" y="0.0" width="109" height="40"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oWG-9P-8RT">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <color key="backgroundColor" red="0.84811591180000001" green="0.36393839820000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="cES-sz-PvN"/>
-                                            <constraint firstAttribute="width" constant="109" id="de7-55-ocl"/>
+                                            <constraint firstAttribute="height" constant="40" id="gPs-4t-Bp7"/>
                                         </constraints>
-                                        <state key="normal" image="discoverTabbar">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="cPi-P3-hZy">
+                                            <size key="itemSize" width="89" height="40"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tabBtnCell" id="geN-DK-qNm">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="89" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="discoverTabbar" translatesAutoresizingMaskIntoConstraints="NO" id="Yd1-yV-Ww0">
+                                                            <rect key="frame" x="0.0" y="0.0" width="89" height="40"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </collectionViewCell>
+                                        </cells>
                                         <connections>
-                                            <action selector="onDiscoverTabChange:" destination="Mrf-5D-apJ" eventType="touchUpInside" id="sTz-DF-tPr"/>
+                                            <outlet property="dataSource" destination="Mrf-5D-apJ" id="day-W6-XdT"/>
+                                            <outlet property="delegate" destination="Mrf-5D-apJ" id="KdX-mf-cPS"/>
                                         </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ideology" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICh-7r-CiM">
-                                        <rect key="frame" x="26" y="12" width="57" height="17"/>
-                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcR-D1-Zac">
-                                        <rect key="frame" x="108" y="0.0" width="109" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="109" id="ZY7-mf-DhY"/>
-                                            <constraint firstAttribute="height" constant="40" id="zi2-uu-gT6"/>
-                                        </constraints>
-                                        <state key="normal" image="tabBtnImg">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onDiscoverTabChange:" destination="Mrf-5D-apJ" eventType="touchUpInside" id="1w8-sQ-3n6"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZn-hQ-rSA">
-                                        <rect key="frame" x="147" y="12" width="27" height="17"/>
-                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1P-mx-GYi">
-                                        <rect key="frame" x="213" y="0.0" width="109" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="109" id="5Ar-OQ-735"/>
-                                            <constraint firstAttribute="height" constant="40" id="C4S-32-32x"/>
-                                        </constraints>
-                                        <state key="normal" image="tabBtnImg">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onDiscoverTabChange:" destination="Mrf-5D-apJ" eventType="touchUpInside" id="Jr3-aV-RdG"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lifestyle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T27-DZ-QPn">
-                                        <rect key="frame" x="238" y="12" width="56" height="17"/>
-                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="selectedTabLine" translatesAutoresizingMaskIntoConstraints="NO" id="DgY-Ea-eZO">
-                                        <rect key="frame" x="1" y="-1" width="108" height="13"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="13" id="8Zq-V4-Ubw"/>
-                                            <constraint firstAttribute="width" constant="108" id="rvK-VM-Set"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="selectedTabLine" translatesAutoresizingMaskIntoConstraints="NO" id="F0E-Sz-AwS">
-                                        <rect key="frame" x="108" y="-1" width="106" height="13"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="106" id="rKi-PT-VJo"/>
-                                            <constraint firstAttribute="height" constant="13" id="uMN-rc-qQO"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="selectedTabLine" translatesAutoresizingMaskIntoConstraints="NO" id="E4X-Ie-cL7">
-                                        <rect key="frame" x="213" y="-1" width="106" height="13"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="106" id="Yap-z5-UPy"/>
-                                            <constraint firstAttribute="height" constant="13" id="y3u-sp-8XO"/>
-                                        </constraints>
-                                    </imageView>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="DgY-Ea-eZO" firstAttribute="leading" secondItem="Ifs-z5-2Rd" secondAttribute="leading" constant="1" id="6RD-cW-vo8"/>
-                                    <constraint firstItem="HZn-hQ-rSA" firstAttribute="centerY" secondItem="dcR-D1-Zac" secondAttribute="centerY" constant="0.5" id="6sD-qM-SAm"/>
-                                    <constraint firstAttribute="trailing" secondItem="p1P-mx-GYi" secondAttribute="trailing" constant="-2" id="B2r-Tn-uCr"/>
-                                    <constraint firstItem="xpx-Pu-nep" firstAttribute="leading" secondItem="Ifs-z5-2Rd" secondAttribute="leading" id="BKZ-Aj-Wg8"/>
-                                    <constraint firstItem="p1P-mx-GYi" firstAttribute="centerX" secondItem="T27-DZ-QPn" secondAttribute="centerX" constant="1.5" id="C2D-ei-W2P"/>
                                     <constraint firstAttribute="height" constant="40" id="Ddz-uX-PEZ"/>
-                                    <constraint firstItem="E4X-Ie-cL7" firstAttribute="top" secondItem="Ifs-z5-2Rd" secondAttribute="top" constant="-1" id="Jnd-L5-zkD"/>
-                                    <constraint firstItem="dcR-D1-Zac" firstAttribute="top" secondItem="Ifs-z5-2Rd" secondAttribute="top" id="P6n-Lc-pg3"/>
-                                    <constraint firstItem="DgY-Ea-eZO" firstAttribute="top" secondItem="Ifs-z5-2Rd" secondAttribute="top" constant="-1" id="QVX-JL-fV7"/>
-                                    <constraint firstItem="F0E-Sz-AwS" firstAttribute="leading" secondItem="Ifs-z5-2Rd" secondAttribute="leading" constant="108" id="VTf-MK-dWb"/>
-                                    <constraint firstAttribute="trailing" secondItem="E4X-Ie-cL7" secondAttribute="trailing" constant="1" id="XZl-S0-83d"/>
-                                    <constraint firstItem="xpx-Pu-nep" firstAttribute="top" secondItem="Ifs-z5-2Rd" secondAttribute="top" id="a43-kS-A15"/>
-                                    <constraint firstItem="F0E-Sz-AwS" firstAttribute="top" secondItem="Ifs-z5-2Rd" secondAttribute="top" constant="-1" id="gW6-xY-aVn"/>
-                                    <constraint firstItem="xpx-Pu-nep" firstAttribute="centerY" secondItem="ICh-7r-CiM" secondAttribute="centerY" constant="-0.5" id="j6f-0a-NnP"/>
-                                    <constraint firstItem="p1P-mx-GYi" firstAttribute="top" secondItem="Ifs-z5-2Rd" secondAttribute="top" id="scM-EC-acB"/>
-                                    <constraint firstItem="xpx-Pu-nep" firstAttribute="centerX" secondItem="ICh-7r-CiM" secondAttribute="centerX" id="wdf-qQ-3lf"/>
-                                    <constraint firstItem="p1P-mx-GYi" firstAttribute="centerY" secondItem="T27-DZ-QPn" secondAttribute="centerY" constant="-0.5" id="yFf-pQ-MK9"/>
-                                    <constraint firstItem="HZn-hQ-rSA" firstAttribute="centerX" secondItem="dcR-D1-Zac" secondAttribute="centerX" constant="-2" id="yO9-FJ-f4W"/>
-                                    <constraint firstItem="dcR-D1-Zac" firstAttribute="leading" secondItem="Ifs-z5-2Rd" secondAttribute="leading" constant="108" id="z2i-qm-MOQ"/>
+                                    <constraint firstItem="oWG-9P-8RT" firstAttribute="leading" secondItem="Ifs-z5-2Rd" secondAttribute="leading" id="Iaj-X9-B3D"/>
+                                    <constraint firstAttribute="bottom" secondItem="oWG-9P-8RT" secondAttribute="bottom" id="MAg-0h-0mM"/>
+                                    <constraint firstItem="oWG-9P-8RT" firstAttribute="top" secondItem="Ifs-z5-2Rd" secondAttribute="top" id="l50-wc-SUj"/>
+                                    <constraint firstAttribute="trailing" secondItem="oWG-9P-8RT" secondAttribute="trailing" id="pdv-c1-qes"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZ9-xd-0cX">
@@ -1159,7 +1101,7 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Tj9-0o-1t7">
-                                <rect key="frame" x="0.0" y="103" width="320" height="450"/>
+                                <rect key="frame" x="0.0" y="104" width="320" height="449"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" id="8Q4-Ve-nPR">
@@ -1262,7 +1204,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHZ-cT-nXm">
-                                <rect key="frame" x="0.0" y="103" width="320" height="450"/>
+                                <rect key="frame" x="0.0" y="104" width="320" height="449"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Political" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqA-l3-8LG">
                                         <rect key="frame" x="132" y="89" width="56" height="18"/>
@@ -1358,7 +1300,7 @@
                             <constraint firstItem="Tj9-0o-1t7" firstAttribute="leading" secondItem="CYe-L2-IHm" secondAttribute="leading" id="6xp-en-Jb1"/>
                             <constraint firstItem="RZ9-xd-0cX" firstAttribute="leading" secondItem="CYe-L2-IHm" secondAttribute="leading" id="8aL-S3-Nhy"/>
                             <constraint firstItem="iiS-Su-qic" firstAttribute="top" secondItem="Tj9-0o-1t7" secondAttribute="bottom" id="FHj-vL-lxU"/>
-                            <constraint firstItem="Ifs-z5-2Rd" firstAttribute="top" secondItem="CYe-L2-IHm" secondAttribute="top" constant="63" id="IeL-UO-eoJ"/>
+                            <constraint firstItem="Ifs-z5-2Rd" firstAttribute="top" secondItem="CYe-L2-IHm" secondAttribute="top" constant="64" id="IeL-UO-eoJ"/>
                             <constraint firstAttribute="trailing" secondItem="YHZ-cT-nXm" secondAttribute="trailing" id="Nwf-6J-taD"/>
                             <constraint firstItem="iiS-Su-qic" firstAttribute="top" secondItem="YHZ-cT-nXm" secondAttribute="bottom" id="QkY-8V-ctf"/>
                             <constraint firstAttribute="trailing" secondItem="Ifs-z5-2Rd" secondAttribute="trailing" id="Taz-Zj-rYI"/>
@@ -1371,21 +1313,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="button1Width" destination="de7-55-ocl" id="RTH-kp-FJc"/>
-                        <outlet property="button2LeadingSpace" destination="z2i-qm-MOQ" id="ZjJ-SN-iZp"/>
-                        <outlet property="button2Width" destination="ZY7-mf-DhY" id="hxk-Ep-9LO"/>
-                        <outlet property="button3Width" destination="5Ar-OQ-735" id="mfK-vq-Yb4"/>
                         <outlet property="ideologyView" destination="YHZ-cT-nXm" id="V93-30-h7I"/>
-                        <outlet property="tabButton1" destination="xpx-Pu-nep" id="xqa-ti-sYa"/>
-                        <outlet property="tabButton2" destination="dcR-D1-Zac" id="nto-ib-nco"/>
-                        <outlet property="tabButton3" destination="p1P-mx-GYi" id="2DI-Zm-rz9"/>
-                        <outlet property="tabLine1" destination="DgY-Ea-eZO" id="fP4-3X-XC6"/>
-                        <outlet property="tabLine1Width" destination="rvK-VM-Set" id="h8I-7F-lkO"/>
-                        <outlet property="tabLine2" destination="F0E-Sz-AwS" id="nc5-e3-WOT"/>
-                        <outlet property="tabLine2Leading" destination="VTf-MK-dWb" id="AQK-iB-vF5"/>
-                        <outlet property="tabLine2Width" destination="rKi-PT-VJo" id="go0-yO-9XM"/>
-                        <outlet property="tabLine3" destination="E4X-Ie-cL7" id="hBy-7q-nkI"/>
-                        <outlet property="tabLine3Width" destination="Yap-z5-UPy" id="JSv-Bq-lod"/>
+                        <outlet property="tabBtnCollView" destination="oWG-9P-8RT" id="Ihg-Vn-ipD"/>
                         <outlet property="tableView" destination="Tj9-0o-1t7" id="VVV-Rr-PWS"/>
                     </connections>
                 </viewController>
@@ -1412,14 +1341,12 @@
         <image name="notification_icon" width="21" height="21"/>
         <image name="photo_bg" width="53" height="53"/>
         <image name="pinkBackground" width="256" height="67"/>
-        <image name="profile_pic_bg" width="88" height="88"/>
+        <image name="profile_pic_bg" width="79" height="79"/>
         <image name="profile_pic_icon" width="37" height="30"/>
         <image name="select_box" width="309" height="44"/>
         <image name="select_box_2" width="29" height="29"/>
         <image name="select_box_arrow_down" width="14" height="9"/>
-        <image name="selectedTabLine" width="185" height="13"/>
         <image name="skyBackground" width="240" height="61"/>
-        <image name="tabBtnImg" width="185" height="55"/>
         <image name="topic_bg2" width="540" height="69"/>
         <image name="un_check_icon" width="14" height="14"/>
         <image name="yelloBackground" width="240" height="61"/>

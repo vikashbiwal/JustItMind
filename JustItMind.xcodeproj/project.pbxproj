@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3B00DB901BBB027700FD29D4 /* JIMContainerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00DB8F1BBB027700FD29D4 /* JIMContainerVC.m */; };
 		3B0FB3F51BB74D81006B4F1E /* JIMDiscoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0FB3F41BB74D81006B4F1E /* JIMDiscoverVC.m */; };
+		3B2D17C31BCB74B0000C8521 /* JImDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D17C21BCB74B0000C8521 /* JImDViewController.m */; };
+		3B2E162A1BD02A05009B90FE /* JIMCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E16291BD02A05009B90FE /* JIMCommentCell.m */; };
+		3B2E162D1BD02A68009B90FE /* JIMEventDeailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E162C1BD02A68009B90FE /* JIMEventDeailVC.m */; };
 		3B3B0A181BB362B400E58F19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B0A171BB362B400E58F19 /* main.m */; };
 		3B3B0A211BB362B400E58F19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3B0A1F1BB362B400E58F19 /* Main.storyboard */; };
 		3B3B0A261BB362B400E58F19 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3B0A241BB362B400E58F19 /* LaunchScreen.xib */; };
@@ -22,6 +25,7 @@
 		3B9634FF1BC242B9006A1730 /* JIMProfileSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9634FE1BC242B9006A1730 /* JIMProfileSettingVC.m */; };
 		3B9ACC0D1BB4B15400FB9424 /* JIMHomeTabbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9ACC0C1BB4B15400FB9424 /* JIMHomeTabbarVC.m */; };
 		3B9B31F11BB36EA70090D0EA /* JIMProfileCreateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9B31F01BB36EA70090D0EA /* JIMProfileCreateVC.m */; };
+		3BD2F31B1BD2D80E00360051 /* JIMFeedContainerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD2F31A1BD2D80E00360051 /* JIMFeedContainerVC.m */; };
 		3BF652A01BB9AA9E00BEB521 /* NewsFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BF6529F1BB9AA9E00BEB521 /* NewsFeed.storyboard */; };
 		3BF652A41BB9AD7D00BEB521 /* JIMNewsFeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF652A31BB9AD7D00BEB521 /* JIMNewsFeedVC.m */; };
 		3BFC25641BB7D37300B11C96 /* JIMDiscoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC25631BB7D37300B11C96 /* JIMDiscoverCell.m */; };
@@ -42,6 +46,12 @@
 		3B00DB8F1BBB027700FD29D4 /* JIMContainerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMContainerVC.m; sourceTree = "<group>"; };
 		3B0FB3F31BB74D81006B4F1E /* JIMDiscoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMDiscoverVC.h; sourceTree = "<group>"; };
 		3B0FB3F41BB74D81006B4F1E /* JIMDiscoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMDiscoverVC.m; sourceTree = "<group>"; };
+		3B2D17C11BCB74B0000C8521 /* JImDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JImDViewController.h; sourceTree = "<group>"; };
+		3B2D17C21BCB74B0000C8521 /* JImDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JImDViewController.m; sourceTree = "<group>"; };
+		3B2E16281BD02A05009B90FE /* JIMCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMCommentCell.h; sourceTree = "<group>"; };
+		3B2E16291BD02A05009B90FE /* JIMCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMCommentCell.m; sourceTree = "<group>"; };
+		3B2E162B1BD02A68009B90FE /* JIMEventDeailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMEventDeailVC.h; sourceTree = "<group>"; };
+		3B2E162C1BD02A68009B90FE /* JIMEventDeailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMEventDeailVC.m; sourceTree = "<group>"; };
 		3B3B0A121BB362B400E58F19 /* JustItMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustItMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3B0A161BB362B400E58F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B3B0A171BB362B400E58F19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -68,6 +78,8 @@
 		3B9ACC0C1BB4B15400FB9424 /* JIMHomeTabbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMHomeTabbarVC.m; sourceTree = "<group>"; };
 		3B9B31EF1BB36EA70090D0EA /* JIMProfileCreateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMProfileCreateVC.h; sourceTree = "<group>"; };
 		3B9B31F01BB36EA70090D0EA /* JIMProfileCreateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMProfileCreateVC.m; sourceTree = "<group>"; };
+		3BD2F3191BD2D80E00360051 /* JIMFeedContainerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMFeedContainerVC.h; sourceTree = "<group>"; };
+		3BD2F31A1BD2D80E00360051 /* JIMFeedContainerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMFeedContainerVC.m; sourceTree = "<group>"; };
 		3BF6529F1BB9AA9E00BEB521 /* NewsFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsFeed.storyboard; sourceTree = "<group>"; };
 		3BF652A21BB9AD7D00BEB521 /* JIMNewsFeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMNewsFeedVC.h; sourceTree = "<group>"; };
 		3BF652A31BB9AD7D00BEB521 /* JIMNewsFeedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMNewsFeedVC.m; sourceTree = "<group>"; };
@@ -107,6 +119,8 @@
 			children = (
 				3B0FB3F31BB74D81006B4F1E /* JIMDiscoverVC.h */,
 				3B0FB3F41BB74D81006B4F1E /* JIMDiscoverVC.m */,
+				3B2D17C11BCB74B0000C8521 /* JImDViewController.h */,
+				3B2D17C21BCB74B0000C8521 /* JImDViewController.m */,
 			);
 			name = Discover;
 			sourceTree = "<group>";
@@ -233,6 +247,12 @@
 			children = (
 				3BF652A21BB9AD7D00BEB521 /* JIMNewsFeedVC.h */,
 				3BF652A31BB9AD7D00BEB521 /* JIMNewsFeedVC.m */,
+				3B2E16281BD02A05009B90FE /* JIMCommentCell.h */,
+				3B2E16291BD02A05009B90FE /* JIMCommentCell.m */,
+				3B2E162B1BD02A68009B90FE /* JIMEventDeailVC.h */,
+				3B2E162C1BD02A68009B90FE /* JIMEventDeailVC.m */,
+				3BD2F3191BD2D80E00360051 /* JIMFeedContainerVC.h */,
+				3BD2F31A1BD2D80E00360051 /* JIMFeedContainerVC.m */,
 			);
 			name = NewsFeed;
 			sourceTree = "<group>";
@@ -347,16 +367,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B2D17C31BCB74B0000C8521 /* JImDViewController.m in Sources */,
 				3B3B0A431BB3636300E58F19 /* AppDelegate.m in Sources */,
 				3BF652A41BB9AD7D00BEB521 /* JIMNewsFeedVC.m in Sources */,
+				3B2E162A1BD02A05009B90FE /* JIMCommentCell.m in Sources */,
 				3BFC25641BB7D37300B11C96 /* JIMDiscoverCell.m in Sources */,
 				3B00DB901BBB027700FD29D4 /* JIMContainerVC.m in Sources */,
+				3B2E162D1BD02A68009B90FE /* JIMEventDeailVC.m in Sources */,
 				3B3B0A181BB362B400E58F19 /* main.m in Sources */,
 				3B9ACC0D1BB4B15400FB9424 /* JIMHomeTabbarVC.m in Sources */,
 				3B3B0A501BB364E200E58F19 /* PFWebServiceCalls.m in Sources */,
 				3B9B31F11BB36EA70090D0EA /* JIMProfileCreateVC.m in Sources */,
 				3B0FB3F51BB74D81006B4F1E /* JIMDiscoverVC.m in Sources */,
 				3B3B0A4A1BB364B000E58F19 /* JIMParentViewController.m in Sources */,
+				3BD2F31B1BD2D80E00360051 /* JIMFeedContainerVC.m in Sources */,
 				3B3B0A4D1BB364D400E58F19 /* SGConstants.m in Sources */,
 				3B9634FF1BC242B9006A1730 /* JIMProfileSettingVC.m in Sources */,
 				3B3B0A441BB3636300E58F19 /* JIMViewController.m in Sources */,

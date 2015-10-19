@@ -10,6 +10,7 @@
 
 @interface JIMNewsFeedVC ()<UITableViewDataSource, UITableViewDelegate>
 {
+    IBOutlet NSLayoutConstraint *tableviewWidth;
     IBOutlet NSLayoutConstraint *topMenuTopSpace;
 }
 @end
@@ -19,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     topMenuTopSpace.constant = -50;
+    tableviewWidth.constant = screenSize.size.width;
+    [self.tableView setContentInset:UIEdgeInsetsMake(20, 0, 0, 0)];
 }
 
 
@@ -33,7 +36,18 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventFeedCell"];
     return cell;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row%2 == 0)
+    {
+    [self performSegueWithIdentifier:@"EventDetailSegue" sender:nil];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"advertSegue" sender:nil];
+        
+    }
+}
 
 - (IBAction)onTopMenuShutterBtn:(id)sender
 {

@@ -9,8 +9,10 @@
 #import "JIMDiscoverVC.h"
 #import "JIMDiscoverCell.h"
 
-@interface JIMDiscoverVC ()<UITableViewDataSource, UITableViewDelegate>
+@interface JIMDiscoverVC ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
+    IBOutlet UICollectionView *tabBtnCollView;
+    
     IBOutlet UIButton *tabButton1;
     IBOutlet UIButton *tabButton2;
     IBOutlet UIButton *tabButton3;
@@ -50,6 +52,7 @@
 
 - (void)setUI
 {
+    [tabBtnCollView setContentInset:UIEdgeInsetsFromString(@"{-20.0,0.0,0.0,0.0}")];
     if(screenSize.size.width == 375)
     {
         button1Width.constant = 127;
@@ -187,11 +190,25 @@
 }
 
 
+#pragma mark collectionView datasource delegate
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 4;
+}
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"tabBtnCell" forIndexPath:indexPath];
+    return  cell;
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    float width = screenSize.size.width/3;
+    return CGSizeMake(width, 40);
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 @end
