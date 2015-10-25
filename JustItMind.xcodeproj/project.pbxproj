@@ -28,7 +28,9 @@
 		3BD2F31B1BD2D80E00360051 /* JIMFeedContainerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD2F31A1BD2D80E00360051 /* JIMFeedContainerVC.m */; };
 		3BF652A01BB9AA9E00BEB521 /* NewsFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BF6529F1BB9AA9E00BEB521 /* NewsFeed.storyboard */; };
 		3BF652A41BB9AD7D00BEB521 /* JIMNewsFeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF652A31BB9AD7D00BEB521 /* JIMNewsFeedVC.m */; };
+		3BF776EF1BD78ECA003A9C6C /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BF776EE1BD78ECA003A9C6C /* Chat.storyboard */; };
 		3BFC25641BB7D37300B11C96 /* JIMDiscoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC25631BB7D37300B11C96 /* JIMDiscoverCell.m */; };
+		3BFEC1EB1BD80A38007854A6 /* ChatUserListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFEC1EA1BD80A38007854A6 /* ChatUserListVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,8 +85,11 @@
 		3BF6529F1BB9AA9E00BEB521 /* NewsFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsFeed.storyboard; sourceTree = "<group>"; };
 		3BF652A21BB9AD7D00BEB521 /* JIMNewsFeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMNewsFeedVC.h; sourceTree = "<group>"; };
 		3BF652A31BB9AD7D00BEB521 /* JIMNewsFeedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMNewsFeedVC.m; sourceTree = "<group>"; };
+		3BF776EE1BD78ECA003A9C6C /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		3BFC25621BB7D37300B11C96 /* JIMDiscoverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMDiscoverCell.h; sourceTree = "<group>"; };
 		3BFC25631BB7D37300B11C96 /* JIMDiscoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMDiscoverCell.m; sourceTree = "<group>"; };
+		3BFEC1E91BD80A38007854A6 /* ChatUserListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatUserListVC.h; sourceTree = "<group>"; };
+		3BFEC1EA1BD80A38007854A6 /* ChatUserListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUserListVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +190,7 @@
 		3B3B0A3E1BB3632100E58F19 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3BFEC1E81BD809B4007854A6 /* Chat */,
 				3B00DB8D1BBB025300FD29D4 /* ContainerVC */,
 				3BF652A11BB9AD1000BEB521 /* NewsFeed */,
 				3BFC25611BB7D34A00B11C96 /* TableViewCells */,
@@ -214,6 +220,7 @@
 				3B3B0A241BB362B400E58F19 /* LaunchScreen.xib */,
 				3B3B0A1F1BB362B400E58F19 /* Main.storyboard */,
 				3BF6529F1BB9AA9E00BEB521 /* NewsFeed.storyboard */,
+				3BF776EE1BD78ECA003A9C6C /* Chat.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -264,6 +271,15 @@
 				3BFC25631BB7D37300B11C96 /* JIMDiscoverCell.m */,
 			);
 			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		3BFEC1E81BD809B4007854A6 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				3BFEC1E91BD80A38007854A6 /* ChatUserListVC.h */,
+				3BFEC1EA1BD80A38007854A6 /* ChatUserListVC.m */,
+			);
+			name = Chat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +365,7 @@
 				3B3B0A521BB369D400E58F19 /* Images.xcassets in Resources */,
 				3B3B0A211BB362B400E58F19 /* Main.storyboard in Resources */,
 				3B3B0A261BB362B400E58F19 /* LaunchScreen.xib in Resources */,
+				3BF776EF1BD78ECA003A9C6C /* Chat.storyboard in Resources */,
 				3BF652A01BB9AA9E00BEB521 /* NewsFeed.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,6 +401,7 @@
 				3B3B0A4D1BB364D400E58F19 /* SGConstants.m in Sources */,
 				3B9634FF1BC242B9006A1730 /* JIMProfileSettingVC.m in Sources */,
 				3B3B0A441BB3636300E58F19 /* JIMViewController.m in Sources */,
+				3BFEC1EB1BD80A38007854A6 /* ChatUserListVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

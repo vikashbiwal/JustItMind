@@ -26,10 +26,9 @@ IBOutlet NSLayoutConstraint *topMenuTopSpace;
 - (void)viewDidLoad {
     [super viewDidLoad];
     topMenuTopSpace.constant = -50;
-    [scrollview setContentSize:CGSizeMake(0, 0)];
-    NSLog(@"%@",scrollview);
-    CGRect frame = scrollview.frame;
-    [self setUI];
+    [scrollview setContentSize:CGSizeMake(640, 504)];
+   
+    //[self setUI];
     }
 
 - (void)setUI {
@@ -37,7 +36,6 @@ IBOutlet NSLayoutConstraint *topMenuTopSpace;
     scrollviewHeight.constant = screenSize.size.height - 64;
     containerWidth.constant = screenSize.size.width;
     containerHeight.constant = screenSize.size.height - 64;
-
 }
 - (void)scrollViewDidScroll:(UIScrollView*)scrView
 {
@@ -45,8 +43,13 @@ IBOutlet NSLayoutConstraint *topMenuTopSpace;
     {
         CGPoint offset = scrView.contentOffset;
         offset.y = 0;
-        scrView.contentOffset = offset;
+        //scrView.contentOffset = offset;
     }
+    int index =  scrView.contentOffset.x/scrView.frame.size.width;
+    if(index == 0)
+      parentlblTitle.text = @"News Feed";
+    else if (index == 1)
+        parentlblTitle.text = @"Dorm Feed";
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

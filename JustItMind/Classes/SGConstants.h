@@ -35,10 +35,18 @@
 #define kLocalNotificationTime (6*60*60)
 #define screenSize [[UIScreen mainScreen] bounds]
 #define newsFeedStBoard [UIStoryboard storyboardWithName:@"NewsFeed" bundle:nil]
+#define ChatStBoard [UIStoryboard storyboardWithName:@"Chat" bundle:nil]
+// Discovre screen's tab menus
+#define DiscoverTabIdeology   @"DiscoverTabIdeology"
+#define DiscoverTabArts       @"DiscoverTabArts"
+#define DiscoverTabLifestyle  @"DiscvoerTabLifestyle"
+#define DiscoverTabResidents   @"DiscvoerTabResidents"
+//
+
 extern NSMutableDictionary *userInformation;
 
 extern NSDateFormatter *_serverFormatter;
-
+extern NSString * discoverSelectedTab;
 /* device check */
 extern inline bool is_iPhone5();
 extern inline bool is_iPad();

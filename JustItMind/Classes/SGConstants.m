@@ -10,7 +10,7 @@
 
 
 
-
+NSString *discoverSelectedTab = DiscoverTabIdeology;
 
 NSMutableDictionary *userInformation = nil;
 NSDateFormatter *_serverFormatter = nil;

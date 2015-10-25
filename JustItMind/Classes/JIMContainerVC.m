@@ -52,6 +52,10 @@
 - (IBAction)onRightMenuBtnTapped:(id)sender
 {
     //static BOOL isRightOpen = NO;
+    
+    UINavigationController *chatNav = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatNav"];
+    [self.tabbarController addChildViewController:chatNav];
+    [self.tabbarController setSelectedIndex:2];
     if(isRightOpen){
         [UIView animateWithDuration:0.5 animations:^{
             rightMenuTraillingSpace.constant = -125;

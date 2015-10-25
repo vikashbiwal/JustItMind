@@ -9,9 +9,9 @@
 #import "JIMDiscoverVC.h"
 #import "JIMDiscoverCell.h"
 
-@interface JIMDiscoverVC ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface JIMDiscoverVC ()<UITableViewDataSource, UITableViewDelegate>
 {
-    IBOutlet UICollectionView *tabBtnCollView;
+    IBOutlet UIScrollView *scrollview;
     
     IBOutlet UIButton *tabButton1;
     IBOutlet UIButton *tabButton2;
@@ -23,15 +23,8 @@
     
     IBOutlet UIView *ideologyView;
     
-    IBOutlet NSLayoutConstraint *button1Width;
-    IBOutlet NSLayoutConstraint *button2Width;
-    IBOutlet NSLayoutConstraint *button3Width;
-    IBOutlet NSLayoutConstraint *button2LeadingSpace;
+    IBOutlet NSLayoutConstraint *parentViewWidth;
     
-    IBOutlet NSLayoutConstraint *tabLine1Width;
-    IBOutlet NSLayoutConstraint *tabLine2Width;
-    IBOutlet NSLayoutConstraint *tabLine3Width;
-    IBOutlet NSLayoutConstraint *tabLine2Leading;
     
     NSInteger selectedTabIndex;
     NSMutableDictionary *selectedLifeStyeChoice;
@@ -52,32 +45,13 @@
 
 - (void)setUI
 {
-    [tabBtnCollView setContentInset:UIEdgeInsetsFromString(@"{-20.0,0.0,0.0,0.0}")];
-    if(screenSize.size.width == 375)
-    {
-        button1Width.constant = 127;
-        button2Width.constant = 127;
-        button3Width.constant = 128;
-        button2LeadingSpace.constant = 126;
-        
-        tabLine1Width.constant = 126;
-        tabLine2Width.constant = 124;
-        tabLine3Width.constant = 125;
-        tabLine2Leading.constant = 126;
-    }
-    else if (screenSize.size.width == 414)
-    {
-        button1Width.constant = 141;
-        button2Width.constant = 141;
-        button3Width.constant = 140;
-        button2LeadingSpace.constant = 140;
-        
-        tabLine1Width.constant = 140;
-        tabLine2Width.constant = 137;
-        tabLine3Width.constant = 137;
-        tabLine2Leading.constant = 140;
-    }
+    
+    float width = screenSize.size.width;
+    float height = screenSize.size.height - 96;
+    [scrollview setContentSize:CGSizeMake(width, height)];
+    parentViewWidth.constant = width*2;
 }
+
 #pragma mark - Tableview Datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -108,7 +82,14 @@
 #pragma mark - IBActions
 - (IBAction)onDiscoverTabChange:(UIButton *)sender
 {
-    selectedTabIndex = sender.tag;
+     if(sender.tag == 1)
+         discoverSelectedTab = DiscoverTabIdeology;
+    else if (sender.tag == 2)
+        discoverSelectedTab = DiscoverTabArts;
+    else if(sender.tag == 3)
+        discoverSelectedTab = DiscoverTabLifestyle;
+    else if (sender.tag == 4)
+        discoverSelectedTab = DiscoverTabResidents;
     [self setUIForSelectedTab];
 }
 
@@ -162,24 +143,17 @@
 - (void)setUIForSelectedTab
 {
     [self resetTabLine];
-    if(selectedTabIndex == 1)
-    {
-        tabLine1.hidden = YES;
-        self.tableView.hidden = YES;
-        ideologyView.hidden = NO;
-    }
-    else if (selectedTabIndex == 2)
-    {    tabLine2.hidden  = YES;
-       ideologyView.hidden = YES;
-        self.tableView.hidden = NO;
-        [self.tableView reloadData];
-    }
-    else if (selectedTabIndex == 3)
-    {    tabLine3.hidden = YES;
-        ideologyView.hidden = YES;
-        self.tableView.hidden = NO;
-        [self.tableView reloadData];
-    }
+    int x;
+    if([discoverSelectedTab isEqualToString:DiscoverTabIdeology])
+         x = (screenSize.size.width/5) * 0;
+    else if ([discoverSelectedTab isEqualToString:DiscoverTabArts])
+        x = screenSize.size.width; //(screenSize.size.width/5) * 1;
+    else if ([discoverSelectedTab isEqualToString:DiscoverTabLifestyle])
+        x = 0;//(screenSize.size.width/5) * 2;
+    else if ([discoverSelectedTab isEqualToString:DiscoverTabResidents])
+        x = screenSize.size.width;//(screenSize.size.width/5) * 3;
+    [scrollview setContentOffset:CGPointMake(x, 0) animated:NO];
+    
 }
 - (void)resetTabLine
 {
@@ -190,21 +164,6 @@
 }
 
 
-#pragma mark collectionView datasource delegate
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return 4;
-}
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"tabBtnCell" forIndexPath:indexPath];
-    return  cell;
-}
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    float width = screenSize.size.width/3;
-    return CGSizeMake(width, 40);
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
