@@ -9,8 +9,9 @@
 #import "JIMContainerVC.h"
 
 //#define newsFeedStBoard [UIStoryboard storyboardWithName:@"NewsFeed" bundle:nil]
-@interface JIMContainerVC ()
+@interface JIMContainerVC ()<UITableViewDataSource, UITableViewDelegate>
 {
+    IBOutlet UITableView *tableViewChat;
     __weak IBOutlet UIView  *tabContainer;
     __weak IBOutlet UIView *bottomMenu;
     __weak IBOutlet UIView *leftMenuView;
@@ -29,8 +30,21 @@
 
 @implementation JIMContainerVC
 
+- (void)setShadowLeftToView:(UIView*)view
+{
+    [view.layer setShadowColor:[UIColor blackColor].CGColor];
+    [view.layer setShadowOpacity:0.8];
+    [view.layer setShadowRadius:3.0];
+    
+    [view.layer setShadowOffset:CGSizeMake(-3.0, 0.0)];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+   // tableViewChat.layer.shadowColor = [UIColor blackColor].CGColor;
+    [self setShadowLeftToView:rightMenuBtnView];
+    [self setShadowLeftToView:rightMenuView];
+    
     
     UINavigationController *navNewsFeedVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_NewsFeedNav"];
     self.tabbarController = self.childViewControllers[0];
@@ -148,5 +162,21 @@
     rightMenuView.hidden = choice;
     rightMenuBtnView.hidden = choice;
 
+}
+
+#pragma Tableview Delegate and data source
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 35;
 }
 @end
