@@ -535,7 +535,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsk-3G-L94" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="365" y="1640"/>
+            <point key="canvasLocation" x="1773" y="1750"/>
         </scene>
         <!--Event DeailVC-->
         <scene sceneID="hjg-yy-Djt">
@@ -1019,7 +1019,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcG-03-s2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="966" y="1656"/>
+            <point key="canvasLocation" x="2280" y="1750"/>
         </scene>
         <!--News FeedVC-->
         <scene sceneID="b33-H9-qJj">
@@ -1353,7 +1353,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HZQ-4m-PCy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1392" y="870"/>
+            <point key="canvasLocation" x="872" y="134"/>
         </scene>
         <!--Feed ContainerVC-->
         <scene sceneID="6c2-I3-kXy">
@@ -1746,6 +1746,8 @@
                     <connections>
                         <outlet property="tableView" destination="CXO-X2-YBB" id="KiU-CH-NEo"/>
                         <outlet property="tableviewWidth" destination="gbY-Ih-mfq" id="P02-JS-RdC"/>
+                        <segue destination="ECl-LH-OvR" kind="show" id="sKs-mD-7zj"/>
+                        <segue destination="wym-Gi-n6h" kind="show" id="xBo-Ez-JGG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0A-DB-gPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1997,6 +1999,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="o3m-aE-rAA" id="a59-Tl-vcL"/>
+                        <segue destination="ECl-LH-OvR" kind="show" id="JdO-3T-twi"/>
+                        <segue destination="wym-Gi-n6h" kind="show" id="7Xs-od-rfE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="33e-Il-D5u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2022,4 +2026,8 @@
         <image name="userImg" width="119" height="79"/>
         <image name="yelloBackground" width="240" height="61"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="JdO-3T-twi"/>
+        <segue reference="7Xs-od-rfE"/>
+    </inferredMetricsTieBreakers>
 </document>

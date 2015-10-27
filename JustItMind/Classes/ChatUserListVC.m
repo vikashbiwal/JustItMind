@@ -46,5 +46,16 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatListCell"];
     return cell;
 }
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+        return @"New";
+    else
+        return @"Recent";
+}
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"ChatVCSegue" sender:nil];
+}
 @end

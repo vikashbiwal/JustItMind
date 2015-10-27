@@ -36,15 +36,25 @@
     [view.layer setShadowOpacity:0.8];
     [view.layer setShadowRadius:3.0];
     
-    [view.layer setShadowOffset:CGSizeMake(-3.0, 0.0)];
+    [view.layer setShadowOffset:CGSizeMake(-3.0, 3.0)];
 }
+- (void)setShadowRightToView:(UIView*)view
+{
+    [view.layer setShadowColor:[UIColor blackColor].CGColor];
+    [view.layer setShadowOpacity:0.8];
+    [view.layer setShadowRadius:3.0];
+    
+    [view.layer setShadowOffset:CGSizeMake(3.0, 3.0)];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
    // tableViewChat.layer.shadowColor = [UIColor blackColor].CGColor;
     [self setShadowLeftToView:rightMenuBtnView];
     [self setShadowLeftToView:rightMenuView];
-    
+    [self setShadowRightToView:leftMenuBtnView];
+    [self setShadowRightToView:leftMenuView];
     
     UINavigationController *navNewsFeedVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_NewsFeedNav"];
     self.tabbarController = self.childViewControllers[0];
@@ -67,12 +77,13 @@
 {
     //static BOOL isRightOpen = NO;
     
-    UINavigationController *chatNav = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatNav"];
-    [self.tabbarController addChildViewController:chatNav];
-    [self.tabbarController setSelectedIndex:2];
+//    UINavigationController *chatNav = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatNav"];
+//    [self.tabbarController addChildViewController:chatNav];
+//    [self.tabbarController setSelectedIndex:2];
+
     if(isRightOpen){
         [UIView animateWithDuration:0.5 animations:^{
-            rightMenuTraillingSpace.constant = -125;
+            rightMenuTraillingSpace.constant = -200;
             [self.view layoutIfNeeded];
         }];
         isRightOpen = NO;
@@ -81,7 +92,7 @@
     {
         [UIView animateWithDuration:0.5 animations:^{
             rightMenuTraillingSpace.constant = 0;
-            leftMenuLeadingSpace.constant = -125;
+            leftMenuLeadingSpace.constant = -200;
             bottomMenuBottomSapce.constant = -170;
             [self.view layoutIfNeeded];
         }];
@@ -98,7 +109,7 @@
    
     if(isLeftOpen){
         [UIView animateWithDuration:0.5 animations:^{
-            leftMenuLeadingSpace.constant = -125;
+            leftMenuLeadingSpace.constant = -200;
             [self.view layoutIfNeeded];
         }];
         isLeftOpen = NO;
@@ -107,7 +118,7 @@
     {
         [UIView animateWithDuration:0.5 animations:^{
             leftMenuLeadingSpace.constant = 0;
-            rightMenuTraillingSpace.constant = -125;
+            rightMenuTraillingSpace.constant = -200;
             bottomMenuBottomSapce.constant = -170;
             [self.view layoutIfNeeded];
         }];
@@ -167,16 +178,30 @@
 #pragma Tableview Delegate and data source
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tblView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (tableViewChat == tblView)
+    {
+    UITableViewCell *cell = [tblView dequeueReusableCellWithIdentifier:@"cell"];
+    if (indexPath.row == 5)
+        cell = [tableViewChat dequeueReusableCellWithIdentifier:@"moreCell"];
     return cell;
+    }
+    else
+    {
+     UITableViewCell *cell = [tblView dequeueReusableCellWithIdentifier:@"cell"];
+        return  cell;
+    }
+    
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tblview heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(tableViewChat == tblview)
     return 35;
+    else
+        return 50;
 }
 @end
