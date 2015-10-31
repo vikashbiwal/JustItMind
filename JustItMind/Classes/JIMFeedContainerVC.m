@@ -10,14 +10,20 @@
 
 @interface JIMFeedContainerVC ()
 {
-IBOutlet NSLayoutConstraint *topMenuTopSpace;
     IBOutlet UIScrollView *scrollview;
+    
     IBOutlet UIView *container1;
     IBOutlet UIView *container2;
     IBOutlet NSLayoutConstraint *containerWidth;
     IBOutlet NSLayoutConstraint *containerHeight;
+    
     IBOutlet NSLayoutConstraint *scrollviewWidth;
     IBOutlet NSLayoutConstraint *scrollviewHeight;
+    
+    IBOutlet NSLayoutConstraint *topMenuTopSpace;
+    IBOutlet UIImageView *topMenuPlusIcn;
+    IBOutlet UIView *viewCreateEvent;
+
 }
 @end
 
@@ -25,7 +31,7 @@ IBOutlet NSLayoutConstraint *topMenuTopSpace;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    topMenuTopSpace.constant = -50;
+    topMenuTopSpace.constant = -315;
     [scrollview setContentSize:CGSizeMake(640, 504)];
    
     //[self setUI];
@@ -56,25 +62,38 @@ IBOutlet NSLayoutConstraint *topMenuTopSpace;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - IBActions
 - (IBAction)onTopMenuShutterBtn:(id)sender
 {
     static BOOL isOpend = NO;
     if(isOpend)
     {
         [UIView animateWithDuration:0.5 animations:^{
-            topMenuTopSpace.constant = -50;
+            topMenuTopSpace.constant = -315;
+            topMenuPlusIcn.image = [UIImage imageNamed:@"plus_icon"];
             [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            viewCreateEvent.hidden = YES;
         }];
+        
         isOpend = NO;
     }
     else
     {
         [UIView animateWithDuration:0.5 animations:^{
-            topMenuTopSpace.constant = 64;
+            topMenuTopSpace.constant = -230;
+            topMenuPlusIcn.image = [UIImage imageNamed:@"icMinus"];
             [self.view layoutIfNeeded];
         }];
         isOpend = YES;
     }
 }
 
+- (IBAction)createEventBtnClick:(id)sender {
+    [UIView animateWithDuration:0.5 animations:^{
+        topMenuTopSpace.constant = 0;
+        viewCreateEvent.hidden = NO;
+        [self.view layoutIfNeeded];
+    }];
+}
 @end

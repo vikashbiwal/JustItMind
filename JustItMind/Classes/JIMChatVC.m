@@ -32,6 +32,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - IBActions
+
+
+
 #pragma mark - Keyboard show hide notification
 - (void)keyboardShow:(NSNotification*)notify
 {
