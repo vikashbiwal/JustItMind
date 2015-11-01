@@ -14,6 +14,7 @@
     
     IBOutlet UIView *container1;
     IBOutlet UIView *container2;
+    IBOutlet UIView *mainContainerView;
     IBOutlet NSLayoutConstraint *containerWidth;
     IBOutlet NSLayoutConstraint *containerHeight;
     
@@ -23,7 +24,7 @@
     IBOutlet NSLayoutConstraint *topMenuTopSpace;
     IBOutlet UIImageView *topMenuPlusIcn;
     IBOutlet UIView *viewCreateEvent;
-
+    IBOutlet UIView *viewCreateRequest;
 }
 @end
 
@@ -32,16 +33,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     topMenuTopSpace.constant = -315;
-    [scrollview setContentSize:CGSizeMake(640, 504)];
-   
+    containerWidth.constant = screenSize.size.width*2;
+    containerHeight.constant = 400;//screenSize.size.height - 100;
+    
+    [scrollview setContentSize:CGSizeMake(screenSize.size.width, 500)];
+    scrollviewHeight.constant = 500;
     //[self setUI];
     }
+- (void)viewDidLayoutSubviews
+{
 
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [scrollview setContentOffset:CGPointMake(0, -20)];
+
+    NSLog(@"%@, ---- %@",scrollview, mainContainerView);
+    
+}
 - (void)setUI {
-    scrollviewWidth.constant = screenSize.size.width;
-    scrollviewHeight.constant = screenSize.size.height - 64;
-    containerWidth.constant = screenSize.size.width;
-    containerHeight.constant = screenSize.size.height - 64;
+    
 }
 - (void)scrollViewDidScroll:(UIScrollView*)scrView
 {
@@ -74,6 +85,7 @@
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
             viewCreateEvent.hidden = YES;
+            viewCreateRequest.hidden = YES;
         }];
         
         isOpend = NO;
@@ -93,7 +105,17 @@
     [UIView animateWithDuration:0.5 animations:^{
         topMenuTopSpace.constant = 0;
         viewCreateEvent.hidden = NO;
+        
         [self.view layoutIfNeeded];
     }];
+}
+
+- (IBAction)createRequestBtnClick:(id)sender {
+    [UIView animateWithDuration:0.5 animations:^{
+        topMenuTopSpace.constant = -70;
+        viewCreateRequest.hidden = NO;
+        [self.view layoutIfNeeded];
+    }];
+
 }
 @end

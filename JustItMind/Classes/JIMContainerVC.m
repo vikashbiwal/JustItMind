@@ -12,6 +12,8 @@
 @interface JIMContainerVC ()<UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UITableView *tableViewChat;
+    IBOutlet UIImageView *notificatoinIcn;
+    IBOutlet UIImageView *messageIcn;
     __weak IBOutlet UIView  *tabContainer;
     __weak IBOutlet UIView *bottomMenu;
     __weak IBOutlet UIView *leftMenuView;
@@ -43,15 +45,14 @@
     [view.layer setShadowColor:[UIColor blackColor].CGColor];
     [view.layer setShadowOpacity:0.8];
     [view.layer setShadowRadius:3.0];
-    
-    [view.layer setShadowOffset:CGSizeMake(3.0, 3.0)];
+    [view.layer setShadowOffset:CGSizeMake(0.0, 0.0)];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
    // tableViewChat.layer.shadowColor = [UIColor blackColor].CGColor;
-    [self setShadowLeftToView:rightMenuBtnView];
+    //[self setShadowLeftToView:rightMenuBtnView];
     [self setShadowLeftToView:rightMenuView];
     [self setShadowRightToView:leftMenuBtnView];
     [self setShadowRightToView:leftMenuView];
@@ -85,6 +86,8 @@
         [UIView animateWithDuration:0.5 animations:^{
             rightMenuTraillingSpace.constant = -200;
             [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            messageIcn.image = [UIImage imageNamed:@"chat_icon"];
         }];
         isRightOpen = NO;
     }
@@ -94,7 +97,10 @@
             rightMenuTraillingSpace.constant = 0;
             leftMenuLeadingSpace.constant = -200;
             bottomMenuBottomSapce.constant = -170;
+            
             [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            messageIcn.image = [UIImage imageNamed:@"minus_icon"];
         }];
         isRightOpen = YES;
         isLeftOpen = NO;
@@ -110,7 +116,10 @@
     if(isLeftOpen){
         [UIView animateWithDuration:0.5 animations:^{
             leftMenuLeadingSpace.constant = -200;
+           
             [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+             notificatoinIcn.image = [UIImage imageNamed:@"notification_icon"];
         }];
         isLeftOpen = NO;
     }
@@ -120,7 +129,10 @@
             leftMenuLeadingSpace.constant = 0;
             rightMenuTraillingSpace.constant = -200;
             bottomMenuBottomSapce.constant = -170;
+           
             [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+             notificatoinIcn.image = [UIImage imageNamed:@"icMinusYellow"];
         }];
         isLeftOpen = YES;
         isRightOpen = NO;
@@ -133,7 +145,7 @@
 - (IBAction)onBottomMenuBtnTapped:(id)sender
 {
     //static BOOL isBottomOpen = NO;
-    if(isBottomOpen){
+    if(isBottomOpen) {
         [UIView animateWithDuration:0.5 animations:^{
             bottomMenuBottomSapce.constant = -170;
             [self.view layoutIfNeeded];
@@ -144,8 +156,8 @@
     {
         [UIView animateWithDuration:0.5 animations:^{
             bottomMenuBottomSapce.constant = 0;
-            leftMenuLeadingSpace.constant = -125;
-            rightMenuTraillingSpace.constant = -125;
+            leftMenuLeadingSpace.constant = -200;
+            rightMenuTraillingSpace.constant = -200;
             [self.view layoutIfNeeded];
         }];
         isBottomOpen = YES;

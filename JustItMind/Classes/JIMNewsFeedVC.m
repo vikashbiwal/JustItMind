@@ -38,15 +38,15 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row%2 == 0)
-    {
-    [self performSegueWithIdentifier:@"EventDetailSegue" sender:nil];
-    }
-    else
-    {
-        [self performSegueWithIdentifier:@"advertSegue" sender:nil];
-        
-    }
+//    if(indexPath.row%2 == 0)
+//    {
+//    [self performSegueWithIdentifier:@"EventDetailSegue" sender:nil];
+//    }
+//    else
+//    {
+//        [self performSegueWithIdentifier:@"advertSegue" sender:nil];
+//        
+//    }
 }
 
 - (IBAction)onTopMenuShutterBtn:(id)sender
