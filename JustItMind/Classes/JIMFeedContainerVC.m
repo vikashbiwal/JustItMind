@@ -34,10 +34,10 @@
     [super viewDidLoad];
     topMenuTopSpace.constant = -315;
     containerWidth.constant = screenSize.size.width*2;
-    containerHeight.constant = 400;//screenSize.size.height - 100;
+    scrollviewHeight.constant = screenSize.size.height - 100;
+    containerHeight.constant = screenSize.size.height - 100;
     
-    [scrollview setContentSize:CGSizeMake(screenSize.size.width, 500)];
-    scrollviewHeight.constant = 500;
+   
     //[self setUI];
     }
 - (void)viewDidLayoutSubviews
@@ -47,6 +47,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [scrollview setContentOffset:CGPointMake(0, -20)];
+    [scrollview setContentSize:CGSizeMake(screenSize.size.width*2, 435)];
 
     NSLog(@"%@, ---- %@",scrollview, mainContainerView);
     

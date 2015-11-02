@@ -7,7 +7,9 @@
 //
 
 #import "JIMContainerVC.h"
-
+#define bottomMenuValue -140
+#define leftMenuValue -200
+#define rightMenuVaue -200
 //#define newsFeedStBoard [UIStoryboard storyboardWithName:@"NewsFeed" bundle:nil]
 @interface JIMContainerVC ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -62,7 +64,7 @@
     [self.tabbarController addChildViewController:navNewsFeedVC];
     [self.tabbarController setSelectedIndex:0];
     
-    bottomMenuBottomSapce.constant = -170;
+    bottomMenuBottomSapce.constant = bottomMenuValue;
     [self showMenus];
     [DefaultCenter addObserver:self selector:@selector(showMenusNotification:) name:@"MenuShowHideNotification" object:nil];
 }
@@ -76,15 +78,13 @@
 #pragma mark - IBActions
 - (IBAction)onRightMenuBtnTapped:(id)sender
 {
-    //static BOOL isRightOpen = NO;
     
-//    UINavigationController *chatNav = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatNav"];
-//    [self.tabbarController addChildViewController:chatNav];
-//    [self.tabbarController setSelectedIndex:2];
+    
+
 
     if(isRightOpen){
         [UIView animateWithDuration:0.5 animations:^{
-            rightMenuTraillingSpace.constant = -200;
+            rightMenuTraillingSpace.constant = rightMenuVaue;
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
             messageIcn.image = [UIImage imageNamed:@"chat_icon"];
@@ -95,8 +95,8 @@
     {
         [UIView animateWithDuration:0.5 animations:^{
             rightMenuTraillingSpace.constant = 0;
-            leftMenuLeadingSpace.constant = -200;
-            bottomMenuBottomSapce.constant = -170;
+            leftMenuLeadingSpace.constant = leftMenuValue;
+            bottomMenuBottomSapce.constant = bottomMenuValue;
             
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
@@ -115,7 +115,7 @@
    
     if(isLeftOpen){
         [UIView animateWithDuration:0.5 animations:^{
-            leftMenuLeadingSpace.constant = -200;
+            leftMenuLeadingSpace.constant = leftMenuValue;
            
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
@@ -127,8 +127,8 @@
     {
         [UIView animateWithDuration:0.5 animations:^{
             leftMenuLeadingSpace.constant = 0;
-            rightMenuTraillingSpace.constant = -200;
-            bottomMenuBottomSapce.constant = -170;
+            rightMenuTraillingSpace.constant = rightMenuVaue;
+            bottomMenuBottomSapce.constant = bottomMenuValue;
            
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
@@ -147,7 +147,7 @@
     //static BOOL isBottomOpen = NO;
     if(isBottomOpen) {
         [UIView animateWithDuration:0.5 animations:^{
-            bottomMenuBottomSapce.constant = -170;
+            bottomMenuBottomSapce.constant = bottomMenuValue;
             [self.view layoutIfNeeded];
         }];
         isBottomOpen = NO;
@@ -156,8 +156,8 @@
     {
         [UIView animateWithDuration:0.5 animations:^{
             bottomMenuBottomSapce.constant = 0;
-            leftMenuLeadingSpace.constant = -200;
-            rightMenuTraillingSpace.constant = -200;
+            leftMenuLeadingSpace.constant = leftMenuValue;
+            rightMenuTraillingSpace.constant = rightMenuVaue;
             [self.view layoutIfNeeded];
         }];
         isBottomOpen = YES;
@@ -212,8 +212,21 @@
 - (CGFloat)tableView:(UITableView *)tblview heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(tableViewChat == tblview)
-    return 35;
+        return 35;
     else
         return 50;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(tableView == tableViewChat){
+            UINavigationController *chatNav = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatNav"];
+            [self.tabbarController addChildViewController:chatNav];
+            [self.tabbarController setSelectedIndex:2];
+    }
+    else
+    {
+    
+    }
 }
 @end
