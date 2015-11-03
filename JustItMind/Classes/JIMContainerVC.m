@@ -9,7 +9,7 @@
 #import "JIMContainerVC.h"
 #define bottomMenuValue -140
 #define leftMenuValue -200
-#define rightMenuVaue -200
+#define rightMenuValue -200
 //#define newsFeedStBoard [UIStoryboard storyboardWithName:@"NewsFeed" bundle:nil]
 @interface JIMContainerVC ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -60,8 +60,17 @@
     [self setShadowRightToView:leftMenuView];
     
     UINavigationController *navNewsFeedVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_NewsFeedNav"];
+    id profileVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_ProfileVC"];
+    id chatVC  = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatNav"];
+    id residentsVC = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ResidentVC"];//SBID_ResidentsNav
+    
     self.tabbarController = self.childViewControllers[0];
-    [self.tabbarController addChildViewController:navNewsFeedVC];
+    
+    
+    [self.tabbarController addChildViewController:navNewsFeedVC];//1
+    [self.tabbarController addChildViewController:profileVC];//2
+    [self.tabbarController addChildViewController:chatVC];//3
+    [self.tabbarController addChildViewController:residentsVC];//4
     [self.tabbarController setSelectedIndex:0];
     
     bottomMenuBottomSapce.constant = bottomMenuValue;
@@ -74,6 +83,34 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Bottom menu actions
+
+- (IBAction)onClickEventMenu:(id)sender
+{
+    [self setTabbarSelectedIndex:1];
+}
+- (IBAction)onClickDiscoverMenu:(id)sender
+{
+
+}
+
+- (IBAction)onClickResidentsMenu:(id)sender
+{
+    [self setTabbarSelectedIndex:4];
+}
+
+- (IBAction)onClickProfileMenu:(id)sender
+{
+    [self setTabbarSelectedIndex:2];
+    
+}
+
+#pragma mark - Right menu Button Action
+
+- (IBAction)onClickAllMessageBtn:(id)sender
+{
+    [self setTabbarSelectedIndex:3];
+}
 
 #pragma mark - IBActions
 - (IBAction)onRightMenuBtnTapped:(id)sender
@@ -84,7 +121,7 @@
 
     if(isRightOpen){
         [UIView animateWithDuration:0.5 animations:^{
-            rightMenuTraillingSpace.constant = rightMenuVaue;
+            rightMenuTraillingSpace.constant = rightMenuValue;
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
             messageIcn.image = [UIImage imageNamed:@"chat_icon"];
@@ -127,7 +164,7 @@
     {
         [UIView animateWithDuration:0.5 animations:^{
             leftMenuLeadingSpace.constant = 0;
-            rightMenuTraillingSpace.constant = rightMenuVaue;
+            rightMenuTraillingSpace.constant = rightMenuValue;
             bottomMenuBottomSapce.constant = bottomMenuValue;
            
             [self.view layoutIfNeeded];
@@ -157,7 +194,7 @@
         [UIView animateWithDuration:0.5 animations:^{
             bottomMenuBottomSapce.constant = 0;
             leftMenuLeadingSpace.constant = leftMenuValue;
-            rightMenuTraillingSpace.constant = rightMenuVaue;
+            rightMenuTraillingSpace.constant = rightMenuValue;
             [self.view layoutIfNeeded];
         }];
         isBottomOpen = YES;
@@ -228,5 +265,24 @@
     {
     
     }
+}
+
+#pragma mark - other
+
+- (void)setTabbarSelectedIndex:(int)index {
+    [self.tabbarController setSelectedIndex:index];
+    [UIView animateWithDuration:0.3 animations:^{
+        bottomMenuBottomSapce.constant = bottomMenuValue;
+        leftMenuLeadingSpace.constant = leftMenuValue;
+        rightMenuTraillingSpace.constant = rightMenuValue;
+        messageIcn.image = [UIImage imageNamed:@"chat_icon"];
+        notificatoinIcn.image = [UIImage imageNamed:@"notification_icon"];
+        [self.view layoutIfNeeded];
+    }];
+
+    
+    isBottomOpen = NO;
+    isRightOpen = NO;
+    isLeftOpen  = NO;
 }
 @end

@@ -38,15 +38,15 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if(indexPath.row%2 == 0)
-//    {
-//    [self performSegueWithIdentifier:@"EventDetailSegue" sender:nil];
-//    }
-//    else
-//    {
-//        [self performSegueWithIdentifier:@"advertSegue" sender:nil];
-//        
-//    }
+    if(indexPath.row%2 == 0)
+    {
+    [self performSegueWithIdentifier:@"EventDetailSegue" sender:nil];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"coupanDetailSegue" sender:nil];
+        
+    }
 }
 
 - (IBAction)onTopMenuShutterBtn:(id)sender
@@ -69,6 +69,13 @@
         isOpend = YES;
     }
 }
+
+#pragma mark - IBActions
+
+- (IBAction)onCellProfile:(id)sender {
+
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

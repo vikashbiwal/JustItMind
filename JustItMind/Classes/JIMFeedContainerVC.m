@@ -34,10 +34,8 @@
     [super viewDidLoad];
     topMenuTopSpace.constant = -315;
     containerWidth.constant = screenSize.size.width*2;
-    scrollviewHeight.constant = screenSize.size.height - 100;
-    containerHeight.constant = screenSize.size.height - 100;
-    
-   
+    scrollviewHeight.constant = screenSize.size.height - 64;
+    containerHeight.constant = screenSize.size.height - 64;
     //[self setUI];
     }
 - (void)viewDidLayoutSubviews
@@ -48,7 +46,6 @@
 {
     [scrollview setContentOffset:CGPointMake(0, -20)];
     [scrollview setContentSize:CGSizeMake(screenSize.size.width*2, 435)];
-
     NSLog(@"%@, ---- %@",scrollview, mainContainerView);
     
 }
@@ -69,6 +66,7 @@
     else if (index == 1)
         parentlblTitle.text = @"Dorm Feed";
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -106,7 +104,6 @@
     [UIView animateWithDuration:0.5 animations:^{
         topMenuTopSpace.constant = 0;
         viewCreateEvent.hidden = NO;
-        
         [self.view layoutIfNeeded];
     }];
 }

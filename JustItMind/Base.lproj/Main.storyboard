@@ -682,12 +682,15 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7O5-be-oax">
-                                                            <rect key="frame" x="75" y="3" width="50" height="29"/>
+                                                            <rect key="frame" x="0.0" y="3" width="200" height="29"/>
                                                             <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
                                                             <state key="normal" title="See All">
                                                                 <color key="titleColor" red="0.4823529411764706" green="0.72549019607843135" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="onClickAllMessageBtn:" destination="gZ0-pd-qyd" eventType="touchUpInside" id="s84-wY-y6p"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </tableViewCellContentView>
@@ -745,7 +748,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXp-2t-ihC">
-                                <rect key="frame" x="0.0" y="518" width="320" height="190"/>
+                                <rect key="frame" x="0.0" y="378" width="320" height="190"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="half_circle" translatesAutoresizingMaskIntoConstraints="NO" id="pqm-fl-efm">
                                         <rect key="frame" x="0.0" y="50" width="320" height="140"/>
@@ -776,6 +779,9 @@
                                         <state key="normal" image="ic_menu_discover" backgroundImage="ic_menu_circleBg">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onClickDiscoverMenu:" destination="gZ0-pd-qyd" eventType="touchUpInside" id="xyx-Fw-Tkb"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TW6-k1-EaQ">
                                         <rect key="frame" x="73" y="116" width="51" height="14"/>
@@ -793,6 +799,9 @@
                                         <state key="normal" image="ic_menu_resident" backgroundImage="ic_menu_circleBg">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onClickResidentsMenu:" destination="gZ0-pd-qyd" eventType="touchUpInside" id="1wK-K7-PHK"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Residents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnY-ha-wGy">
                                         <rect key="frame" x="193" y="116" width="58" height="14"/>
@@ -810,6 +819,9 @@
                                         <state key="normal" image="ic_menu_event" backgroundImage="ic_menu_circleBg">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onClickEventMenu:" destination="gZ0-pd-qyd" eventType="touchUpInside" id="QyS-44-dfA"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbc-ao-TGO">
                                         <rect key="frame" x="19" y="175" width="40" height="14"/>
@@ -827,6 +839,9 @@
                                         <state key="normal" image="ic_menu_profile" backgroundImage="ic_menu_circleBg">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onClickProfileMenu:" destination="gZ0-pd-qyd" eventType="touchUpInside" id="2Ev-zv-xMf"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIu-8e-wF1">
                                         <rect key="frame" x="262" y="175" width="38" height="14"/>
@@ -883,7 +898,7 @@
                             <constraint firstItem="or8-5Y-8DS" firstAttribute="top" secondItem="rPB-9Q-t25" secondAttribute="top" constant="30" id="ZkL-9H-glj"/>
                             <constraint firstItem="1a9-rz-kwd" firstAttribute="trailing" secondItem="wpC-D1-Rpp" secondAttribute="trailing" constant="50" id="dv1-qH-Bdh"/>
                             <constraint firstItem="PTB-1B-tnn" firstAttribute="top" secondItem="Dl8-ge-Bd7" secondAttribute="bottom" id="hkv-NP-ZAA"/>
-                            <constraint firstAttribute="bottom" secondItem="pXp-2t-ihC" secondAttribute="bottom" constant="-140" id="jvS-8u-BDT"/>
+                            <constraint firstAttribute="bottom" secondItem="pXp-2t-ihC" secondAttribute="bottom" id="jvS-8u-BDT"/>
                             <constraint firstAttribute="trailing" secondItem="Gam-cB-fwo" secondAttribute="trailing" id="kzO-Iv-rxl"/>
                             <constraint firstAttribute="trailing" secondItem="or8-5Y-8DS" secondAttribute="trailing" constant="-200" id="qeG-cS-AI6"/>
                             <constraint firstItem="PTB-1B-tnn" firstAttribute="top" secondItem="Gam-cB-fwo" secondAttribute="bottom" id="qzt-E5-7eC"/>
