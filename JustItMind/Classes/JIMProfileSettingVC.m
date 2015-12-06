@@ -31,7 +31,6 @@
 - (IBAction)onFinishProfileClick:(id)sender
 {
     [self.tabBarController setSelectedIndex:1];
-    userInformation = [[NSMutableDictionary alloc]init];//tempDic need to remove it
     [DefaultCenter postNotificationName:@"MenuShowHideNotification" object:nil];
 }
 

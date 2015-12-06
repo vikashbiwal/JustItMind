@@ -9,7 +9,7 @@
 #import "JIMProfileCreateVC.h"
 #define mainScreen [UIScreen mainScreen].bounds
 
-@interface JIMProfileCreateVC ()
+@interface JIMProfileCreateVC ()<UIActionSheetDelegate>
 {
     IBOutlet NSLayoutConstraint *lastNameBckgrndTopSpaceConstraint;
     IBOutlet NSLayoutConstraint *lastNameBckgrndLeadignSpaceConstraint;
@@ -23,8 +23,12 @@
     IBOutlet NSLayoutConstraint *majorBckgrndBottomSpaceConstraint;
     IBOutlet NSLayoutConstraint *majorBckgrndLeadingSpaceConstraint;
     
-   
-
+    IBOutlet UITextField *txtFirstname;
+    IBOutlet UITextField *txtLastname;
+    IBOutlet UITextField *txtGrYear;
+    IBOutlet UITextField *txtResHall;
+    IBOutlet UITextField *txtMajor;
+    IBOutlet UITextView  *txtviewBio;
 }
 @end
 
@@ -33,12 +37,70 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    [self setDefaultValue];
+}
+
+- (void)setDefaultValue {
+    txtFirstname.text = me.firstName;
+    txtLastname.text = me.lastName;
+    txtGrYear.text = me.grYear;
+    txtMajor.text = me.major;
+    txtResHall.text = me.regHall;
+    txtviewBio.text = me.bio;
 }
 
 #pragma mark - IBActons
+- (IBAction)onProfileBtnClick:(id)sender
+{
+    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"Choose from" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Camera",@"Gallery", nil];
+    
+    [sheet showInView:self.view];
+}
+
+- (IBAction)onFinishProfileClick:(id)sender
+{
+    NSMutableDictionary *param = [NSMutableDictionary new];
+    param[@"firstname"] = txtFirstname.text;
+    param[@"lastname"] = txtLastname.text;
+    param[@"graduation_year"] = txtGrYear.text;
+    param[@"resident_hall"] = txtResHall.text;
+    param[@"major"] = txtMajor.text;
+    param[@"id"] = me.userID;
+    param[@"bio"] = txtviewBio.text;
+    [WSCall updateProfileWithParam:param block:^(id JSON, WebServiceResult result) {
+        if (result == WebServiceResultSuccess) {
+            [me setInfo:JSON[@"data"]];
+            [self.tabBarController setSelectedIndex:1];
+            [DefaultCenter postNotificationName:@"MenuShowHideNotification" object:nil];
+        }
+        else
+        {
+            
+        }
+    }];
+
+   
+}
+
 - (IBAction)onSetupProfileClick:(id)sender
 {
-    [self performSegueWithIdentifier:@"myProfileViewSegue" sender:self];
+    NSMutableDictionary *param = [NSMutableDictionary new];
+    param[@"firstname"] = txtFirstname.text;
+    param[@"lastname"] = txtLastname.text;
+    param[@"graduation_year"] = txtGrYear.text;
+    param[@"resident_hall"] = txtResHall.text;
+    param[@"major"] = txtMajor.text;
+    param[@"id"] = me.userID;
+    [WSCall updateProfileWithParam:param block:^(id JSON, WebServiceResult result) {
+        if (result == WebServiceResultSuccess) {
+            [me setInfo:JSON[@"data"]];
+            [self performSegueWithIdentifier:@"myProfileViewSegue" sender:self];
+        }
+        else
+        {
+            
+        }
+    }];
 }
 
 - (void)setUI
@@ -73,14 +135,39 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - ActionSheet Delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0)
+    {
+        [self openCamera];
+    }
+    else if (buttonIndex == 1)
+    {
+        [self openGallery];
+    }
 }
-*/
+
+#pragma mark - Other
+- (void)openGallery
+{
+    UIImagePickerController *ipic = [[UIImagePickerController alloc]init];
+    ipic.sourceType  = UIImagePickerControllerSourceTypePhotoLibrary;
+    ipic.delegate = self;
+    [self presentViewController:ipic animated:YES completion:nil];
+}
+- (void)openCamera
+{
+    if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        showAletViewWithMessage(@"Camera not found in your device.");
+        return;
+    }
+    UIImagePickerController *ipic = [[UIImagePickerController alloc]init];
+    ipic.sourceType  = UIImagePickerControllerSourceTypeCamera;
+    ipic.delegate = self;
+    [self presentViewController:ipic animated:YES completion:nil];
+}
+
 
 @end

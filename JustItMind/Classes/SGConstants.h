@@ -14,9 +14,11 @@
 #import <QuartzCore/CALayer.h>
 #import "PFWebServiceCalls.h"
 #import "PFWebServiceCalls.h"
+#import "User.h"
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 
+typedef PFWebServiceCalls WSCall;
 
 #define IsAtLeastiOSVersion(X) ([[[UIDevice currentDevice] systemVersion] compare:X options:NSNumericSearch] != NSOrderedAscending)
 
@@ -43,8 +45,7 @@
 #define DiscoverTabResidents   @"DiscvoerTabResidents"
 //
 
-extern NSMutableDictionary *userInformation;
-
+extern User  *me;
 extern NSDateFormatter *_serverFormatter;
 extern NSString * discoverSelectedTab;
 /* device check */

@@ -16,7 +16,8 @@
     
     IBOutlet NSLayoutConstraint *confirmCodeBckgrndTopSpaceConstraint;
     IBOutlet NSLayoutConstraint *confirmCodeBckgrndLeadingSpaceConstraint;
-    
+    IBOutlet UITextField *txtUniversityId;
+    IBOutlet UITextField *txtEmail;
 }
 @end
 
@@ -25,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,13 +38,28 @@
 #pragma mark - IBActions
 - (IBAction)onGetCodeBtnClick:(id)sender
 {
-    [self performSegueWithIdentifier:@"nextSegue" sender:nil];
+    
+    id dic = @{@"university_id" : txtUniversityId.text,  @"universityemail": txtEmail.text};
+    [self showHud];
+    [WSCall registerUserWithParam:dic  block:^(id JSON, WebServiceResult result) {
+        [self hideHud];
+        if (result == WebServiceResultSuccess) {
+            me = [[User alloc]init];
+            [me setInfo:JSON[@"data"]];
+            [self performSegueWithIdentifier:@"nextSegue" sender:nil];
+        }
+        else{
+        }
+    }];
+
+    
 }
 
 - (IBAction)onLetsGoBtnClick:(id)sender
 {
-    [self performSegueWithIdentifier:@"nextToProfileSegue" sender:nil];
+  [self performSegueWithIdentifier:@"nextToProfileSegue" sender:nil];
 }
+
 - (void)setUI
 {
 

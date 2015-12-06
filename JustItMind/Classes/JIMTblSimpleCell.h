@@ -11,4 +11,5 @@
 @interface JIMTblSimpleCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet UIImageView *profileImage;
 @property (nonatomic, weak) IBOutlet UILabel *lblName;
+@property (nonatomic, weak) IBOutlet UIView *viewBg;
 @end

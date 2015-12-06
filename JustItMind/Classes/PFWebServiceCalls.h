@@ -9,8 +9,7 @@
 @import Foundation;
 @import UIKit;
 
-#define kBasePath @"http://test.publicfeed.com/"
-#define kProxiBasePath @"http://test.publicfeed.com/src/"
+#define kBasePath @"http://api.cianinfosolutions.com/justmind/control.php"
 
 typedef NS_ENUM (NSInteger, WebServiceResult)
 {
@@ -19,13 +18,14 @@ typedef NS_ENUM (NSInteger, WebServiceResult)
     WebServiceResultError
 };
 
-typedef void(^WebCallBlockSession)(id JSON,WebServiceResult result);
+typedef void(^WSBlock)(id JSON,WebServiceResult result);
 
 
 
 @interface PFWebServiceCalls : NSObject
 
-
++ (void)registerUserWithParam:(NSDictionary*)param block:(WSBlock)block;
++ (void)updateProfileWithParam:(NSDictionary *)param block:(WSBlock)block;
 #pragma mark - Credential WS calls
 
 

@@ -16,6 +16,7 @@
     IBOutlet UITableView *tableViewChat;
     IBOutlet UIImageView *notificatoinIcn;
     IBOutlet UIImageView *messageIcn;
+    IBOutlet UIImageView *bottomMenuBgImgV;
     __weak IBOutlet UIView  *tabContainer;
     __weak IBOutlet UIView *bottomMenu;
     __weak IBOutlet UIView *leftMenuView;
@@ -50,19 +51,27 @@
     [view.layer setShadowOffset:CGSizeMake(0.0, 0.0)];
 }
 
+- (void)setShadowToView:(UIView*)view
+{
+    [view.layer setShadowColor:[UIColor blackColor].CGColor];
+    [view.layer setShadowOpacity:0.8];
+    [view.layer setShadowRadius:5.0];
+    [view.layer setShadowOffset:CGSizeMake(0.0, 0.0)];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
    // tableViewChat.layer.shadowColor = [UIColor blackColor].CGColor;
     //[self setShadowLeftToView:rightMenuBtnView];
     [self setShadowLeftToView:rightMenuView];
-    [self setShadowRightToView:leftMenuBtnView];
+    //[self setShadowRightToView:leftMenuBtnView];
     [self setShadowRightToView:leftMenuView];
-    
+    [self setShadowToView:bottomMenuBgImgV];
     UINavigationController *navNewsFeedVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_NewsFeedNav"];
     id profileVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_ProfileVC"];
     id chatVC  = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatNav"];
     id residentsVC = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ResidentVC"];//SBID_ResidentsNav
+    id myDiscoverVC = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_MyDiscoverVC"];
     
     self.tabbarController = self.childViewControllers[0];
     
@@ -71,6 +80,7 @@
     [self.tabbarController addChildViewController:profileVC];//2
     [self.tabbarController addChildViewController:chatVC];//3
     [self.tabbarController addChildViewController:residentsVC];//4
+    [self.tabbarController addChildViewController:myDiscoverVC]; //5
     [self.tabbarController setSelectedIndex:0];
     
     bottomMenuBottomSapce.constant = bottomMenuValue;
@@ -91,7 +101,7 @@
 }
 - (IBAction)onClickDiscoverMenu:(id)sender
 {
-
+    [self setTabbarSelectedIndex:5];
 }
 
 - (IBAction)onClickResidentsMenu:(id)sender
@@ -211,7 +221,7 @@
 - (void)showMenus
 {
     BOOL choice;
-    if(userInformation)
+    if(me)
         choice = NO;
     else
         choice = YES;
