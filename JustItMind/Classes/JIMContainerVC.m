@@ -7,6 +7,7 @@
 //
 
 #import "JIMContainerVC.h"
+
 #define bottomMenuValue -140
 #define leftMenuValue -200
 #define rightMenuValue -200
@@ -27,6 +28,7 @@
     __weak IBOutlet NSLayoutConstraint *bottomMenuBottomSapce;
     __weak IBOutlet NSLayoutConstraint *leftMenuLeadingSpace;
     __weak IBOutlet NSLayoutConstraint *rightMenuTraillingSpace;
+    
     BOOL isLeftOpen;
     BOOL isRightOpen;
     BOOL isBottomOpen;
@@ -72,17 +74,18 @@
     id chatVC  = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatNav"];
     id residentsVC = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ResidentVC"];//SBID_ResidentsNav
     id myDiscoverVC = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_MyDiscoverVC"];
-    
     self.tabbarController = self.childViewControllers[0];
-    
-    
     [self.tabbarController addChildViewController:navNewsFeedVC];//1
     [self.tabbarController addChildViewController:profileVC];//2
     [self.tabbarController addChildViewController:chatVC];//3
     [self.tabbarController addChildViewController:residentsVC];//4
     [self.tabbarController addChildViewController:myDiscoverVC]; //5
-    [self.tabbarController setSelectedIndex:0];
     
+     if(appDelegate.isDirectLogin)
+         [self.tabbarController setSelectedIndex:1];
+    else
+        [self.tabbarController setSelectedIndex:0];
+
     bottomMenuBottomSapce.constant = bottomMenuValue;
     [self showMenus];
     [DefaultCenter addObserver:self selector:@selector(showMenusNotification:) name:@"MenuShowHideNotification" object:nil];

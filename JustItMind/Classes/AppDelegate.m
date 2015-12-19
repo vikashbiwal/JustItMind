@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "JIMContainerVC.h"
 
 @interface AppDelegate ()
 
@@ -16,8 +17,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [self directLogin];
     return YES;
+}
+
+- (void)directLogin {
+    if([UserDefault objectForKey:@"loginUser"]) {
+        self.isDirectLogin = YES;
+        me = [[User alloc]init];
+        [me setInfo:[UserDefault objectForKey:@"loginUser"]];
+        UINavigationController *nav = (id)self.window.rootViewController;
+        UIViewController *regVC = [nav.storyboard instantiateViewControllerWithIdentifier:@"SBIDRegVC"];
+        JIMContainerVC *containerVC = [nav.storyboard instantiateViewControllerWithIdentifier:@"SBIDContainerVC"];
+        [containerVC.tabbarController setSelectedIndex:1];
+        nav.viewControllers = @[regVC, containerVC];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

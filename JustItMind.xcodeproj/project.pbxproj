@@ -11,6 +11,7 @@
 		3B02B1241BE9272500F20FAA /* JIMProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B02B1231BE9272500F20FAA /* JIMProfileVC.m */; };
 		3B02B1281BE93BD300F20FAA /* JIMResidentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B02B1271BE93BD300F20FAA /* JIMResidentVC.m */; };
 		3B02B12B1BE9419B00F20FAA /* JIMTblSimpleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B02B12A1BE9419B00F20FAA /* JIMTblSimpleCell.m */; };
+		3B05A9C11C25C14E00199120 /* JIMAccView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B05A9C01C25C14E00199120 /* JIMAccView.xib */; };
 		3B0FB3F51BB74D81006B4F1E /* JIMDiscoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0FB3F41BB74D81006B4F1E /* JIMDiscoverVC.m */; };
 		3B2D17C31BCB74B0000C8521 /* JImDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D17C21BCB74B0000C8521 /* JImDViewController.m */; };
 		3B2E162A1BD02A05009B90FE /* JIMCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E16291BD02A05009B90FE /* JIMCommentCell.m */; };
@@ -76,6 +77,7 @@
 		3B02B1271BE93BD300F20FAA /* JIMResidentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMResidentVC.m; sourceTree = "<group>"; };
 		3B02B1291BE9419B00F20FAA /* JIMTblSimpleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMTblSimpleCell.h; sourceTree = "<group>"; };
 		3B02B12A1BE9419B00F20FAA /* JIMTblSimpleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMTblSimpleCell.m; sourceTree = "<group>"; };
+		3B05A9C01C25C14E00199120 /* JIMAccView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JIMAccView.xib; sourceTree = "<group>"; };
 		3B0FB3F31BB74D81006B4F1E /* JIMDiscoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMDiscoverVC.h; sourceTree = "<group>"; };
 		3B0FB3F41BB74D81006B4F1E /* JIMDiscoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMDiscoverVC.m; sourceTree = "<group>"; };
 		3B2D17C11BCB74B0000C8521 /* JImDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JImDViewController.h; sourceTree = "<group>"; };
@@ -128,8 +130,8 @@
 		3B3B0A2B1BB362B500E58F19 /* JustItMindTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JustItMindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3B0A301BB362B500E58F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B3B0A311BB362B500E58F19 /* JustItMindTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JustItMindTests.m; sourceTree = "<group>"; };
-		3B3B0A3F1BB3636300E58F19 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		3B3B0A401BB3636300E58F19 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3B3B0A3F1BB3636300E58F19 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
+		3B3B0A401BB3636300E58F19 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
 		3B3B0A411BB3636300E58F19 /* JIMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMViewController.h; sourceTree = "<group>"; };
 		3B3B0A421BB3636300E58F19 /* JIMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMViewController.m; sourceTree = "<group>"; };
 		3B3B0A481BB364B000E58F19 /* JIMParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMParentViewController.h; sourceTree = "<group>"; };
@@ -306,6 +308,8 @@
 			children = (
 				3B3167011C0E56D000A5B68D /* AFNetworking */,
 				3B3B0A511BB369D400E58F19 /* Images.xcassets */,
+				3B3B0A3F1BB3636300E58F19 /* AppDelegate.h */,
+				3B3B0A401BB3636300E58F19 /* AppDelegate.m */,
 				3B3B0A461BB3640D00E58F19 /* Storyboard */,
 				3B3B0A3E1BB3632100E58F19 /* Classes */,
 				3B3B0A451BB363E900E58F19 /* Resources */,
@@ -355,8 +359,6 @@
 				3B0FB3F21BB74D36006B4F1E /* Discover */,
 				3B9B31F21BB36EB20090D0EA /* SignUP */,
 				3B3B0A471BB3643800E58F19 /* ParentClasses */,
-				3B3B0A3F1BB3636300E58F19 /* AppDelegate.h */,
-				3B3B0A401BB3636300E58F19 /* AppDelegate.m */,
 				3B3B0A4B1BB364D400E58F19 /* SGConstants.h */,
 				3B3B0A4C1BB364D400E58F19 /* SGConstants.m */,
 				3B3B0A4E1BB364E200E58F19 /* PFWebServiceCalls.h */,
@@ -379,6 +381,7 @@
 				3B3B0A1F1BB362B400E58F19 /* Main.storyboard */,
 				3BF6529F1BB9AA9E00BEB521 /* NewsFeed.storyboard */,
 				3BF776EE1BD78ECA003A9C6C /* Chat.storyboard */,
+				3B05A9C01C25C14E00199120 /* JIMAccView.xib */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				3B3B0A261BB362B400E58F19 /* LaunchScreen.xib in Resources */,
 				3BF776EF1BD78ECA003A9C6C /* Chat.storyboard in Resources */,
 				3BF652A01BB9AA9E00BEB521 /* NewsFeed.storyboard in Resources */,
+				3B05A9C11C25C14E00199120 /* JIMAccView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

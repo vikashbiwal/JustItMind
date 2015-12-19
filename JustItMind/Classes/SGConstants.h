@@ -10,6 +10,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "AppDelegate.h"
 #import <UIKit/UIKit.h>
 #import <QuartzCore/CALayer.h>
 #import "PFWebServiceCalls.h"
@@ -31,7 +32,7 @@ typedef PFWebServiceCalls WSCall;
 
 #define UserDefault   [NSUserDefaults standardUserDefaults]
 #define DefaultCenter [NSNotificationCenter defaultCenter]
-#define Appdelegate ((PFAppDelegate *)[[UIApplication sharedApplication] delegate])
+#define appDelegate ((AppDelegate*)[[UIApplication sharedApplication] delegate])
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 #define __Holder_Image [UIImage imageNamed:@"_holder"]
 #define kLocalNotificationTime (6*60*60)

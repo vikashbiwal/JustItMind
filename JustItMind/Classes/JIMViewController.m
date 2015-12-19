@@ -18,6 +18,7 @@
     IBOutlet NSLayoutConstraint *confirmCodeBckgrndLeadingSpaceConstraint;
     IBOutlet UITextField *txtUniversityId;
     IBOutlet UITextField *txtEmail;
+    IBOutlet UITextField *txtCode;
 }
 @end
 
@@ -26,7 +27,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    
+    if(me) {
+        txtCode.text = me.verificationCode;
+    }
     
 }
 

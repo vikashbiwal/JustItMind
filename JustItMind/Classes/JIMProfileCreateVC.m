@@ -9,7 +9,7 @@
 #import "JIMProfileCreateVC.h"
 #define mainScreen [UIScreen mainScreen].bounds
 
-@interface JIMProfileCreateVC ()<UIActionSheetDelegate>
+@interface JIMProfileCreateVC ()<UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     IBOutlet NSLayoutConstraint *lastNameBckgrndTopSpaceConstraint;
     IBOutlet NSLayoutConstraint *lastNameBckgrndLeadignSpaceConstraint;
@@ -29,6 +29,9 @@
     IBOutlet UITextField *txtResHall;
     IBOutlet UITextField *txtMajor;
     IBOutlet UITextView  *txtviewBio;
+    IBOutlet UIImageView *imgVProfile;
+    IBOutlet UIButton *btnprofile;
+    UIImage* selectedImage;
 }
 @end
 
@@ -60,16 +63,29 @@
 - (IBAction)onFinishProfileClick:(id)sender
 {
     NSMutableDictionary *param = [NSMutableDictionary new];
-    param[@"firstname"] = txtFirstname.text;
-    param[@"lastname"] = txtLastname.text;
+    
     param[@"graduation_year"] = txtGrYear.text;
     param[@"resident_hall"] = txtResHall.text;
     param[@"major"] = txtMajor.text;
     param[@"id"] = me.userID;
     param[@"bio"] = txtviewBio.text;
+    if(selectedImage){
+        [WSCall updateImage:selectedImage param:@{@"id":me.userID} fieldName:@"profile_pic_url" block:^(id JSON, WebServiceResult result) {
+            if (result == WebServiceResultSuccess) {
+                [me setInfo:JSON[@"data"]];
+                [UserDefault setObject:JSON[@"data"] forKey:@"loginUser"];
+                
+            }
+            else
+            {
+                
+            }
+        }];
+    }
     [WSCall updateProfileWithParam:param block:^(id JSON, WebServiceResult result) {
         if (result == WebServiceResultSuccess) {
             [me setInfo:JSON[@"data"]];
+            [UserDefault setObject:JSON[@"data"] forKey:@"loginUser"];
             [self.tabBarController setSelectedIndex:1];
             [DefaultCenter postNotificationName:@"MenuShowHideNotification" object:nil];
         }
@@ -91,6 +107,7 @@
     param[@"resident_hall"] = txtResHall.text;
     param[@"major"] = txtMajor.text;
     param[@"id"] = me.userID;
+    
     [WSCall updateProfileWithParam:param block:^(id JSON, WebServiceResult result) {
         if (result == WebServiceResultSuccess) {
             [me setInfo:JSON[@"data"]];
@@ -152,6 +169,8 @@
 #pragma mark - Other
 - (void)openGallery
 {
+    NSLog(@"open gallery call");
+
     UIImagePickerController *ipic = [[UIImagePickerController alloc]init];
     ipic.sourceType  = UIImagePickerControllerSourceTypePhotoLibrary;
     ipic.delegate = self;
@@ -165,9 +184,16 @@
     }
     UIImagePickerController *ipic = [[UIImagePickerController alloc]init];
     ipic.sourceType  = UIImagePickerControllerSourceTypeCamera;
-    ipic.delegate = self;
+    [ipic setDelegate:self];
     [self presentViewController:ipic animated:YES completion:nil];
 }
 
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage* image = info[UIImagePickerControllerOriginalImage];
+    selectedImage = image;
+    [btnprofile setBackgroundImage:selectedImage forState:UIControlStateNormal];
+    NSLog(@"pickr method call");
+}
 
 @end

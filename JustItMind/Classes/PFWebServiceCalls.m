@@ -22,10 +22,7 @@ static AFHTTPSessionManager *manager;
                                                  parameter:(NSDictionary*)param
                                                      block:(WSBlock)block;
 
-+ (void)simpleMultipartPostRequestWithRelativePath:(NSString*)relativePath
-                                                          parameter:(NSDictionary*)param
-                                                              image:(UIImage*)image
-                                                              block:(WSBlock)block;
++ (void)simpleMultipartPostRequestWithRelativePath:(NSString*)relativePath  parameter:(NSDictionary*)param  image:(UIImage*)image fieldname:(NSString*)fieldname block:(WSBlock)block;
 
 @end
 
@@ -120,44 +117,35 @@ static AFHTTPSessionManager *manager;
             }];
 }
 
-+ (void)simpleMultipartPostRequestWithRelativePath:(NSString*)relativePath
-                                                          parameter:(NSDictionary*)param
-                                                              image:(UIImage*)image
-                                                              block:(WSBlock)block
-{
++ (void)simpleMultipartPostRequestWithRelativePath:(NSString*)relativePath parameter:(NSDictionary*)param image:(UIImage*)image fieldname:(NSString*)fieldname block:(WSBlock)block {
     NSLog(@"Relative Path : %@",relativePath);
     NSLog(@"Param : %@",param);
     NSLog(@"Image : %@",image);
-    
-      [manager POST:relativePath
-               parameters:param
-constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
+      [manager POST:relativePath parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
              {
                  if(image)
-                     [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 0.5)
-                                                 name:@"userfile"//NSImageNameStringFromCurrentDate()
-                                             fileName:@"image.jpeg"
-                                             mimeType:@"image/jpeg"];
-                 
+                     [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 0.5) name:fieldname fileName:@"image.jpeg" mimeType:@"image/jpeg"];
              } success:^(NSURLSessionDataTask *task, id responseObject)
              {
-                 NSLog(@"Response : %@",responseObject);
-                    block(responseObject,WebServiceResultSuccess);
+                NSLog(@"Response : %@",responseObject);
+                block(responseObject,WebServiceResultSuccess);
              } failure:^(NSURLSessionDataTask *task, NSError *error)
              {
                  NSLog(@"localizedDescription %@",error);
-                 NSLog(@"localizedFailureReason %@",error.localizedFailureReason);
-                 NSLog(@"localizedRecoverySuggestion %@",error.localizedRecoverySuggestion);
                  block(nil,WebServiceResultError);
-                 if(error.code != -1009)
-                     showAletViewWithMessage(error.localizedDescription);
              }];
 }
 
 #pragma mark : JustInMind WS Methods
 
 + (NSDictionary*)parametersForOperation:(NSString*)method table:(NSString*)table otherParam:(NSDictionary*)param {
-    NSMutableDictionary *dic  = [ NSMutableDictionary dictionaryWithDictionary:param];
+    NSMutableDictionary *dic;
+    if (param) {
+        dic  = [ NSMutableDictionary dictionaryWithDictionary:param];
+    }
+    else{
+        dic  = [ NSMutableDictionary new];
+    }
     dic[@"json"] = @"";
     dic[@"method"] = method;
     dic[@"table"] = table;
@@ -166,7 +154,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
 + (void)registerUserWithParam:(NSDictionary *)param block:(WSBlock)block
 {
     NSLog(@"----------Register Student ws ---------");
-    id params = [self parametersForOperation:@"add" table:@"user_profile" otherParam:param];
+    id params = [self parametersForOperation:@"selectadd" table:@"user_profile" otherParam:param];
     [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
 }
 
@@ -176,9 +164,13 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
     [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
 }
 
-
-
-
++ (void)updateImage:(UIImage*)image param:(NSDictionary*)param fieldName:(NSString*)fieldname block:(WSBlock)block
+{
+    NSLog(@"----------update image---------");
+    id params = [self parametersForOperation:@"update" table:@"user_profile" otherParam:param];
+   
+    [self simpleMultipartPostRequestWithRelativePath:@"" parameter:params image:image fieldname:fieldname block:block];
+}
 
 
 
