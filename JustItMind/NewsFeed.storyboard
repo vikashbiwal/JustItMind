@@ -1358,7 +1358,7 @@
         <!--Feed ContainerVC-->
         <scene sceneID="6c2-I3-kXy">
             <objects>
-                <viewController id="bEA-xu-gUN" customClass="JIMFeedContainerVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SBID_FeedContainervc" id="bEA-xu-gUN" customClass="JIMFeedContainerVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aXB-01-493"/>
                         <viewControllerLayoutGuide type="bottom" id="1dH-3o-WW2"/>
@@ -1512,6 +1512,17 @@
                                                         <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PoO-BO-te5">
+                                                        <rect key="frame" x="4" y="0.0" width="272" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="SYM-fB-wsQ"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="txtTileDidChangeEditing:" destination="bEA-xu-gUN" eventType="editingChanged" id="1IF-qu-SnU"/>
+                                                        </connections>
+                                                    </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUr-pR-AhM">
                                                         <rect key="frame" x="4" y="137" width="272" height="1"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1532,8 +1543,8 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Post" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6r-v2-jN9">
-                                                        <rect key="frame" x="8" y="5" width="80" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write Event title here..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6r-v2-jN9">
+                                                        <rect key="frame" x="8" y="5" width="152" height="17"/>
                                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                                                         <color key="textColor" red="0.43529411759999997" green="0.79215686269999996" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1692,6 +1703,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="mY3-86-8b1" secondAttribute="trailing" constant="4" id="MHm-2g-Qq0"/>
                                                     <constraint firstItem="Xyh-5x-Oke" firstAttribute="leading" secondItem="5fk-kd-lPq" secondAttribute="leading" constant="8" id="MT1-Nw-COt"/>
                                                     <constraint firstItem="mY3-86-8b1" firstAttribute="top" secondItem="5fk-kd-lPq" secondAttribute="top" constant="28" id="NAT-EO-Orx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="PoO-BO-te5" secondAttribute="trailing" constant="4" id="NQL-rQ-Sv1"/>
                                                     <constraint firstItem="Vkh-xk-1Mu" firstAttribute="top" secondItem="ADv-zI-IYg" secondAttribute="bottom" constant="4" id="QPI-EQ-VTy"/>
                                                     <constraint firstItem="Vkh-xk-1Mu" firstAttribute="top" secondItem="mY3-86-8b1" secondAttribute="bottom" constant="5" id="QiR-SQ-SXw"/>
                                                     <constraint firstItem="Vkh-xk-1Mu" firstAttribute="leading" secondItem="5fk-kd-lPq" secondAttribute="leading" constant="8" id="RKk-cg-hWa"/>
@@ -1707,10 +1719,12 @@
                                                     <constraint firstItem="19y-Zj-AJU" firstAttribute="top" secondItem="Lg0-mg-2jk" secondAttribute="bottom" constant="4" id="fsl-Px-ifh"/>
                                                     <constraint firstItem="B6r-v2-jN9" firstAttribute="top" secondItem="5fk-kd-lPq" secondAttribute="top" constant="5" id="hZi-QZ-hy6"/>
                                                     <constraint firstItem="CUr-pR-AhM" firstAttribute="top" secondItem="Qlg-XQ-3QA" secondAttribute="bottom" constant="6" id="idt-QO-uDE"/>
+                                                    <constraint firstItem="PoO-BO-te5" firstAttribute="leading" secondItem="5fk-kd-lPq" secondAttribute="leading" constant="4" id="mHX-Ef-1pY"/>
                                                     <constraint firstItem="iCw-4J-bIL" firstAttribute="leading" secondItem="apK-7p-AMI" secondAttribute="trailing" constant="9" id="mlD-Qe-QWi"/>
                                                     <constraint firstAttribute="trailing" secondItem="Qlg-XQ-3QA" secondAttribute="trailing" constant="4" id="nJI-I9-GKn"/>
                                                     <constraint firstItem="ADv-zI-IYg" firstAttribute="leading" secondItem="5fk-kd-lPq" secondAttribute="leading" constant="8" id="oUF-K6-cxK"/>
                                                     <constraint firstAttribute="trailing" secondItem="CUr-pR-AhM" secondAttribute="trailing" constant="4" id="ov4-sd-EAu"/>
+                                                    <constraint firstItem="PoO-BO-te5" firstAttribute="top" secondItem="5fk-kd-lPq" secondAttribute="top" id="pBM-UX-2qh"/>
                                                     <constraint firstAttribute="trailing" secondItem="Lg0-mg-2jk" secondAttribute="trailing" constant="5" id="pVy-GB-iHR"/>
                                                     <constraint firstItem="tIb-sJ-ImQ" firstAttribute="top" secondItem="mEa-O7-2mh" secondAttribute="bottom" constant="3" id="qtu-lQ-ye4"/>
                                                     <constraint firstItem="7iY-XS-sP1" firstAttribute="top" secondItem="CUr-pR-AhM" secondAttribute="bottom" constant="4" id="rGY-Mg-6oZ"/>
@@ -1969,6 +1983,7 @@
                         <outlet property="containerWidth" destination="eDh-Zu-rCJ" id="EOI-cn-b5y"/>
                         <outlet property="lblEndTime" destination="apK-7p-AMI" id="bX4-OQ-ogC"/>
                         <outlet property="lblStartTime" destination="v2l-uM-B2G" id="1SF-xt-QLW"/>
+                        <outlet property="lblTitlePlaceHolder" destination="B6r-v2-jN9" id="CSb-6U-UD8"/>
                         <outlet property="mainContainerView" destination="5AB-m4-lP6" id="IId-td-vWW"/>
                         <outlet property="parentlblTitle" destination="sUz-p1-6tY" id="mwR-4j-Gnf"/>
                         <outlet property="placeholderEvent" destination="ADv-zI-IYg" id="kUZ-gV-iWF"/>
@@ -1977,6 +1992,7 @@
                         <outlet property="scrollviewHeight" destination="HI0-Bz-lhN" id="ctt-z3-9BQ"/>
                         <outlet property="topMenuPlusIcn" destination="YYr-nM-f03" id="GSY-QQ-cmB"/>
                         <outlet property="topMenuTopSpace" destination="u4S-Pj-6uP" id="oKb-8X-6er"/>
+                        <outlet property="txtEventTitle" destination="PoO-BO-te5" id="Ncu-Uv-nPg"/>
                         <outlet property="txtVEventDisc" destination="Vkh-xk-1Mu" id="uU1-Ff-js0"/>
                         <outlet property="viewCreateEvent" destination="5fk-kd-lPq" id="29b-NC-Afq"/>
                         <outlet property="viewCreateRequest" destination="5Kz-XU-a8n" id="EGk-f4-5tQ"/>
@@ -2531,7 +2547,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsd-jH-fzF">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsd-jH-fzF">
                                         <rect key="frame" x="0.0" y="20" width="60" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="moZ-g0-5yY"/>
@@ -2624,6 +2640,11 @@
                                                         <constraint firstAttribute="height" constant="60" id="TJk-0P-rHB"/>
                                                         <constraint firstAttribute="width" constant="60" id="uRk-vm-3v5"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="30"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jerry Fisher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGj-Gw-mGb">
                                                     <rect key="frame" x="74" y="1" width="86" height="17"/>
@@ -2751,7 +2772,7 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejq-GQ-of2">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejq-GQ-of2">
                                                     <rect key="frame" x="74" y="23" width="226" height="90"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="90" id="Wgh-mo-7bQ"/>
@@ -2911,6 +2932,12 @@
                     <connections>
                         <outlet property="coverImageView" destination="qsm-Eh-HEc" id="0Jc-Ph-Jq7"/>
                         <outlet property="coverimageHeight" destination="lhQ-6s-BHb" id="imr-0p-HDh"/>
+                        <outlet property="imgVProfile" destination="FUK-ra-rOF" id="zJ1-Ig-UDN"/>
+                        <outlet property="lblBio" destination="ejq-GQ-of2" id="bPg-Io-nCN"/>
+                        <outlet property="lblDorm" destination="CF5-rs-Tth" id="ic4-xW-sIt"/>
+                        <outlet property="lblGrYear" destination="8fe-Oc-13O" id="ivV-vu-7JV"/>
+                        <outlet property="lblMajor" destination="rDm-PR-Ytr" id="FIO-rc-w7c"/>
+                        <outlet property="lblName" destination="fGj-Gw-mGb" id="KZ9-af-xUJ"/>
                         <outlet property="tableView" destination="o21-mQ-M4P" id="NXo-yR-0wV"/>
                     </connections>
                 </viewController>
@@ -2946,7 +2973,7 @@
         <image name="yelloBackground" width="240" height="61"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JdO-3T-twi"/>
-        <segue reference="7Xs-od-rfE"/>
+        <segue reference="sKs-mD-7zj"/>
+        <segue reference="xBo-Ez-JGG"/>
     </inferredMetricsTieBreakers>
 </document>

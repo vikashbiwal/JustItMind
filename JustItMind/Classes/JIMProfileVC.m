@@ -7,13 +7,19 @@
 //
 
 #import "JIMProfileVC.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface JIMProfileVC ()
 {
     
     IBOutlet UIImageView *coverImageView;
     IBOutlet NSLayoutConstraint *coverimageHeight;
-    
+    IBOutlet UILabel *lblName;
+    IBOutlet UILabel *lblDorm;
+    IBOutlet UILabel *lblMajor;
+    IBOutlet UILabel *lblBio;
+    IBOutlet UILabel *lblGrYear;
+    IBOutlet UIImageView *imgVProfile;
 }
 @end
 
@@ -22,8 +28,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setProfileData];
 }
 
+- (void)setProfileData {
+    lblName.text = [NSString stringWithFormat:@"%@ %@", me.firstName, me.lastName];
+    lblDorm.text = me.regHall;
+    lblMajor.text = me.major;
+    lblBio.text = me.bio;
+    lblGrYear.text = [NSString stringWithFormat:@"Class of %@", me.grYear];
+    [imgVProfile setImageWithURL:[NSURL URLWithString:me.profileImageUrl] placeholderImage:[UIImage imageNamed:@"photo_bg"]];
+}
 #pragma mark - TAbleview Datasource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

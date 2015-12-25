@@ -14,6 +14,7 @@
 		3B05A9C11C25C14E00199120 /* JIMAccView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B05A9C01C25C14E00199120 /* JIMAccView.xib */; };
 		3B0FB3F51BB74D81006B4F1E /* JIMDiscoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0FB3F41BB74D81006B4F1E /* JIMDiscoverVC.m */; };
 		3B2D17C31BCB74B0000C8521 /* JImDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D17C21BCB74B0000C8521 /* JImDViewController.m */; };
+		3B2D1E061C2B651B0093F230 /* JIMNewFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D1E051C2B651B0093F230 /* JIMNewFeed.m */; };
 		3B2E162A1BD02A05009B90FE /* JIMCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E16291BD02A05009B90FE /* JIMCommentCell.m */; };
 		3B2E162D1BD02A68009B90FE /* JIMEventDeailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E162C1BD02A68009B90FE /* JIMEventDeailVC.m */; };
 		3B3167601C0E5DCF00A5B68D /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B31673C1C0E5DCF00A5B68D /* AFHTTPRequestOperation.m */; };
@@ -82,6 +83,8 @@
 		3B0FB3F41BB74D81006B4F1E /* JIMDiscoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMDiscoverVC.m; sourceTree = "<group>"; };
 		3B2D17C11BCB74B0000C8521 /* JImDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JImDViewController.h; sourceTree = "<group>"; };
 		3B2D17C21BCB74B0000C8521 /* JImDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JImDViewController.m; sourceTree = "<group>"; };
+		3B2D1E041C2B651B0093F230 /* JIMNewFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMNewFeed.h; sourceTree = "<group>"; };
+		3B2D1E051C2B651B0093F230 /* JIMNewFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMNewFeed.m; sourceTree = "<group>"; };
 		3B2E16281BD02A05009B90FE /* JIMCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMCommentCell.h; sourceTree = "<group>"; };
 		3B2E16291BD02A05009B90FE /* JIMCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMCommentCell.m; sourceTree = "<group>"; };
 		3B2E162B1BD02A68009B90FE /* JIMEventDeailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMEventDeailVC.h; sourceTree = "<group>"; };
@@ -461,6 +464,8 @@
 			children = (
 				3BFFC0D41C0FB80700C49C45 /* User.h */,
 				3BFFC0D51C0FB80700C49C45 /* User.m */,
+				3B2D1E041C2B651B0093F230 /* JIMNewFeed.h */,
+				3B2D1E051C2B651B0093F230 /* JIMNewFeed.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 				TargetAttributes = {
 					3B3B0A111BB362B400E58F19 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 73T5JA7P7S;
 					};
 					3B3B0A2A1BB362B500E58F19 = {
 						CreatedOnToolsVersion = 6.1;
@@ -578,6 +584,7 @@
 				3B31676A1C0E5DCF00A5B68D /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				3BFFC0D61C0FB80700C49C45 /* User.m in Sources */,
 				3BED07DD1BE04275008A6690 /* JIMChatVC.m in Sources */,
+				3B2D1E061C2B651B0093F230 /* JIMNewFeed.m in Sources */,
 				3B2E162A1BD02A05009B90FE /* JIMCommentCell.m in Sources */,
 				3B31676D1C0E5DCF00A5B68D /* UIImageView+AFNetworking.m in Sources */,
 				3BFC25641BB7D37300B11C96 /* JIMDiscoverCell.m in Sources */,
@@ -731,11 +738,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: IT Consulting Services, Inc. (73T5JA7P7S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IT Consulting Services, Inc. (73T5JA7P7S)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "JustItMind/JustItMind-PCH.pch";
 				INFOPLIST_FILE = JustItMind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "45e776cc-11b3-4587-b70d-d1010a7bd411";
 			};
 			name = Debug;
 		};
@@ -743,11 +753,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: IT Consulting Services, Inc. (73T5JA7P7S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IT Consulting Services, Inc. (73T5JA7P7S)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "JustItMind/JustItMind-PCH.pch";
 				INFOPLIST_FILE = JustItMind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "45e776cc-11b3-4587-b70d-d1010a7bd411";
 			};
 			name = Release;
 		};

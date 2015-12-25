@@ -35,6 +35,8 @@
     IBOutlet UILabel *lblStartTime;
     IBOutlet UILabel *lblEndTime;
     IBOutlet UITextField *location;
+    IBOutlet UITextField *txtEventTitle;
+    IBOutlet UILabel *lblTitlePlaceHolder;
     // create request iboutlet
     IBOutlet UILabel *placeholderRequest;
     IBOutlet UITextView *txtVReqDisc;
@@ -123,6 +125,26 @@
     if(sender.selected) {
         sender.selected = !sender.selected;
         [self onTopMenuShutterBtn:nil];
+        NSMutableDictionary *param = [NSMutableDictionary new];
+        param[@"news_feed_title"] = txtEventTitle.text;
+        param[@"news_feed_type"] = @"magicevent";
+        param[@"news_feed_description"] = txtVEventDisc.text;
+        param[@"starttime"] = lblStartTime.text;
+        param[@"endtime"] = lblEndTime.text;
+        param[@"user_id"] = me.userID;
+        param[@"location"] = @"AES Ground, Ahmedabad";
+        
+        [self showHud];
+        [WSCall createEvent:param block:^(id JSON, WebServiceResult result) {
+            [self hideHud];
+            if (result == WebServiceResultSuccess) {
+              
+            }
+            else
+            {
+            
+            }
+        }];
     }
     else {
         sender.selected = !sender.selected;
@@ -213,6 +235,15 @@ bool isStartTime;
     txtTemp.inputView = dp;
     txtTemp.inputAccessoryView = dpBtnView;
     [txtTemp becomeFirstResponder];
+}
+
+- (IBAction)txtTileDidChangeEditing:(UITextField *)sender {
+    if (sender.text.length > 0 ) {
+        lblTitlePlaceHolder.hidden = YES;
+    }
+    else {
+        lblTitlePlaceHolder.hidden = NO;
+    }
 }
 
 - (void)textViewDidChange:(UITextView *)textView;

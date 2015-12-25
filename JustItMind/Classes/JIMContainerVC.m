@@ -69,25 +69,40 @@
     //[self setShadowRightToView:leftMenuBtnView];
     [self setShadowRightToView:leftMenuView];
     [self setShadowToView:bottomMenuBgImgV];
-    UINavigationController *navNewsFeedVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_NewsFeedNav"];
+    
+    //UINavigationController *navNewsFeedVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_NewsFeedNav"];
+    UIViewController *feedContainerVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_FeedContainervc"];
+
     id profileVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_ProfileVC"];
-    id chatVC  = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatNav"];
+    //id chatVC  = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatNav"];//
+    id chatVC  = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatListVC"];//
+
     id residentsVC = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ResidentVC"];//SBID_ResidentsNav
     id myDiscoverVC = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_MyDiscoverVC"];
     self.tabbarController = self.childViewControllers[0];
-    [self.tabbarController addChildViewController:navNewsFeedVC];//1
+    [self.tabbarController addChildViewController:feedContainerVC];//1
     [self.tabbarController addChildViewController:profileVC];//2
     [self.tabbarController addChildViewController:chatVC];//3
     [self.tabbarController addChildViewController:residentsVC];//4
     [self.tabbarController addChildViewController:myDiscoverVC]; //5
     
      if(appDelegate.isDirectLogin)
+     {
+         [self showMenus];
          [self.tabbarController setSelectedIndex:1];
+     }
     else
+    {
         [self.tabbarController setSelectedIndex:0];
+        leftMenuBtnView.hidden = YES;
+        leftMenuView.hidden = YES;
+        rightMenuView.hidden = YES;
+        rightMenuBtnView.hidden = YES;
+        bottomMenu.hidden = YES;
+    }
 
     bottomMenuBottomSapce.constant = bottomMenuValue;
-    [self showMenus];
+    
     [DefaultCenter addObserver:self selector:@selector(showMenusNotification:) name:@"MenuShowHideNotification" object:nil];
 }
 

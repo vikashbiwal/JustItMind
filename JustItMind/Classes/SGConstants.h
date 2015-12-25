@@ -45,6 +45,8 @@ typedef PFWebServiceCalls WSCall;
 #define DiscoverTabLifestyle  @"DiscvoerTabLifestyle"
 #define DiscoverTabResidents   @"DiscvoerTabResidents"
 //
+#define kImageBasePath  @"http://api.cianinfosolutions.com/justmind"
+
 
 extern User  *me;
 extern NSDateFormatter *_serverFormatter;

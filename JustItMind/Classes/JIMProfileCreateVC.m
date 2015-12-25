@@ -11,6 +11,9 @@
 
 @interface JIMProfileCreateVC ()<UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
+    //screen 1
+    IBOutlet NSLayoutConstraint *parentViewBottomSpace;
+    IBOutlet NSLayoutConstraint *parentviewTopSpace;
     IBOutlet NSLayoutConstraint *lastNameBckgrndTopSpaceConstraint;
     IBOutlet NSLayoutConstraint *lastNameBckgrndLeadignSpaceConstraint;
     
@@ -41,6 +44,23 @@
     [super viewDidLoad];
     [self setUI];
     [self setDefaultValue];
+    [DefaultCenter addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
+    [DefaultCenter addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+#pragma KeyBoard notification
+
+- (void)keyboardShow:(NSNotification*)notify {
+    if([txtResHall isFirstResponder] || [txtMajor isFirstResponder]) {
+    CGRect keyboardRect = [notify.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue] ;
+    parentViewBottomSpace.constant = keyboardRect.size.height;
+    parentviewTopSpace.constant = - keyboardRect.size.height;
+    }
+}
+
+- (void)keyboardHide:(NSNotification*)notify {
+    parentviewTopSpace.constant = 0;
+    parentViewBottomSpace.constant = 0;
 }
 
 - (void)setDefaultValue {
@@ -146,6 +166,9 @@
         majorBckgrndBottomSpaceConstraint.constant = 55;
         majorBckgrndLeadingSpaceConstraint.constant = 111;
     }
+    btnprofile.layer.cornerRadius = btnprofile.frame.size.height/2;
+    btnprofile.clipsToBounds = YES;
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -174,6 +197,7 @@
     UIImagePickerController *ipic = [[UIImagePickerController alloc]init];
     ipic.sourceType  = UIImagePickerControllerSourceTypePhotoLibrary;
     ipic.delegate = self;
+    ipic.editing = YES;
     [self presentViewController:ipic animated:YES completion:nil];
 }
 - (void)openCamera
@@ -185,14 +209,18 @@
     UIImagePickerController *ipic = [[UIImagePickerController alloc]init];
     ipic.sourceType  = UIImagePickerControllerSourceTypeCamera;
     [ipic setDelegate:self];
+    ipic.editing = YES;
     [self presentViewController:ipic animated:YES completion:nil];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    
     UIImage* image = info[UIImagePickerControllerOriginalImage];
     selectedImage = image;
     [btnprofile setBackgroundImage:selectedImage forState:UIControlStateNormal];
+    [btnprofile setImage:nil forState:UIControlStateNormal];
+    [picker dismissViewControllerAnimated:YES completion:nil];
     NSLog(@"pickr method call");
 }
 

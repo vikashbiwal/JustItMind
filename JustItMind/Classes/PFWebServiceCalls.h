@@ -27,7 +27,8 @@ typedef void(^WSBlock)(id JSON,WebServiceResult result);
 + (void)registerUserWithParam:(NSDictionary*)param block:(WSBlock)block;
 + (void)updateProfileWithParam:(NSDictionary *)param block:(WSBlock)block;
 + (void)updateImage:(UIImage*)image param:(NSDictionary*)param fieldName:(NSString*)fieldname block:(WSBlock)block;
-
++ (void)createEvent:(NSDictionary*)param block:(WSBlock)block ;
++ (void)getNewsFeeds:(NSDictionary*)param block:(WSBlock)block;
 #pragma mark - Credential WS calls
 
 

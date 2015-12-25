@@ -9,7 +9,6 @@
 #import "SGConstants.h"
 
 
-
 NSString *discoverSelectedTab = DiscoverTabIdeology;
 User *me = nil;
 NSDateFormatter *_serverFormatter = nil;

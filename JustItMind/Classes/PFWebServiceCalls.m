@@ -172,6 +172,15 @@ static AFHTTPSessionManager *manager;
     [self simpleMultipartPostRequestWithRelativePath:@"" parameter:params image:image fieldname:fieldname block:block];
 }
 
++ (void)createEvent:(NSDictionary*)param block:(WSBlock)block {
+    NSLog(@"----------create Event ws---------");
+    id params = [self parametersForOperation:@"add" table:@"news_feed" otherParam:param];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+}
 
-
++ (void)getNewsFeeds:(NSDictionary*)param block:(WSBlock)block {
+    NSLog(@"----------Get NewsFeed List ws---------");
+    id params = [self parametersForOperation:@"news_feed_list" table:@"" otherParam:nil];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+}
 @end

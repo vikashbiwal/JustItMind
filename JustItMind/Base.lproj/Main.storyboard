@@ -266,7 +266,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9Z-Cu-7NJ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Rye-8p-Wg5">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Rye-8p-Wg5">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="yelloBackground" translatesAutoresizingMaskIntoConstraints="NO" id="LY1-Eh-rMF">
@@ -453,6 +453,8 @@
                         <outlet property="lastNameBckgrndTopSpaceConstraint" destination="M8x-w9-vh7" id="eL7-f3-bFz"/>
                         <outlet property="majorBckgrndBottomSpaceConstraint" destination="tw9-zY-AIg" id="UBx-pQ-Our"/>
                         <outlet property="majorBckgrndLeadingSpaceConstraint" destination="sAn-9o-nMx" id="Y9g-zM-ijs"/>
+                        <outlet property="parentViewBottomSpace" destination="oDh-Xh-itp" id="2gf-8T-9F9"/>
+                        <outlet property="parentviewTopSpace" destination="Mrr-7P-x6K" id="HjE-1q-cis"/>
                         <outlet property="txtFirstname" destination="68U-sE-eqB" id="p8V-Sr-PpW"/>
                         <outlet property="txtGrYear" destination="GZY-vS-8EF" id="n7e-1w-CGJ"/>
                         <outlet property="txtLastname" destination="W2H-g6-IXS" id="emu-TG-1JG"/>
@@ -1062,6 +1064,7 @@
                                         <rect key="frame" x="112" y="128" width="37" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="eNQ-c2-hy5"/>
+                                            <constraint firstAttribute="width" constant="37" id="mQJ-hZ-eTr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                                         <color key="textColor" red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
@@ -1071,6 +1074,7 @@
                                         <rect key="frame" x="112" y="157" width="38" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="MiG-Gt-N7k"/>
+                                            <constraint firstAttribute="width" constant="38" id="sBO-xp-Aiu"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                                         <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1080,33 +1084,34 @@
                                         <rect key="frame" x="112" y="184" width="55" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="Jq8-fy-vy4"/>
+                                            <constraint firstAttribute="width" constant="55" id="aAU-cU-AVi"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                                         <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="532E2268-827D-4E45-BF24-385FD0DDD03B" translatesAutoresizingMaskIntoConstraints="NO" id="BA6-HC-xER">
-                                        <rect key="frame" x="295" y="160" width="14" height="14"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="14" id="PXh-JA-ha3"/>
-                                            <constraint firstAttribute="height" constant="14" id="eON-Pb-aDe"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="532E2268-827D-4E45-BF24-385FD0DDD03B" translatesAutoresizingMaskIntoConstraints="NO" id="TW7-ae-Bum">
-                                        <rect key="frame" x="295" y="259" width="14" height="14"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="14" id="htt-CZ-E9C"/>
-                                            <constraint firstAttribute="width" constant="14" id="xXt-oK-m3y"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="999B967D-E768-4B1F-A03A-67F6D76DB88A" translatesAutoresizingMaskIntoConstraints="NO" id="XfS-82-A37">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="faux_hall_icon" translatesAutoresizingMaskIntoConstraints="NO" id="XfS-82-A37">
                                         <rect key="frame" x="297" y="134" width="11" height="8"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="8" id="GtX-qK-J0D"/>
                                             <constraint firstAttribute="width" constant="11" id="lCa-4B-Efl"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="999B967D-E768-4B1F-A03A-67F6D76DB88A" translatesAutoresizingMaskIntoConstraints="NO" id="aqr-kF-6Aj">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="art_history_icon" translatesAutoresizingMaskIntoConstraints="NO" id="BA6-HC-xER">
+                                        <rect key="frame" x="295" y="160" width="14" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="14" id="PXh-JA-ha3"/>
+                                            <constraint firstAttribute="height" constant="14" id="eON-Pb-aDe"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="art_history_icon" translatesAutoresizingMaskIntoConstraints="NO" id="TW7-ae-Bum">
+                                        <rect key="frame" x="295" y="259" width="14" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="htt-CZ-E9C"/>
+                                            <constraint firstAttribute="width" constant="14" id="xXt-oK-m3y"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="faux_hall_icon" translatesAutoresizingMaskIntoConstraints="NO" id="aqr-kF-6Aj">
                                         <rect key="frame" x="297" y="188" width="11" height="8"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="11" id="FIu-Rm-dvm"/>
@@ -2391,154 +2396,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="532E2268-827D-4E45-BF24-385FD0DDD03B" width="22" height="22">
-            <mutableData key="keyedArchiveRepresentation">
-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
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABtbHVjAAAAAAAAAB4AAAAMc2tTSwAAACgA
-AAF4aHJIUgAAACgAAAGgY2FFUwAAACQAAAHIcHRCUgAAACYAAAHsdWtVQQAAACoAAAISZnJGVQAAACgA
-AAI8emhUVwAAABYAAAJkaXRJVAAAACgAAAJ6bmJOTwAAACYAAAKia29LUgAAABYAAALIY3NDWgAAACIA
-AALeaGVJTAAAAB4AAAMAZGVERQAAACwAAAMeaHVIVQAAACgAAANKc3ZTRQAAACYAAAKiemhDTgAAABYA
-AANyamFKUAAAABoAAAOIcm9STwAAACQAAAOiZWxHUgAAACIAAAPGcHRQTwAAACYAAAPobmxOTAAAACgA
-AAQOZXNFUwAAACYAAAPodGhUSAAAACQAAAQ2dHJUUgAAACIAAARaZmlGSQAAACgAAAR8cGxQTAAAACwA
-AASkcnVSVQAAACIAAATQYXJFRwAAACYAAATyZW5VUwAAACYAAAUYZGFESwAAAC4AAAU+AFYBYQBlAG8A
-YgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBmAGkAbABHAGUAbgBlAHIAaQENAGsAaQAgAFIARwBCACAA
-cAByAG8AZgBpAGwAUABlAHIAZgBpAGwAIABSAEcAQgAgAGcAZQBuAOgAcgBpAGMAUABlAHIAZgBpAGwA
-IABSAEcAQgAgAEcAZQBuAOkAcgBpAGMAbwQXBDAEMwQwBDsETAQ9BDgEOQAgBD8EQAQ+BEQEMAQ5BDsA
-IABSAEcAQgBQAHIAbwBmAGkAbAAgAGcA6QBuAOkAcgBpAHEAdQBlACAAUgBWAEKQGnUoACAAUgBHAEIA
-IIJyX2ljz4/wAFAAcgBvAGYAaQBsAG8AIABSAEcAQgAgAGcAZQBuAGUAcgBpAGMAbwBHAGUAbgBlAHIA
-aQBzAGsAIABSAEcAQgAtAHAAcgBvAGYAaQBsx3y8GAAgAFIARwBCACDVBLhc0wzHfABPAGIAZQBjAG4A
-/QAgAFIARwBCACAAcAByAG8AZgBpAGwF5AXoBdUF5AXZBdwAIABSAEcAQgAgBdsF3AXcBdkAQQBsAGwA
-ZwBlAG0AZQBpAG4AZQBzACAAUgBHAEIALQBQAHIAbwBmAGkAbADBAGwAdABhAGwA4QBuAG8AcwAgAFIA
-RwBCACAAcAByAG8AZgBpAGxmbpAaACAAUgBHAEIAIGPPj/Blh072TgCCLAAgAFIARwBCACAw1zDtMNUw
-oTCkMOsAUAByAG8AZgBpAGwAIABSAEcAQgAgAGcAZQBuAGUAcgBpAGMDkwO1A70DuQO6A8wAIAPAA8ED
-vwPGA68DuwAgAFIARwBCAFAAZQByAGYAaQBsACAAUgBHAEIAIABnAGUAbgDpAHIAaQBjAG8AQQBsAGcA
-ZQBtAGUAZQBuACAAUgBHAEIALQBwAHIAbwBmAGkAZQBsDkIOGw4jDkQOHw4lDkwAIABSAEcAQgAgDhcO
-MQ5IDicORA4bAEcAZQBuAGUAbAAgAFIARwBCACAAUAByAG8AZgBpAGwAaQBZAGwAZQBpAG4AZQBuACAA
-UgBHAEIALQBwAHIAbwBmAGkAaQBsAGkAVQBuAGkAdwBlAHIAcwBhAGwAbgB5ACAAcAByAG8AZgBpAGwA
-IABSAEcAQgQeBDEESQQ4BDkAIAQ/BEAEPgREBDgEOwRMACAAUgBHAEIGRQZEBkEAIAYqBjkGMQZKBkEA
-IABSAEcAQgAgBicGRAY5BicGRQBHAGUAbgBlAHIAaQBjACAAUgBHAEIAIABQAHIAbwBmAGkAbABlAEcA
-ZQBuAGUAcgBlAGwAIABSAEcAQgAtAGIAZQBzAGsAcgBpAHYAZQBsAHMAZXRleHQAAAAAQ29weXJpZ2h0
-IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC4AWFlaIAAAAAAAAPNSAAEAAAABFs9Y
-WVogAAAAAAAAdE0AAD3uAAAD0FhZWiAAAAAAAABadQAArHMAABc0WFlaIAAAAAAAACgaAAAVnwAAuDZj
-dXJ2AAAAAAAAAAEBzQAAc2YzMgAAAAAAAQxCAAAF3v//8yYAAAeSAAD9kf//+6L///2jAAAD3AAAwGzS
-JSYnKFokY2xhc3NuYW1lWCRjbGFzc2VzXxAQTlNCaXRtYXBJbWFnZVJlcKMpKitfEBBOU0JpdG1hcElt
-YWdlUmVwWk5TSW1hZ2VSZXBYTlNPYmplY3TSJSYtLldOU0FycmF5oi0r0iUmMDFeTlNNdXRhYmxlQXJy
-YXmjMC0r0zM0CjU2N1dOU1doaXRlXE5TQ29sb3JTcGFjZUQwIDAAEAOADNIlJjk6V05TQ29sb3KiOSvS
-JSY8PVdOU0ltYWdlojwrXxAPTlNLZXllZEFyY2hpdmVy0UBBVHJvb3SAAQAIABEAGgAjAC0AMgA3AEYA
-TABXAF4AZQByAHkAgQCDAIUAigCMAI4AlwCcAKcAqQCrAK0AsgC1ALcAuQC7AL0AwgDZANsA3RDfEOQQ
-7xD4EQsRDxEiES0RNhE7EUMRRhFLEVoRXhFlEW0RehF/EYERgxGIEZARkxGYEaARoxG1EbgRvQAAAAAA
-AAIBAAAAAAAAAEIAAAAAAAAAAAAAAAAAABG/A
-</mutableData>
-        </image>
-        <image name="999B967D-E768-4B1F-A03A-67F6D76DB88A" width="16" height="12">
-            <mutableData key="keyedArchiveRepresentation">
-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
-bEdSAAAAIgAAA8ZwdFBPAAAAJgAAA+hubE5MAAAAKAAABA5lc0VTAAAAJgAAA+h0aFRIAAAAJAAABDZ0
-clRSAAAAIgAABFpmaUZJAAAAKAAABHxwbFBMAAAALAAABKRydVJVAAAAIgAABNBhckVHAAAAJgAABPJl
-blVTAAAAJgAABRhkYURLAAAALgAABT4AVgFhAGUAbwBiAGUAYwBuAP0AIABSAEcAQgAgAHAAcgBvAGYA
-aQBsAEcAZQBuAGUAcgBpAQ0AawBpACAAUgBHAEIAIABwAHIAbwBmAGkAbABQAGUAcgBmAGkAbAAgAFIA
-RwBCACAAZwBlAG4A6AByAGkAYwBQAGUAcgBmAGkAbAAgAFIARwBCACAARwBlAG4A6QByAGkAYwBvBBcE
-MAQzBDAEOwRMBD0EOAQ5ACAEPwRABD4ERAQwBDkEOwAgAFIARwBCAFAAcgBvAGYAaQBsACAAZwDpAG4A
-6QByAGkAcQB1AGUAIABSAFYAQpAadSgAIABSAEcAQgAggnJfaWPPj/AAUAByAG8AZgBpAGwAbwAgAFIA
-RwBCACAAZwBlAG4AZQByAGkAYwBvAEcAZQBuAGUAcgBpAHMAawAgAFIARwBCAC0AcAByAG8AZgBpAGzH
-fLwYACAAUgBHAEIAINUEuFzTDMd8AE8AYgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBmAGkAbAXkBegF
-1QXkBdkF3AAgAFIARwBCACAF2wXcBdwF2QBBAGwAbABnAGUAbQBlAGkAbgBlAHMAIABSAEcAQgAtAFAA
-cgBvAGYAaQBsAMEAbAB0AGEAbADhAG4AbwBzACAAUgBHAEIAIABwAHIAbwBmAGkAbGZukBoAIABSAEcA
-QgAgY8+P8GWHTvZOAIIsACAAUgBHAEIAIDDXMO0w1TChMKQw6wBQAHIAbwBmAGkAbAAgAFIARwBCACAA
-ZwBlAG4AZQByAGkAYwOTA7UDvQO5A7oDzAAgA8ADwQO/A8YDrwO7ACAAUgBHAEIAUABlAHIAZgBpAGwA
-IABSAEcAQgAgAGcAZQBuAOkAcgBpAGMAbwBBAGwAZwBlAG0AZQBlAG4AIABSAEcAQgAtAHAAcgBvAGYA
-aQBlAGwOQg4bDiMORA4fDiUOTAAgAFIARwBCACAOFw4xDkgOJw5EDhsARwBlAG4AZQBsACAAUgBHAEIA
-IABQAHIAbwBmAGkAbABpAFkAbABlAGkAbgBlAG4AIABSAEcAQgAtAHAAcgBvAGYAaQBpAGwAaQBVAG4A
-aQB3AGUAcgBzAGEAbABuAHkAIABwAHIAbwBmAGkAbAAgAFIARwBCBB4EMQRJBDgEOQAgBD8EQAQ+BEQE
-OAQ7BEwAIABSAEcAQgZFBkQGQQAgBioGOQYxBkoGQQAgAFIARwBCACAGJwZEBjkGJwZFAEcAZQBuAGUA
-cgBpAGMAIABSAEcAQgAgAFAAcgBvAGYAaQBsAGUARwBlAG4AZQByAGUAbAAgAFIARwBCAC0AYgBlAHMA
-awByAGkAdgBlAGwAcwBldGV4dAAAAABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRz
-IHJlc2VydmVkLgBYWVogAAAAAAAA81IAAQAAAAEWz1hZWiAAAAAAAAB0TQAAPe4AAAPQWFlaIAAAAAAA
-AFp1AACscwAAFzRYWVogAAAAAAAAKBoAABWfAAC4NmN1cnYAAAAAAAAAAQHNAABzZjMyAAAAAAABDEIA
-AAXe///zJgAAB5IAAP2R///7ov///aMAAAPcAADAbNIlJicoWiRjbGFzc25hbWVYJGNsYXNzZXNfEBBO
-U0JpdG1hcEltYWdlUmVwoykqK18QEE5TQml0bWFwSW1hZ2VSZXBaTlNJbWFnZVJlcFhOU09iamVjdNIl
-Ji0uV05TQXJyYXmiLSvSJSYwMV5OU011dGFibGVBcnJheaMwLSvTMzQKNTY3V05TV2hpdGVcTlNDb2xv
-clNwYWNlRDAgMAAQA4AM0iUmOTpXTlNDb2xvcqI5K9IlJjw9V05TSW1hZ2WiPCtfEA9OU0tleWVkQXJj
-aGl2ZXLRQEFUcm9vdIABAAgAEQAaACMALQAyADcARgBMAFcAXgBlAHIAeQCBAIMAhQCKAIwAjgCXAJwA
-pwCpAKsArQCyALUAtwC5ALsAvQDCANkA2wDdDE8MVAxfDGgMewx/DJIMnQymDKsMswy2DLsMygzODNUM
-3QzqDO8M8QzzDPgNAA0DDQgNEA0TDSUNKA0tAAAAAAAAAgEAAAAAAAAAQgAAAAAAAAAAAAAAAAAADS8
-</mutableData>
-        </image>
         <image name="HeaderImg" width="540" height="78"/>
         <image name="ProfilePic" width="78" height="77"/>
+        <image name="art_history_icon" width="22" height="22"/>
         <image name="background" width="540" height="960"/>
         <image name="bottomLineYellow" width="540" height="15"/>
         <image name="bottom_round_btn" width="62" height="62"/>
@@ -2548,6 +2408,7 @@ pwCpAKsArQCyALUAtwC5ALsAvQDCANkA2wDdDE8MVAxfDGgMewx/DJIMnQymDKsMswy2DLsMygzODNUM
         <image name="chat_icon" width="21" height="18"/>
         <image name="check_icon" width="14" height="14"/>
         <image name="discoverTabbar" width="185" height="55"/>
+        <image name="faux_hall_icon" width="16" height="12"/>
         <image name="half_circle" width="320" height="161"/>
         <image name="ic_menu_circleBg" width="126" height="126"/>
         <image name="ic_menu_discover" width="40" height="36"/>

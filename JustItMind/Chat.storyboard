@@ -27,7 +27,7 @@
         <!--Chat User ListVC-->
         <scene sceneID="Xgv-HG-stj">
             <objects>
-                <viewController id="wZ9-92-qjv" customClass="ChatUserListVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SBID_ChatListVC" id="wZ9-92-qjv" customClass="ChatUserListVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jux-Ah-hPg"/>
                         <viewControllerLayoutGuide type="bottom" id="NXG-Ds-geY"/>

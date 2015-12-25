@@ -22,7 +22,7 @@
     _major          = info[@"major"];
     _verificationCode = info[@"randomCode"];
     _bio            = info[@"bio"];
-    _profileImageUrl= info[@"profile_pic_url"];
+    _profileImageUrl =    [NSString stringWithFormat:@"%@/%@", kImageBasePath, info[@"profile_pic_url"]];
     _coverImageUrl  = info[@"show_profile_pic"];
 }
 @end

@@ -22,6 +22,7 @@
     topMenuTopSpace.constant = -50;
     tableviewWidth.constant = screenSize.size.width;
     [self.tableView setContentInset:UIEdgeInsetsMake(20, 0, 0, 0)];
+    [self getNewsFeedWS];
 }
 
 
@@ -81,6 +82,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - WebService methods
+
+- (void)getNewsFeedWS {
+    [WSCall getNewsFeeds:nil block:^(id JSON, WebServiceResult result) {
+        
+    }];
+}
 
 
 /*
