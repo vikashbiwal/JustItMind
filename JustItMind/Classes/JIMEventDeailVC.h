@@ -7,7 +7,7 @@
 //
 
 #import "JIMParentViewController.h"
-
+#import "JNewsFeed.h"
 @interface JIMEventDeailVC : JIMParentViewController
-
+@property (nonatomic, strong) JNewsFeed *eventFeed;
 @end

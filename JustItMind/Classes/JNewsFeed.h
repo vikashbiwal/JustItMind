@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JIMNewFeed : NSObject
+@interface JNewsFeed : NSObject
 @property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *discription;
@@ -20,4 +20,7 @@
 @property (nonatomic, strong) NSString *adminFirstName;
 @property (nonatomic, strong) NSString *adminLastName;
 @property (nonatomic, strong) NSString *profileImage;
+@property (nonatomic) BOOL isJoined;
+
+- (void)setFeedInfo: (NSDictionary *)info;
 @end

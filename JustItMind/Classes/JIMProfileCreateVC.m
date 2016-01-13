@@ -130,8 +130,14 @@
     
     [WSCall updateProfileWithParam:param block:^(id JSON, WebServiceResult result) {
         if (result == WebServiceResultSuccess) {
+            if ([JSON[@"status"] isEqualToString:@"1"]) {
             [me setInfo:JSON[@"data"]];
             [self performSegueWithIdentifier:@"myProfileViewSegue" sender:self];
+            }
+            else
+            {
+                showAletViewWithMessage(@"Something goes to wrong. Please try again.");
+            }
         }
         else
         {

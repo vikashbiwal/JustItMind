@@ -141,8 +141,8 @@
                     <connections>
                         <outlet property="confirmCodeBckgrndLeadingSpaceConstraint" destination="Nzh-fi-fY0" id="Umh-S7-bBe"/>
                         <outlet property="confirmCodeBckgrndTopSpaceConstraint" destination="S6K-tS-ZEt" id="ZUu-ps-Bdr"/>
-                        <outlet property="txtEmail" destination="6Do-CD-nev" id="0ND-SK-DkE"/>
-                        <outlet property="txtUniversityId" destination="xap-7v-Xbs" id="aQZ-Om-pgE"/>
+                        <outlet property="txtEmail" destination="xap-7v-Xbs" id="nBT-iF-ihR"/>
+                        <outlet property="txtUniversityId" destination="6Do-CD-nev" id="9u0-2u-kmq"/>
                         <outlet property="unversityIDBckgrndLeadignSpaceConstraint" destination="yYK-nn-1kD" id="usU-fQ-elr"/>
                         <outlet property="unversityIDBckgrndTopSpaceConstraint" destination="QiJ-8d-mqk" id="zFo-Eh-b6m"/>
                         <segue destination="gTz-KX-zDq" kind="show" identifier="nextSegue" id="wjU-Bs-AKd"/>
@@ -254,7 +254,7 @@
         <!--Profile CreateVC-->
         <scene sceneID="gTM-wQ-akC">
             <objects>
-                <viewController id="mK8-no-jaH" customClass="JIMProfileCreateVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SBID_SetupProfileVC" id="mK8-no-jaH" customClass="JIMProfileCreateVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="40m-Jq-6Ud"/>
                         <viewControllerLayoutGuide type="bottom" id="ubK-FC-W1J"/>

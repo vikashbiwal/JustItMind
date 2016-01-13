@@ -39,12 +39,17 @@ typedef PFWebServiceCalls WSCall;
 #define screenSize [[UIScreen mainScreen] bounds]
 #define newsFeedStBoard [UIStoryboard storyboardWithName:@"NewsFeed" bundle:nil]
 #define ChatStBoard [UIStoryboard storyboardWithName:@"Chat" bundle:nil]
+#define MainStBoard  [UIStoryboard storyboardWithName:@"Main" bundle:nil]
 // Discovre screen's tab menus
 #define DiscoverTabIdeology   @"DiscoverTabIdeology"
 #define DiscoverTabArts       @"DiscoverTabArts"
 #define DiscoverTabLifestyle  @"DiscvoerTabLifestyle"
 #define DiscoverTabResidents   @"DiscvoerTabResidents"
 //
+//user Types
+#define kUserTypeStudent @"Student"
+#define kUserTypeRA      @"ResidentAdviser"
+
 #define kImageBasePath  @"http://api.cianinfosolutions.com/justmind"
 
 

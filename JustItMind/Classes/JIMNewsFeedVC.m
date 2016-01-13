@@ -7,11 +7,17 @@
 //
 
 #import "JIMNewsFeedVC.h"
+#import "JNewsFeed.h"
+#import "TableViewCells.h"
+#import "UIImageView+AFNetworking.h"
+#import "JIMEventDeailVC.h"
 
 @interface JIMNewsFeedVC ()<UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet NSLayoutConstraint *tableviewWidth;
     IBOutlet NSLayoutConstraint *topMenuTopSpace;
+    NSMutableArray *arrNewsFeed;
+    UIRefreshControl *refControl;
 }
 @end
 
@@ -23,31 +29,50 @@
     tableviewWidth.constant = screenSize.size.width;
     [self.tableView setContentInset:UIEdgeInsetsMake(20, 0, 0, 0)];
     [self getNewsFeedWS];
+    refControl = [[UIRefreshControl alloc]init];
+    [refControl addTarget:self action:@selector(getNewsFeedWS) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refControl];
 }
 
 
 #pragma mark - TAbleview Datasource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return arrNewsFeed.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventFeedCell"];
+    JNewsFeed *feed = arrNewsFeed[indexPath.row];
+    JFeedCell *cell;
+    if([feed.feedType isEqualToString:@"message"]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"advetCell"];
+        cell.lblDescription.text = feed.discription;
+    }
+    else{
+        cell = [tableView dequeueReusableCellWithIdentifier:@"eventFeedCell"];
+        cell.lblTitle.text = feed.title;
+        cell.lblDate.text = feed.startTime;
+        cell.lblTime.text = feed.endTime;
+
+    }
+    [cell.imgView setImageWithURL:[NSURL URLWithString:feed.profileImage] placeholderImage:[UIImage imageNamed:@"photo_bg"]];
     return cell;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row%2 == 0)
-    {
-    [self performSegueWithIdentifier:@"EventDetailSegue" sender:nil];
-    }
-    else
-    {
-        [self performSegueWithIdentifier:@"coupanDetailSegue" sender:nil];
-        
-    }
+    [self performSegueWithIdentifier:@"EventDetailSegue" sender:arrNewsFeed[indexPath.row]];
+
+//    if(indexPath.row%2 == 0)
+//    {
+//    [self performSegueWithIdentifier:@"EventDetailSegue" sender:nil];
+//    }
+//    else
+//    {
+//        [self performSegueWithIdentifier:@"coupanDetailSegue" sender:nil];
+//        
+//    }
 }
 
 - (IBAction)onTopMenuShutterBtn:(id)sender
@@ -85,20 +110,43 @@
 #pragma mark - WebService methods
 
 - (void)getNewsFeedWS {
-    [WSCall getNewsFeeds:nil block:^(id JSON, WebServiceResult result) {
-        
+    
+
+    id param = @{@"userid":me.userID};
+    if(!refControl.isRefreshing)
+        [self showHud];
+    [WSCall getNewsFeeds:param block:^(id JSON, WebServiceResult result) {
+        [self hideHud];
+        [refControl endRefreshing];
+        if(result == WebServiceResultSuccess) {
+            if ([JSON[@"status"] intValue] == 1) {
+                NSArray *arrData = JSON[@"data"];
+                arrNewsFeed = [NSMutableArray new];
+                for (NSDictionary *obj in  arrData) {
+                    JNewsFeed *feed = [JNewsFeed new];
+                    [feed setFeedInfo:obj];
+                    [arrNewsFeed addObject:feed];
+                }
+                [self.tableView reloadData];
+            }
+        }
+        else {
+            
+        }
     }];
 }
 
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"EventDetailSegue"]) {
+        JIMEventDeailVC *eventDVC = segue.destinationViewController;
+        eventDVC.eventFeed = sender;
+    }
 }
-*/
+
 
 @end

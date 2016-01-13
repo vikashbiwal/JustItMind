@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Viksah Kumar. All rights reserved.
 //
 
-#import "JIMNewFeed.h"
+#import "JNewsFeed.h"
 
-@implementation JIMNewFeed
+@implementation JNewsFeed
 
 - (void)setFeedInfo: (NSDictionary *)info {
     self.feedId = info[@"id"];
@@ -21,5 +21,7 @@
     self.adminFirstName = info[@"firstname"];
     self.adminLastName = info[@"lastname"];
     self.userId = info[@"user_id"];
+    self.profileImage = [NSString stringWithFormat:@"%@/%@", kImageBasePath, info[@"profile_pic_url"]];
+    self.isJoined = [info[@"isJoined"] isEqualToString:@"no"] ? NO : YES;
 }
 @end

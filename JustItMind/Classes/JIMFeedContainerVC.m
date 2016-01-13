@@ -40,6 +40,7 @@
     // create request iboutlet
     IBOutlet UILabel *placeholderRequest;
     IBOutlet UITextView *txtVReqDisc;
+    
 }
 @end
 
@@ -124,6 +125,7 @@
 - (IBAction)createEventBtnClick:(UIButton*)sender {
     if(sender.selected) {
         sender.selected = !sender.selected;
+        [btnCreateEvent setTitle:@"Create Event" forState:UIControlStateNormal];
         [self onTopMenuShutterBtn:nil];
         NSMutableDictionary *param = [NSMutableDictionary new];
         param[@"news_feed_title"] = txtEventTitle.text;
@@ -155,6 +157,7 @@
         }];
         btnCreateEvent.frame = btnCreateRequest.frame;
         btnCreateRequest.hidden = YES;
+        [btnCreateEvent setTitle:@"Post Event" forState:UIControlStateNormal];
     }
     
 }
@@ -164,6 +167,24 @@
     if(sender.selected) {
         sender.selected = !sender.selected;
         [self onTopMenuShutterBtn:nil];
+     
+        [btnCreateRequest setTitle:@"Create Request" forState:UIControlStateNormal];
+        NSMutableDictionary *param = [NSMutableDictionary new];
+        param[@"news_feed_type"] = @"request";
+        param[@"news_feed_description"] = txtVReqDisc.text;
+        param[@"user_id"] = me.userID;
+        [self showHud];
+        [WSCall createEvent:param block:^(id JSON, WebServiceResult result) {
+            [self hideHud];
+            if (result == WebServiceResultSuccess) {
+                
+            }
+            else
+            {
+                
+            }
+        }];
+
     }
     else {
         sender.selected = !sender.selected;
@@ -172,7 +193,7 @@
             viewCreateRequest.hidden = NO;
             [self.view layoutIfNeeded];
         }];
-       
+        [btnCreateRequest setTitle:@"Post Request" forState:UIControlStateNormal];
     }
     
 }
@@ -194,8 +215,9 @@
 - (NSString*)stringFromDate:(NSDate*)date
 {
     NSDateFormatter *dtFormattor = [[NSDateFormatter alloc]init];
-    [dtFormattor setDateStyle:NSDateFormatterLongStyle];
-    [dtFormattor setTimeStyle:NSDateFormatterShortStyle];
+    [dtFormattor setDateFormat:@"yyyy/MM/dd"];
+    //[dtFormattor setDateStyle:NSDateFormatterShortStyle];
+    //[dtFormattor setTimeStyle:NSDateFormatterShortStyle];
     NSString *str = [dtFormattor stringFromDate:date];
     return  str;
 }
@@ -210,6 +232,20 @@
     [self showDatePicker];
 }
 
+- (BOOL)validateRequestForm {
+    NSString *strMessage;
+    if(txtVReqDisc.text.length > 0 ) {
+        strMessage = @"Please enter request description.";
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)validateEventForm {
+    return false;
+}
+
+///////
 UITextField *txtTemp;
 UIDatePicker *dp ;
 NSDate *StartDate;

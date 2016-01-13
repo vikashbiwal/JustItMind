@@ -183,4 +183,19 @@ static AFHTTPSessionManager *manager;
     id params = [self parametersForOperation:@"news_feed_list" table:@"" otherParam:nil];
     [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
 }
+
+//api.cianinfosolutions.com/justmind/control.php?json=&method=selectadd&table=join_event&userid=1&eventid=1
++ (void)joinEvent:(NSDictionary *)param block:(WSBlock)block {
+    NSLog(@"----------Join Event ws---------");
+    id params = [self parametersForOperation:@"selectadd" table:@"join_event" otherParam:param];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+}
+
+//api.cianinfosolutions.com/justmind/control.php?json=&table=news_feed_comment&method=add&news_feed_id=1&news_feed_comment=comment&comment_by=1&inserted_date=date
++ (void)addCommentOnEvent:(NSDictionary*)param block:(WSBlock)block {
+    NSLog(@"----------Add Comment ws---------");
+    id params = [self parametersForOperation:@"add" table:@"news_feed_comment" otherParam:param];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+
+}
 @end

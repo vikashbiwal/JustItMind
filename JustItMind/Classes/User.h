@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString *major;
 @property (strong, nonatomic) NSString *regHall;
 @property (strong, nonatomic) NSString *bio;
+@property (strong, nonatomic) NSString *userType;
 @property (strong, nonatomic) NSString *profileImageUrl;
 @property (strong, nonatomic) NSString *coverImageUrl;
 - (void)setInfo:(NSDictionary*)info;

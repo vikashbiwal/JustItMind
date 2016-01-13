@@ -41,6 +41,9 @@
 #pragma mark - IBActions
 - (IBAction)onGetCodeBtnClick:(id)sender
 {
+    if (![self validateInput]) {
+        return;
+    }
     
     id dic = @{@"university_id" : txtUniversityId.text,  @"universityemail": txtEmail.text};
     [self showHud];
@@ -83,4 +86,24 @@
     
 }
 
+- (BOOL)validateInput {
+    NSLog(@"emal : %@",txtEmail.text);
+    if(txtEmail.text.length > 0) {
+        
+    }
+    else {
+        showAletViewWithMessage(@"Please enter your email.");
+        return NO;
+    }
+    if (txtUniversityId.text.length > 0) {
+        
+    }
+    else
+    {
+        showAletViewWithMessage(@"Please enter university ID.");
+        return NO;
+
+    }
+    return YES;
+}
 @end
