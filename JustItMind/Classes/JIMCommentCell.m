@@ -42,6 +42,7 @@
     Comment *comment = self.arrComments[indexPath.row];
     cell.lblDescription.text = comment.text;
     cell.lblTitle.text = comment.userName;
+    cell.lblTime.text = AgoStringFromTime(comment.time);
     [cell.imgView setImageWithURL:[NSURL URLWithString:comment.strProfilePic] placeholderImage:[UIImage imageNamed:@""]];
     return cell;
 }

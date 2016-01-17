@@ -18,9 +18,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self directLogin];
+    [self setDateFormator];
     return YES;
 }
 
+- (void)setDateFormator {
+    _serverFormatter = [[NSDateFormatter alloc]init];
+    [_serverFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    [_serverFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
+}
 - (void)directLogin {
     if([UserDefault objectForKey:@"loginUser"]) {
         self.isDirectLogin = YES;

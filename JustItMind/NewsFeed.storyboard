@@ -447,12 +447,21 @@
                                                                         <color key="textColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7th  Floor Magic Tournament" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySN-bv-IEF">
-                                                                        <rect key="frame" x="80" y="10" width="178" height="15"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vikash Kumar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySN-bv-IEF">
+                                                                        <rect key="frame" x="80" y="10" width="87" height="15"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="15" id="L6o-re-qIL"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="13"/>
+                                                                        <color key="textColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 min ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkg-Rn-UUT">
+                                                                        <rect key="frame" x="254" y="10" width="53" height="14"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="14" id="ZEr-Ns-qDM"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                                                         <color key="textColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -465,7 +474,9 @@
                                                                     </imageView>
                                                                 </subviews>
                                                                 <constraints>
+                                                                    <constraint firstItem="dkg-Rn-UUT" firstAttribute="top" secondItem="k7K-zY-i3K" secondAttribute="top" constant="10" id="AV6-64-CzE"/>
                                                                     <constraint firstAttribute="bottom" secondItem="fOP-3O-qqf" secondAttribute="bottom" constant="2" id="Gjj-gV-qeH"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="dkg-Rn-UUT" secondAttribute="trailing" constant="13" id="RgD-Yd-bJn"/>
                                                                     <constraint firstItem="fOP-3O-qqf" firstAttribute="leading" secondItem="k7K-zY-i3K" secondAttribute="leading" constant="4" id="ZgP-5d-Tcl"/>
                                                                     <constraint firstItem="ySN-bv-IEF" firstAttribute="leading" secondItem="Q6o-aM-IcI" secondAttribute="trailing" constant="6" id="aaP-Ji-dQM"/>
                                                                     <constraint firstItem="ySN-bv-IEF" firstAttribute="top" secondItem="k7K-zY-i3K" secondAttribute="top" constant="10" id="bEO-qr-Wbr"/>
@@ -482,6 +493,7 @@
                                                             <connections>
                                                                 <outlet property="imgView" destination="Q6o-aM-IcI" id="Qan-bW-Ym8"/>
                                                                 <outlet property="lblDescription" destination="p61-ns-Yie" id="qPj-B5-GnL"/>
+                                                                <outlet property="lblTime" destination="dkg-Rn-UUT" id="n7a-hU-QyC"/>
                                                                 <outlet property="lblTitle" destination="ySN-bv-IEF" id="cCj-bs-6PC"/>
                                                             </connections>
                                                         </tableViewCell>
@@ -1758,7 +1770,7 @@
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Kz-XU-a8n">
+                                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Kz-XU-a8n">
                                                 <rect key="frame" x="20" y="80" width="280" height="174"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9E-3X-eFN">
@@ -2019,6 +2031,7 @@
                     <connections>
                         <outlet property="btnCreateEvent" destination="9XC-dE-qGW" id="a4r-89-ZX9"/>
                         <outlet property="btnCreateRequest" destination="uCQ-ir-34i" id="vEW-nd-TJ9"/>
+                        <outlet property="btnEventBottomSapace" destination="XTv-s7-YSR" id="KTh-nx-Y5I"/>
                         <outlet property="btnRadio1" destination="WEq-LU-ybW" id="Wvq-12-6nX"/>
                         <outlet property="btnRadio2" destination="IFd-pX-HMy" id="ebF-Q5-rr8"/>
                         <outlet property="containerHeight" destination="CVS-Vh-fkm" id="li8-xW-nN4"/>
@@ -2802,6 +2815,9 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" title="Joined" backgroundImage="Joined"/>
+                                                    <connections>
+                                                        <action selector="onMessageBtnClick:" destination="0ec-p8-UeJ" eventType="touchUpInside" id="Hi7-JP-iwU"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Veh-Al-Q9e">
                                                     <rect key="frame" x="0.0" y="126" width="320" height="1"/>
@@ -2832,15 +2848,25 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VA7-nH-FxF">
+                                                    <rect key="frame" x="10" y="80" width="61" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="lW4-Nm-qNE"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="Veh-Al-Q9e" firstAttribute="leading" secondItem="hgJ-Yq-7Ew" secondAttribute="leading" id="0ke-oW-BsL"/>
                                                 <constraint firstItem="WIF-Eb-dhY" firstAttribute="top" secondItem="hgJ-Yq-7Ew" secondAttribute="top" constant="2" id="2Hx-Jn-OPY"/>
+                                                <constraint firstItem="VA7-nH-FxF" firstAttribute="top" secondItem="f0s-GG-a9Z" secondAttribute="bottom" constant="13" id="7A1-yX-fKV"/>
                                                 <constraint firstAttribute="bottom" secondItem="ORS-hc-W8d" secondAttribute="bottom" id="7YT-0F-gEO"/>
                                                 <constraint firstAttribute="height" constant="127" id="8q5-ye-Afx"/>
                                                 <constraint firstItem="f0s-GG-a9Z" firstAttribute="top" secondItem="hgJ-Yq-7Ew" secondAttribute="top" constant="7" id="IA8-uj-PMq"/>
                                                 <constraint firstAttribute="bottom" secondItem="Veh-Al-Q9e" secondAttribute="bottom" id="Sdn-cl-qzh"/>
+                                                <constraint firstItem="VA7-nH-FxF" firstAttribute="leading" secondItem="hgJ-Yq-7Ew" secondAttribute="leading" constant="10" id="Sty-or-N1c"/>
                                                 <constraint firstAttribute="trailing" secondItem="WIF-Eb-dhY" secondAttribute="trailing" constant="14" id="Xfb-Mo-qfP"/>
                                                 <constraint firstItem="f0s-GG-a9Z" firstAttribute="centerX" secondItem="DXg-cg-6ld" secondAttribute="centerX" id="d0m-QT-Mbf"/>
                                                 <constraint firstItem="f0s-GG-a9Z" firstAttribute="leading" secondItem="hgJ-Yq-7Ew" secondAttribute="leading" constant="10" id="gZn-if-16H"/>
@@ -3135,6 +3161,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="700"/>
                     <connections>
+                        <outlet property="btnBack" destination="Dsd-jH-fzF" id="GYg-TH-VoA"/>
                         <outlet property="btnEdit1" destination="wqM-aw-3pK" id="RIy-aC-owG"/>
                         <outlet property="btnEdit2" destination="sUv-6D-Pc5" id="8w6-pP-LCd"/>
                         <outlet property="btnEdit3" destination="ORS-hc-W8d" id="y1H-kx-H75"/>

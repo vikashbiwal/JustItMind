@@ -100,8 +100,17 @@ void showAlertViewMessageTitle(NSString* msg,NSString* title)
     
 }
 
-NSString* AgoStringFromTime(NSDate* dateTime)
+NSString* AgoStringFromTime(NSString *strdate)
 {
+    NSDateFormatter *utcFormator = [[NSDateFormatter alloc]init];
+    [utcFormator setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
+    [utcFormator setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    NSDate *utcDate = [_serverFormatter dateFromString:strdate];
+    
+    id strLocalDate = [utcFormator stringFromDate:utcDate];
+    NSDate *dateTime = [utcFormator dateFromString:strLocalDate];
+
+    if(!dateTime) return @"-";
     NSDictionary *timeScale = @{@"s"  :@1,
                                 @"m"  :@60,
                                 @"h"   :@3600,
@@ -133,7 +142,7 @@ NSString* AgoStringFromTime(NSDate* dateTime)
 //        s = @"s";
 //    }
     
-    return [NSString stringWithFormat:@"%d %@", timeAgo, scale];
+    return [NSString stringWithFormat:@"%d%@ ago", timeAgo, scale];
 }
 NSString* AgoFullStringFromTime(NSDate* dateTime)
 {

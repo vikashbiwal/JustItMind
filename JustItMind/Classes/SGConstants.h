@@ -70,7 +70,7 @@ extern  NSString* NSImageNameStringFromCurrentDate(void);
 extern  NSString* NSStringWithMergeofString(NSString* first,NSString* last);
 extern  NSString* NSStringFullname(NSDictionary* aDict);
 extern  void showAletViewWithMessage(NSString* msg);
-extern  NSString* AgoStringFromTime(NSDate* dateTime);
+extern  NSString* AgoStringFromTime(NSString *strdate);
 extern NSString* NSStringFromExpiryDate(NSString* expDate);
 extern void showAlertViewMessageTitle(NSString* msg,NSString* title);
 extern NSString *formattedStringFromTimeInterval(NSTimeInterval interval);

@@ -29,6 +29,7 @@
     IBOutlet UIView *dpBtnView;
     IBOutlet UIButton *btnCreateEvent;
     IBOutlet UIButton *btnCreateRequest;
+    IBOutlet NSLayoutConstraint *btnEventBottomSapace;
     //Create Event iboutlet
     IBOutlet UILabel *placeholderEvent;
     IBOutlet UITextView *txtVEventDisc;
@@ -106,6 +107,8 @@
     btnCreateEvent.hidden = NO;
     btnCreateEvent.selected = false;
     btnCreateRequest.selected = false;
+    btnEventBottomSapace.constant = 4;
+
     if(isOpend)
     {
         [UIView animateWithDuration:0.5 animations:^{
@@ -116,7 +119,7 @@
             viewCreateEvent.hidden = YES;
             viewCreateRequest.hidden = YES;
         }];
-        
+
         isOpend = NO;
     }
     else
@@ -161,10 +164,13 @@
         [UIView animateWithDuration:0.5 animations:^{
             topMenuTopSpace.constant = 0;
             viewCreateEvent.hidden = NO;
+            btnCreateEvent.frame = btnCreateRequest.frame;
+
             [self.view layoutIfNeeded];
         }];
-        btnCreateEvent.frame = btnCreateRequest.frame;
+        btnEventBottomSapace.constant = -30;
         btnCreateRequest.hidden = YES;
+        viewCreateEvent.hidden = NO;
         [btnCreateEvent setTitle:@"Post Event" forState:UIControlStateNormal];
     }
     

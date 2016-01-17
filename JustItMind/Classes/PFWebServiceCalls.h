@@ -28,6 +28,7 @@ typedef void(^WSBlock)(id JSON,WebServiceResult result);
 + (void)updateProfileWithParam:(NSDictionary *)param block:(WSBlock)block;
 + (void)updateImage:(UIImage*)image param:(NSDictionary*)param fieldName:(NSString*)fieldname block:(WSBlock)block;
 + (void)getUserProfile:(NSDictionary *)param block:(WSBlock)block;
++ (void)getUsers:(NSDictionary*)param block:(WSBlock)block ;
 
 + (void)createEvent:(NSDictionary*)param block:(WSBlock)block ;
 + (void)getNewsFeeds:(NSDictionary*)param block:(WSBlock)block;

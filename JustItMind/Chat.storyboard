@@ -4,26 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Item-->
-        <scene sceneID="Bpv-ro-k0a">
-            <objects>
-                <navigationController storyboardIdentifier="SBID_ChatNav" navigationBarHidden="YES" id="fk8-GN-bkB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="aTX-oS-ceV"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xAp-ap-rKV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="wZ9-92-qjv" kind="relationship" relationship="rootViewController" id="i0Y-Gd-EGQ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aqY-Ts-PMp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="382" y="-1184"/>
-        </scene>
         <!--Chat User ListVC-->
         <scene sceneID="Xgv-HG-stj">
             <objects>
@@ -42,8 +22,19 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="HeaderImg" translatesAutoresizingMaskIntoConstraints="NO" id="1vU-oF-Jv7">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4El-09-5ls">
+                                        <rect key="frame" x="3" y="20" width="46" height="44"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="parentBackAction:" destination="wZ9-92-qjv" eventType="touchUpInside" id="NSZ-cb-TKV"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMR-tA-Gxu">
-                                        <rect key="frame" x="143" y="39" width="34" height="18"/>
+                                        <rect key="frame" x="143" y="33" width="34" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="v1d-iN-Qtn"/>
                                         </constraints>
@@ -58,7 +49,7 @@
                                     <constraint firstItem="1vU-oF-Jv7" firstAttribute="top" secondItem="cIQ-6l-Jae" secondAttribute="top" id="DM7-CQ-GsD"/>
                                     <constraint firstAttribute="height" constant="64" id="Did-dF-4r3"/>
                                     <constraint firstAttribute="bottom" secondItem="1vU-oF-Jv7" secondAttribute="bottom" id="H29-r9-fmz"/>
-                                    <constraint firstAttribute="bottom" secondItem="gMR-tA-Gxu" secondAttribute="bottom" constant="7" id="HAQ-24-NJg"/>
+                                    <constraint firstAttribute="bottom" secondItem="gMR-tA-Gxu" secondAttribute="bottom" constant="13" id="HAQ-24-NJg"/>
                                     <constraint firstAttribute="centerX" secondItem="gMR-tA-Gxu" secondAttribute="centerX" id="Ryo-wd-8UI"/>
                                     <constraint firstItem="1vU-oF-Jv7" firstAttribute="leading" secondItem="cIQ-6l-Jae" secondAttribute="leading" id="lq4-cd-ch0"/>
                                 </constraints>
@@ -172,7 +163,7 @@
         <!--ChatVC-->
         <scene sceneID="t3E-zw-fCk">
             <objects>
-                <viewController id="4Ms-Dn-6Jp" customClass="JIMChatVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SBID_ChatVC" id="4Ms-Dn-6Jp" customClass="JIMChatVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="evO-1V-YWJ"/>
                         <viewControllerLayoutGuide type="bottom" id="Pos-Hh-dAj"/>
@@ -553,31 +544,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="o3H-bJ-2nH" id="nuI-g9-kP0"/>
+                        <segue destination="wZ9-92-qjv" kind="show" id="YIM-k3-uBC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKl-tN-z9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="428" y="-512"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="CeX-xi-O1B">
-            <objects>
-                <navigationController storyboardIdentifier="SBID_ResidentsNav" navigationBarHidden="YES" id="Nb4-jV-Pih" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="DGx-D6-s8Y"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GSF-Qs-QAY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Vtd-Kd-mce" kind="relationship" relationship="rootViewController" id="s7s-ha-393"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DPi-6d-CP5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="46" y="-512"/>
+            <point key="canvasLocation" x="556" y="-1152"/>
         </scene>
         <!--My DiscoverVC-->
         <scene sceneID="MV1-wO-pGO">

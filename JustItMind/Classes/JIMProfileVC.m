@@ -10,6 +10,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "TableViewCells.h"
 #import "JNewsFeed.h"
+#import "JIMChatVC.h"
 
 @interface JIMProfileVC ()<UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
@@ -19,6 +20,7 @@
     IBOutlet UILabel *lblDorm;
     IBOutlet UILabel *lblMajor;
     IBOutlet UILabel *lblGrYear;
+    IBOutlet UILabel *lblMessage;
     IBOutlet UIImageView *imgVProfile;
     IBOutlet UITextView *txtVBio;
     IBOutlet UIView *topView;
@@ -26,6 +28,9 @@
     IBOutlet UIButton *btnEdit1;
     IBOutlet UIButton *btnEdit2;
     IBOutlet UIButton *btnEdit3;
+    IBOutlet UIButton *btnBack;
+    IBOutlet UIButton *btnDiscover;
+    
     User *user;
     NSMutableArray *arrUserFeeds;
 }
@@ -37,16 +42,25 @@
     [super viewDidLoad];
     if (_strUserID) {
         [self getUserProfileInfo];
-        btnEdit1.hidden = YES;
-        btnEdit2.hidden = YES;
-        btnEdit3.hidden = YES;
     }
     else{
         user = me;
         [self setProfileData];
         [self getUserFeeds:user.userID];
     }
+    if(_fromPush) {
+        btnBack.hidden = NO;
+    }
     
+    if([user.userID isEqualToString:me.userID]) {
+      lblMessage.text = @"";
+    }
+    else {
+        btnEdit1.hidden = YES;
+        btnEdit2.hidden = YES;
+        btnEdit3.hidden = YES;
+        lblMessage.text = @"Message";
+    }
 }
 
 - (void)setProfileData {
@@ -59,6 +73,16 @@
 }
 
 #pragma mark - IBActions
+
+- (IBAction)onMessageBtnClick:(id)sender {
+    if([user.userID isEqualToString:me.userID])return;
+     //id chatUserlistVC = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatListVC"];
+    //[self.navigationController pushViewController:chatUserlistVC animated:NO];
+
+    JIMChatVC *chatVC = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatVC"];
+     chatVC.friend = user;
+    [self.navigationController pushViewController:chatVC animated:YES];
+}
 
 - (IBAction)onEditInfo:(id)sender {
     profileEditing = YES;

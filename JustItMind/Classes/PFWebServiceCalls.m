@@ -223,4 +223,10 @@ static AFHTTPSessionManager *manager;
     id params = [self parametersForOperation:@"find" table:@"news_feed" otherParam:param];
     [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
 }
+
++ (void)getUsers:(NSDictionary*)param block:(WSBlock)block {
+    NSLog(@"----------get RA user list ws---------");
+    id params = [self parametersForOperation:@"find" table:@"user_profile" otherParam:param];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+}
 @end

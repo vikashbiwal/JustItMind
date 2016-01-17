@@ -10,4 +10,5 @@
 
 @interface JIMProfileVC : JIMParentViewController
 @property (nonatomic, strong) NSString *strUserID;
+@property BOOL fromPush;
 @end
