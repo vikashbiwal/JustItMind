@@ -172,6 +172,12 @@ static AFHTTPSessionManager *manager;
     [self simpleMultipartPostRequestWithRelativePath:@"" parameter:params image:image fieldname:fieldname block:block];
 }
 
++ (void)getUserProfile:(NSDictionary *)param block:(WSBlock)block {
+    NSLog(@"----------get User profile info---------");
+    id params = [self parametersForOperation:@"find" table:@"user_profile" otherParam:param];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+}
+
 + (void)createEvent:(NSDictionary*)param block:(WSBlock)block {
     NSLog(@"----------create Event ws---------");
     id params = [self parametersForOperation:@"add" table:@"news_feed" otherParam:param];
@@ -181,6 +187,13 @@ static AFHTTPSessionManager *manager;
 + (void)getNewsFeeds:(NSDictionary*)param block:(WSBlock)block {
     NSLog(@"----------Get NewsFeed List ws---------");
     id params = [self parametersForOperation:@"news_feed_list" table:@"" otherParam:nil];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+}
+
+//api.cianinfosolutions.com/justmind/control.php?json=&method=find&table=news_feed&news_feed_type=magicevent&user_id=19
++ (void)getDormFeeds:(NSDictionary *)param block:(WSBlock)block {
+    NSLog(@"----------get dorm feed list ws---------");
+    id params = [self parametersForOperation:@"drom_feed_list" table:@"" otherParam:param];
     [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
 }
 
@@ -196,6 +209,18 @@ static AFHTTPSessionManager *manager;
     NSLog(@"----------Add Comment ws---------");
     id params = [self parametersForOperation:@"add" table:@"news_feed_comment" otherParam:param];
     [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+}
 
+//api.cianinfosolutions.com/justmind/control.php?json=&table=news_feed_comment&method=find&news_feed_id=1
++ (void)getCommentsOfFeed:(NSDictionary *)param block:(WSBlock)block {
+    NSLog(@"----------get Comments ws---------");
+    id params = [self parametersForOperation:@"find" table:@"news_feed_comment" otherParam:param];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+}
+
++ (void)getUsersFeed:(NSDictionary*)param block:(WSBlock)block {
+    NSLog(@"----------get user specific feed ws---------");
+    id params = [self parametersForOperation:@"find" table:@"news_feed" otherParam:param];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
 }
 @end

@@ -23,7 +23,7 @@
     _verificationCode = info[@"randomCode"];
     _bio            = info[@"bio"];
     _profileImageUrl = [NSString stringWithFormat:@"%@/%@", kImageBasePath, info[@"profile_pic_url"]];
-    _userType        = kUserTypeStudent;
+    _userType        = kUserTypeRA; //kUserTypeStudent
     _coverImageUrl  = info[@"show_profile_pic"];
 }
 @end

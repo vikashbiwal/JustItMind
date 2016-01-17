@@ -16,3 +16,10 @@
 @property (nonatomic, strong) IBOutlet UILabel *lblDescription;
 @property (nonatomic, strong) IBOutlet UIImageView *imgView;
 @end
+
+@interface JProfileCell : UITableViewCell
+@property (nonatomic, strong) IBOutlet UITableView *tableview;
+@property (nonatomic, strong) NSArray *arrFeeds;
+-(void)reloadFeeds;
+
+@end

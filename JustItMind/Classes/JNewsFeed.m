@@ -25,3 +25,18 @@
     self.isJoined = [info[@"isJoined"] isEqualToString:@"no"] ? NO : YES;
 }
 @end
+
+
+
+@implementation Comment
+
+- (void)setComment:(NSDictionary*)info {
+    self.commentID = info[@"id"];
+    self.feedId = info[@"news_feed_id"];
+    self.text = info[@"news_feed_comment"];
+    self.userId = info[@"comment_by"];
+    self.time = info[@"inserted_date"];
+    self.userName = [NSString stringWithFormat:@"%@ %@", info[@"firstname"],info[@"lastname"]];
+    self.strProfilePic = [NSString stringWithFormat:@"%@/%@",kImageBasePath, info[@"profile_pic_url"]];
+}
+@end

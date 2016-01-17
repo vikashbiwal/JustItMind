@@ -7,6 +7,9 @@
 //
 
 #import "JIMCommentCell.h"
+#import "TableViewCells.h"
+#import "JNewsFeed.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation JIMCommentCell
 
@@ -20,15 +23,26 @@
     // Configure the view for the selected state
 }
 
+- (void)reloadComments {
+    if(_arrComments.count > 0) {
+        [self.tblComments reloadData];
+        [self.tblComments scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+}
+
 #pragma mark - TAbleview Datasource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return self.arrComments.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell"];
+    JFeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell"];
+    Comment *comment = self.arrComments[indexPath.row];
+    cell.lblDescription.text = comment.text;
+    cell.lblTitle.text = comment.userName;
+    [cell.imgView setImageWithURL:[NSURL URLWithString:comment.strProfilePic] placeholderImage:[UIImage imageNamed:@""]];
     return cell;
 }
 

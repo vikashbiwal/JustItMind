@@ -86,7 +86,7 @@
     [self.tabbarController addChildViewController:residentsVC];//4
     [self.tabbarController addChildViewController:myDiscoverVC]; //5
     
-     if(appDelegate.isDirectLogin)
+     if(appDelegate.isDirectLogin && profileEditing == NO)
      {
          [self showMenus];
          [self.tabbarController setSelectedIndex:1];

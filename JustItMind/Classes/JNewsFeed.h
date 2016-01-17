@@ -24,3 +24,15 @@
 
 - (void)setFeedInfo: (NSDictionary *)info;
 @end
+
+@interface Comment : NSObject
+@property (nonatomic, strong) NSString *commentID;
+@property (nonatomic, strong) NSString *text;
+@property (nonatomic, strong) NSString *time;
+@property (nonatomic, strong) NSString *feedId;
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *strProfilePic;
+@property (nonatomic, strong) NSString *userId;
+
+- (void)setComment:(NSDictionary*)info;
+@end

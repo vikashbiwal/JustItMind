@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface JIMCommentCell : UITableViewCell
-
+@property (strong, nonatomic)NSArray *arrComments;
+@property (strong, nonatomic)IBOutlet UITableView *tblComments;
+- (void)reloadComments;
 @end

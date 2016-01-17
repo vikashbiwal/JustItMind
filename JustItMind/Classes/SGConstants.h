@@ -56,6 +56,7 @@ typedef PFWebServiceCalls WSCall;
 extern User  *me;
 extern NSDateFormatter *_serverFormatter;
 extern NSString * discoverSelectedTab;
+extern BOOL profileEditing;
 /* device check */
 extern inline bool is_iPhone5();
 extern inline bool is_iPad();

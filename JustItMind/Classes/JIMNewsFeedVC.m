@@ -28,9 +28,17 @@
     topMenuTopSpace.constant = -50;
     tableviewWidth.constant = screenSize.size.width;
     [self.tableView setContentInset:UIEdgeInsetsMake(20, 0, 0, 0)];
-    [self getNewsFeedWS];
+    SEL refSelector;
+    if(self.tableView.tag == 11) {
+        [self getNewsFeedWS];
+        refSelector = @selector(getNewsFeedWS);
+    }
+    else {
+        [self getDormFeed];
+        refSelector = @selector(getDormFeed);
+    }
     refControl = [[UIRefreshControl alloc]init];
-    [refControl addTarget:self action:@selector(getNewsFeedWS) forControlEvents:UIControlEventValueChanged];
+    [refControl addTarget:self action:refSelector forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refControl];
 }
 
@@ -49,6 +57,10 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"advetCell"];
         cell.lblDescription.text = feed.discription;
     }
+    else if([feed.feedType isEqualToString:@"drom_feed"]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"advetCell"];
+        cell.lblDescription.text = feed.discription;
+    }
     else{
         cell = [tableView dequeueReusableCellWithIdentifier:@"eventFeedCell"];
         cell.lblTitle.text = feed.title;
@@ -62,17 +74,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    JNewsFeed *feed = arrNewsFeed[indexPath.row];
+    if ([feed.feedType isEqualToString:@"magicevent"]) {
     [self performSegueWithIdentifier:@"EventDetailSegue" sender:arrNewsFeed[indexPath.row]];
-
-//    if(indexPath.row%2 == 0)
-//    {
-//    [self performSegueWithIdentifier:@"EventDetailSegue" sender:nil];
-//    }
-//    else
-//    {
-//        [self performSegueWithIdentifier:@"coupanDetailSegue" sender:nil];
-//        
-//    }
+    }
 }
 
 - (IBAction)onTopMenuShutterBtn:(id)sender
@@ -110,7 +115,6 @@
 #pragma mark - WebService methods
 
 - (void)getNewsFeedWS {
-    
 
     id param = @{@"userid":me.userID};
     if(!refControl.isRefreshing)
@@ -136,7 +140,34 @@
     }];
 }
 
-
+- (void)getDormFeed {
+    id param = @{@"news_feed_type": @"drom_feed"};
+    if(!refControl.isRefreshing)
+        [self showHud];
+    [WSCall getDormFeeds:param block:^(id JSON, WebServiceResult result) {
+        [refControl endRefreshing];
+        [self hideHud];
+        if(result == WebServiceResultSuccess) {
+            if ([JSON[@"status"] intValue] == 1) {
+                NSArray *arrData = JSON[@"data"];
+                arrNewsFeed = [NSMutableArray new];
+                for (NSDictionary *obj in  arrData) {
+                    JNewsFeed *feed = [JNewsFeed new];
+                    [feed setFeedInfo:obj];
+                    [arrNewsFeed addObject:feed];
+                }
+                [self.tableView reloadData];
+            }
+            else
+            {
+            
+            }
+        }
+        else
+        {
+        }
+    }];
+}
 
 #pragma mark - Navigation
 

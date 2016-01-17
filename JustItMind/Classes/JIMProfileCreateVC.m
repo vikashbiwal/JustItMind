@@ -106,7 +106,17 @@
         if (result == WebServiceResultSuccess) {
             [me setInfo:JSON[@"data"]];
             [UserDefault setObject:JSON[@"data"] forKey:@"loginUser"];
-            [self.tabBarController setSelectedIndex:1];
+            if(profileEditing)
+            {
+                
+                [self.navigationController popViewControllerAnimated:NO];
+                
+                profileEditing = NO;
+            }
+            else
+            {
+                [self.tabBarController setSelectedIndex:1];
+            }
             [DefaultCenter postNotificationName:@"MenuShowHideNotification" object:nil];
         }
         else

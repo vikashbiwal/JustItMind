@@ -11,6 +11,7 @@
 
 NSString *discoverSelectedTab = DiscoverTabIdeology;
 User *me = nil;
+BOOL profileEditing = NO;
 NSDateFormatter *_serverFormatter = nil;
 inline bool is_iPhone5()
 {

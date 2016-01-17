@@ -8,11 +8,11 @@
 
 #import "JIMEventDeailVC.h"
 #import "UIImageView+AFNetworking.h"
+#import "JIMCommentCell.h"
 
 @interface JIMEventDeailVC ()
 {
     IBOutlet UIView *commentAddView;
-    IBOutlet UIImageView *coverImageView;
     IBOutlet NSLayoutConstraint *coverimageHeight;
 
     IBOutlet UILabel *lblEventTitle;
@@ -23,11 +23,15 @@
     IBOutlet UILabel *lblDescription;
     
     IBOutlet UIButton *btnJoin;
+    IBOutlet UIButton *btnJoin2;
     IBOutlet UIButton *btnSend;
     
     IBOutlet UITextView *tvComment;
+    IBOutlet UITextField *tfCommentPlaceholder;
     IBOutlet UIImageView *profileImageView;
+    IBOutlet UIImageView *coverImageView;
     
+    NSMutableArray *commentList;
 }
 @end
 
@@ -39,6 +43,7 @@
     [DefaultCenter addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
     commentAddView.hidden = YES;
     [self setEventInfo];
+    [self getComments];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,9 +64,13 @@
     
     if(_eventFeed.isJoined) {
         btnJoin.selected = YES;
+        btnJoin2.selected = YES;
+        [btnJoin2 setTitle:@"" forState:UIControlStateNormal];
+         tfCommentPlaceholder.placeholder = @"Add a comment...";
     }
     else{
         btnJoin.selected = NO;
+        btnJoin2.selected = NO;
     }
 }
 #pragma mark - TAbleview Datasource
@@ -72,7 +81,9 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell"];
+    JIMCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell"];
+    cell.arrComments = commentList;
+    [cell reloadComments];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,38 +101,101 @@
 #pragma mark - IBActions
 
 - (IBAction)onClickJoindEventBtn:(UIButton*)sender {
-    if (_eventFeed.isJoined) {
-    
-    }
-    else {
-        sender.selected = !sender.selected;
-        id param = @{@"userid":me.userID, @"eventid":_eventFeed.feedId};
-        [WSCall joinEvent:param block:^(id JSON, WebServiceResult result) {
-            if(result == WebServiceResultSuccess) {
-                if([JSON[@"status"] intValue] == 1) {
-                 
-                }
-                else {
-                    sender.selected = !sender.selected;
-                  }
-            }
-        }];
-    }
+    [self joinEvent];
 }
 
 
 - (IBAction)commentEditingBegin:(id)sender {
     if(_eventFeed.isJoined) {
         commentAddView.hidden = NO;
+        [tvComment becomeFirstResponder];
     }
 }
 
 - (IBAction)onClickCommentDoneBtn:(id)sender {
+    [self addComment];
+}
+
+
+#pragma mark - WS Methods 
+- (void)addComment {
     id param = @{@"news_feed_id": _eventFeed.feedId,
                  @"news_feed_comment":tvComment.text,
                  @"comment_by": me.userID};
     [WSCall addCommentOnEvent:param block:^(id JSON, WebServiceResult result) {
+        if (result == WebServiceResultSuccess) {
+            if ([JSON[@"status"] intValue] == 1) {
+                
+                id jcomment = JSON[@"data"];
+                Comment *comment = [Comment new];
+                [comment setComment:jcomment];
+                comment.userName = [NSString stringWithFormat:@"%@ %@", me.firstName, me.lastName];
+                comment.strProfilePic = me.profileImageUrl;
+                [commentList insertObject:comment atIndex:0];
+                [self.tableView reloadData];
+                
+                commentAddView.hidden = YES;
+                [tvComment resignFirstResponder];
+            }
+            else
+            {
+                
+            }
+        }
+        else
+        {
+            
+        }
+    }];
+}
+
+- (void)joinEvent {
+    if (_eventFeed.isJoined) {
         
+    }
+    else {
+        btnJoin.selected = !btnJoin.selected;
+        id param = @{@"userid":me.userID, @"eventid":_eventFeed.feedId};
+        [WSCall joinEvent:param block:^(id JSON, WebServiceResult result) {
+            if(result == WebServiceResultSuccess) {
+                if([JSON[@"status"] intValue] == 1) {
+                    id jComment = JSON[@"data"];
+                    Comment *comment = [[Comment alloc]init];
+                    [comment setComment:jComment];
+                    [self.tableView reloadData];
+                }
+                else {
+                    btnJoin.selected = !btnJoin.selected;
+                }
+            }
+        }];
+    }
+
+}
+
+- (void)getComments {
+    id param = @{@"news_feed_id": _eventFeed.feedId,@"extra":@"user_info"};
+    [WSCall getCommentsOfFeed:param block:^(id JSON, WebServiceResult result) {
+        if(result == WebServiceResultSuccess) {
+            if([JSON[@"status"] intValue] == 1) {
+                commentList = [NSMutableArray new];
+                NSArray *arr = JSON[@"data"];
+                for(id jcomment in arr) {
+                    Comment *comment = [Comment new];
+                    [comment setComment:jcomment];
+                    [commentList addObject:comment];
+                }
+                [self.tableView reloadData];
+            }
+            else
+            {
+            
+            }
+        }
+        else
+        {
+            
+        }
     }];
 }
 

@@ -8,6 +8,8 @@
 
 #import "JIMProfileVC.h"
 #import "UIImageView+AFNetworking.h"
+#import "TableViewCells.h"
+#import "JNewsFeed.h"
 
 @interface JIMProfileVC ()<UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
@@ -16,9 +18,16 @@
     IBOutlet UILabel *lblName;
     IBOutlet UILabel *lblDorm;
     IBOutlet UILabel *lblMajor;
-    IBOutlet UITextView *txtVBio;
     IBOutlet UILabel *lblGrYear;
     IBOutlet UIImageView *imgVProfile;
+    IBOutlet UITextView *txtVBio;
+    IBOutlet UIView *topView;
+    
+    IBOutlet UIButton *btnEdit1;
+    IBOutlet UIButton *btnEdit2;
+    IBOutlet UIButton *btnEdit3;
+    User *user;
+    NSMutableArray *arrUserFeeds;
 }
 @end
 
@@ -26,22 +35,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self setProfileData];
+    if (_strUserID) {
+        [self getUserProfileInfo];
+        btnEdit1.hidden = YES;
+        btnEdit2.hidden = YES;
+        btnEdit3.hidden = YES;
+    }
+    else{
+        user = me;
+        [self setProfileData];
+        [self getUserFeeds:user.userID];
+    }
+    
 }
 
 - (void)setProfileData {
-    lblName.text = [NSString stringWithFormat:@"%@ %@", me.firstName, me.lastName];
-    lblDorm.text = me.regHall;
-    lblMajor.text = me.major;
-    txtVBio.text = me.bio;
-    lblGrYear.text = [NSString stringWithFormat:@"Class of %@", me.grYear];
-    [imgVProfile setImageWithURL:[NSURL URLWithString:me.profileImageUrl] placeholderImage:[UIImage imageNamed:@"photo_bg"]];
+    lblName.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+    lblDorm.text =user.regHall;
+    lblMajor.text = user.major;
+    txtVBio.text = user.bio;
+    lblGrYear.text = [NSString stringWithFormat:@"Class of %@", user.grYear];
+    [imgVProfile setImageWithURL:[NSURL URLWithString:user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"photo_bg"]];
 }
 
 #pragma mark - IBActions
 
 - (IBAction)onEditInfo:(id)sender {
+    profileEditing = YES;
     id setupProfileVC = [MainStBoard instantiateViewControllerWithIdentifier:@"SBID_SetupProfileVC"];
     [self.navigationController pushViewController:setupProfileVC animated:YES];
 }
@@ -97,7 +117,9 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell"];
+    JProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"feedParentCell"];
+    cell.arrFeeds = arrUserFeeds;
+    [cell reloadFeeds];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -112,9 +134,51 @@
     
     coverimageHeight.constant =  115+y;
     
-    
 }
 
+
+#pragma mark - WS 
+- (void)getUserProfileInfo {
+    id param = @{@"id": _strUserID};
+    [WSCall getUserProfile:param block:^(id JSON, WebServiceResult result) {
+        if(result == WebServiceResultSuccess) {
+            if ([JSON[@"status"] intValue] == 1) {
+                NSArray *arrUsers = JSON[@"data"];
+                if(arrUsers.count > 0) {
+                    id juser = arrUsers.firstObject;
+                    user = [User new];
+                    [user setInfo:juser];
+                    [self setProfileData];
+                    [self getUserFeeds:user.userID];
+                }
+            }
+        }
+        else {
+            showAlertViewMessageTitle(@"Something happen wrong!", @"Error");
+        }
+    }];
+}
+
+- (void)getUserFeeds:(NSString*)strId {
+    id param = @{@"user_id": strId};
+    [WSCall getUsersFeed:param block:^(id JSON, WebServiceResult result) {
+        if(result == WebServiceResultSuccess) {
+            if ([JSON[@"status"] intValue] == 1) {
+                NSArray *arr = JSON[@"data"];
+                arrUserFeeds = [NSMutableArray new];
+                for (id jfeed in  arr) {
+                    JNewsFeed *feed = [JNewsFeed new];
+                    [feed setFeedInfo:jfeed];
+                    feed.adminFirstName = user.firstName;
+                    feed.adminLastName = user.lastName;
+                    feed.profileImage = user.profileImageUrl;
+                    [arrUserFeeds addObject:feed];
+                }
+                [self.tableView reloadData];
+            }
+        }
+    }];
+}
 /*
 #pragma mark - Navigation
 

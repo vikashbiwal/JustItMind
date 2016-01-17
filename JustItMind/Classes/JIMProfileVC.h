@@ -9,5 +9,5 @@
 #import "JIMParentViewController.h"
 
 @interface JIMProfileVC : JIMParentViewController
-
+@property (nonatomic, strong) NSString *strUserID;
 @end

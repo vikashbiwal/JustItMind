@@ -7,6 +7,8 @@
 //
 
 #import "TableViewCells.h"
+#import "JNewsFeed.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation JFeedCell
 
@@ -21,5 +23,46 @@
 
     // Configure the view for the selected state
 }
+
+@end
+
+
+// profile cell
+@interface JProfileCell () <UITableViewDataSource, UITableViewDelegate>
+
+@end
+@implementation JProfileCell
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return  _arrFeeds.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    JNewsFeed *feed = _arrFeeds[indexPath.row];
+    JFeedCell *cell;
+    if([feed.feedType isEqualToString:@"message"]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"advetCell"];
+        cell.lblDescription.text = feed.discription;
+    }
+    else if([feed.feedType isEqualToString:@"drom_feed"]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"advetCell"];
+        cell.lblDescription.text = feed.discription;
+    }
+    else{
+        cell = [tableView dequeueReusableCellWithIdentifier:@"eventFeedCell"];
+        cell.lblTitle.text = feed.title;
+        cell.lblDate.text = feed.startTime;
+        cell.lblTime.text = feed.endTime;
+        
+    }
+    [cell.imgView setImageWithURL:[NSURL URLWithString:feed.profileImage] placeholderImage:[UIImage imageNamed:@"photo_bg"]];
+    return cell;
+}
+
+- (void)reloadFeeds {
+    [_tableview reloadData];
+}
+
+#pragma mark - tablview datasource and delegate
 
 @end

@@ -40,7 +40,10 @@
     // create request iboutlet
     IBOutlet UILabel *placeholderRequest;
     IBOutlet UITextView *txtVReqDisc;
+    IBOutlet UIButton *btnRadio1;
+    IBOutlet UIButton *btnRadio2;
     
+    NSString *postType;
 }
 @end
 
@@ -55,7 +58,12 @@
     //[self setUI];
     
     [[NSBundle mainBundle]loadNibNamed:@"JIMAccView" owner:self options:nil];
+    postType = @"message";
+    if ([me.userType isEqualToString:kUserTypeStudent]) {
+        btnRadio2.enabled = NO;
     }
+}
+
 - (void)viewDidLayoutSubviews
 {
 
@@ -170,7 +178,7 @@
      
         [btnCreateRequest setTitle:@"Create Request" forState:UIControlStateNormal];
         NSMutableDictionary *param = [NSMutableDictionary new];
-        param[@"news_feed_type"] = @"request";
+        param[@"news_feed_type"] = postType;
         param[@"news_feed_description"] = txtVReqDisc.text;
         param[@"user_id"] = me.userID;
         [self showHud];
@@ -232,6 +240,19 @@
     [self showDatePicker];
 }
 
+- (IBAction)onChangeFeedTypeRadio:(UIButton*)sender {
+    sender.selected  = YES;
+    if (sender == btnRadio1) {
+        btnRadio2.selected = NO;
+        postType = @"message";
+    }
+    else if(sender == btnRadio2) {
+        btnRadio1.selected = NO;
+        postType = @"drom_feed";
+    }
+}
+
+#pragma mark - Validation
 - (BOOL)validateRequestForm {
     NSString *strMessage;
     if(txtVReqDisc.text.length > 0 ) {
