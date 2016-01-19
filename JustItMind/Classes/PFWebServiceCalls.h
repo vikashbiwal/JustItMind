@@ -37,4 +37,6 @@ typedef void(^WSBlock)(id JSON,WebServiceResult result);
 + (void)getCommentsOfFeed:(NSDictionary *)param block:(WSBlock)block;
 + (void)getDormFeeds:(NSDictionary *)param block:(WSBlock)block;
 + (void)getUsersFeed:(NSDictionary*)param block:(WSBlock)block;
+
++ (void)sendChatMessage:(NSDictionary*)param block:(WSBlock)block;
 @end

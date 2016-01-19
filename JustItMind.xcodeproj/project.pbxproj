@@ -13,6 +13,7 @@
 		3B02B12B1BE9419B00F20FAA /* JIMTblSimpleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B02B12A1BE9419B00F20FAA /* JIMTblSimpleCell.m */; };
 		3B05A9C11C25C14E00199120 /* JIMAccView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B05A9C01C25C14E00199120 /* JIMAccView.xib */; };
 		3B0FB3F51BB74D81006B4F1E /* JIMDiscoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0FB3F41BB74D81006B4F1E /* JIMDiscoverVC.m */; };
+		3B13EDE91C4D5A4800CACDA0 /* JMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B13EDE81C4D5A4800CACDA0 /* JMessage.m */; };
 		3B2D17C31BCB74B0000C8521 /* JImDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D17C21BCB74B0000C8521 /* JImDViewController.m */; };
 		3B2D1E061C2B651B0093F230 /* JNewsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D1E051C2B651B0093F230 /* JNewsFeed.m */; };
 		3B2E162A1BD02A05009B90FE /* JIMCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E16291BD02A05009B90FE /* JIMCommentCell.m */; };
@@ -82,6 +83,8 @@
 		3B05A9C01C25C14E00199120 /* JIMAccView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JIMAccView.xib; sourceTree = "<group>"; };
 		3B0FB3F31BB74D81006B4F1E /* JIMDiscoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMDiscoverVC.h; sourceTree = "<group>"; };
 		3B0FB3F41BB74D81006B4F1E /* JIMDiscoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMDiscoverVC.m; sourceTree = "<group>"; };
+		3B13EDE71C4D5A4800CACDA0 /* JMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMessage.h; sourceTree = "<group>"; };
+		3B13EDE81C4D5A4800CACDA0 /* JMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMessage.m; sourceTree = "<group>"; };
 		3B2D17C11BCB74B0000C8521 /* JImDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JImDViewController.h; sourceTree = "<group>"; };
 		3B2D17C21BCB74B0000C8521 /* JImDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JImDViewController.m; sourceTree = "<group>"; };
 		3B2D1E041C2B651B0093F230 /* JNewsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JNewsFeed.h; sourceTree = "<group>"; };
@@ -479,6 +482,8 @@
 				3BFFC0D51C0FB80700C49C45 /* User.m */,
 				3B2D1E041C2B651B0093F230 /* JNewsFeed.h */,
 				3B2D1E051C2B651B0093F230 /* JNewsFeed.m */,
+				3B13EDE71C4D5A4800CACDA0 /* JMessage.h */,
+				3B13EDE81C4D5A4800CACDA0 /* JMessage.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -620,6 +625,7 @@
 				3B3B0A4D1BB364D400E58F19 /* SGConstants.m in Sources */,
 				3BC838ED1BEBCECE00269714 /* JIMMyDiscoverVC.m in Sources */,
 				3B9634FF1BC242B9006A1730 /* JIMProfileSettingVC.m in Sources */,
+				3B13EDE91C4D5A4800CACDA0 /* JMessage.m in Sources */,
 				3B9FC3651C2F4A4700EC44F1 /* TableViewCells.m in Sources */,
 				3B3167691C0E5DCF00A5B68D /* AFNetworkActivityIndicatorManager.m in Sources */,
 				3B3167641C0E5DCF00A5B68D /* AFSecurityPolicy.m in Sources */,

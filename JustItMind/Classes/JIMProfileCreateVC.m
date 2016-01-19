@@ -34,6 +34,8 @@
     IBOutlet UITextView  *txtviewBio;
     IBOutlet UIImageView *imgVProfile;
     IBOutlet UIButton *btnprofile;
+    IBOutlet UIButton *btnBack;
+
     UIImage* selectedImage;
 }
 @end
@@ -47,6 +49,7 @@
     [DefaultCenter addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
     [DefaultCenter addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
 }
+
 
 #pragma KeyBoard notification
 
@@ -94,7 +97,6 @@
             if (result == WebServiceResultSuccess) {
                 [me setInfo:JSON[@"data"]];
                 [UserDefault setObject:JSON[@"data"] forKey:@"loginUser"];
-                
             }
             else
             {
@@ -102,16 +104,17 @@
             }
         }];
     }
+    
+
     [WSCall updateProfileWithParam:param block:^(id JSON, WebServiceResult result) {
         if (result == WebServiceResultSuccess) {
             [me setInfo:JSON[@"data"]];
             [UserDefault setObject:JSON[@"data"] forKey:@"loginUser"];
             if(profileEditing)
             {
-                
-                [self.navigationController popViewControllerAnimated:NO];
-                
                 profileEditing = NO;
+                NSInteger count = self.navigationController.viewControllers.count;
+                [self.navigationController popToViewController:self.navigationController.viewControllers[count - 3] animated:YES];
             }
             else
             {
@@ -137,12 +140,17 @@
     param[@"resident_hall"] = txtResHall.text;
     param[@"major"] = txtMajor.text;
     param[@"id"] = me.userID;
-    
     [WSCall updateProfileWithParam:param block:^(id JSON, WebServiceResult result) {
         if (result == WebServiceResultSuccess) {
             if ([JSON[@"status"] isEqualToString:@"1"]) {
             [me setInfo:JSON[@"data"]];
-            [self performSegueWithIdentifier:@"myProfileViewSegue" sender:self];
+                if(profileEditing) {
+                    id vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SBID_SetupProfileStep2"];
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+                else{
+                    [self performSegueWithIdentifier:@"myProfileViewSegue" sender:self];
+                }
             }
             else
             {
@@ -184,6 +192,8 @@
     }
     btnprofile.layer.cornerRadius = btnprofile.frame.size.height/2;
     btnprofile.clipsToBounds = YES;
+    btnBack.hidden = profileEditing ? NO : YES;
+
 
 }
 - (void)didReceiveMemoryWarning {

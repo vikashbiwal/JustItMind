@@ -31,6 +31,7 @@
         txtCode.text = me.verificationCode;
     }
     
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,7 +46,7 @@
         return;
     }
     
-    id dic = @{@"university_id" : txtUniversityId.text,  @"universityemail": txtEmail.text};
+    id dic = @{@"university_id" : txtUniversityId.text,  @"universityemail": txtEmail.text, @"user_type":@"RA"};
     [self showHud];
     [WSCall registerUserWithParam:dic  block:^(id JSON, WebServiceResult result) {
         [self hideHud];
@@ -83,7 +84,6 @@
         unversityIDBckgrndTopSpaceConstraint.constant     = 55;
         unversityIDBckgrndLeadignSpaceConstraint.constant = 111;
     }
-    
 }
 
 - (BOOL)validateInput {

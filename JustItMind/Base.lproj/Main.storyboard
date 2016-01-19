@@ -375,6 +375,19 @@
                                             <action selector="onSetupProfileClick:" destination="mK8-no-jaH" eventType="touchUpInside" id="4cj-XW-7Sl"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgY-Cl-L5O">
+                                        <rect key="frame" x="271" y="16" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="Zf8-PE-qSf"/>
+                                            <constraint firstAttribute="height" constant="30" id="hdP-gY-7S8"/>
+                                        </constraints>
+                                        <state key="normal" title="Back">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="parentBackAction:" destination="mK8-no-jaH" eventType="touchUpInside" id="amV-nf-9bQ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -418,7 +431,9 @@
                                     <constraint firstItem="W2H-g6-IXS" firstAttribute="trailing" secondItem="jIp-hR-BqF" secondAttribute="trailing" id="mfm-7s-y6i"/>
                                     <constraint firstItem="gOs-pE-MEg" firstAttribute="leading" secondItem="f9Z-Cu-7NJ" secondAttribute="leading" constant="159" id="rF4-Uq-8R0"/>
                                     <constraint firstItem="ne0-8S-C2x" firstAttribute="leading" secondItem="f9Z-Cu-7NJ" secondAttribute="leading" constant="91" id="sAn-9o-nMx"/>
+                                    <constraint firstItem="IgY-Cl-L5O" firstAttribute="top" secondItem="f9Z-Cu-7NJ" secondAttribute="top" constant="16" id="sNE-KC-WUi"/>
                                     <constraint firstItem="Z8X-XA-kLQ" firstAttribute="top" secondItem="ne0-8S-C2x" secondAttribute="bottom" constant="23" id="tw9-zY-AIg"/>
+                                    <constraint firstAttribute="trailing" secondItem="IgY-Cl-L5O" secondAttribute="trailing" constant="3" id="v7f-3Y-inN"/>
                                     <constraint firstItem="qx6-8u-cwj" firstAttribute="trailing" secondItem="ne0-8S-C2x" secondAttribute="trailing" constant="-2" id="vBj-q8-5H6"/>
                                     <constraint firstItem="Ski-T6-f4m" firstAttribute="top" secondItem="gOs-pE-MEg" secondAttribute="top" constant="2" id="vDC-KC-HkS"/>
                                     <constraint firstItem="GZY-vS-8EF" firstAttribute="leading" secondItem="2yJ-I4-SNH" secondAttribute="leading" constant="4" id="veb-7v-c7i"/>
@@ -445,6 +460,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="btnBack" destination="IgY-Cl-L5O" id="nf3-0V-ZWD"/>
                         <outlet property="grYearBckgrndLeadingSpaceConstraint" destination="mdk-Pp-xdo" id="Nx1-hZ-qlR"/>
                         <outlet property="grYearBckgrndTopSpaceConstraint" destination="Umh-GY-KAb" id="d7x-KR-ohj"/>
                         <outlet property="hallBckgrndBottomSpaceConstraint" destination="goz-KS-W1n" id="h4b-gX-MJq"/>
@@ -991,7 +1007,7 @@
         <!--Profile CreateVC-->
         <scene sceneID="tBe-PV-klB">
             <objects>
-                <viewController id="5Cc-Xi-hPC" customClass="JIMProfileCreateVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SBID_SetupProfileStep2" id="5Cc-Xi-hPC" customClass="JIMProfileCreateVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hPd-Pw-5Oq"/>
                         <viewControllerLayoutGuide type="bottom" id="s04-ol-rU3"/>
@@ -1018,15 +1034,31 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XnW-Dw-lVY">
+                                        <rect key="frame" x="2" y="20" width="50" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="ZLF-we-pWj"/>
+                                            <constraint firstAttribute="height" constant="44" id="bLq-a3-6NF"/>
+                                        </constraints>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="parentBackAction:" destination="5Cc-Xi-hPC" eventType="touchUpInside" id="Z6R-oC-reP"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="V2U-2M-vao" secondAttribute="centerX" id="5d7-ne-4of"/>
+                                    <constraint firstAttribute="bottom" secondItem="XnW-Dw-lVY" secondAttribute="bottom" id="Fd9-OQ-fXT"/>
                                     <constraint firstItem="98d-PF-FDA" firstAttribute="leading" secondItem="DJN-KI-kuh" secondAttribute="leading" id="KvZ-kX-fc5"/>
                                     <constraint firstAttribute="height" constant="64" id="U2R-qm-Wn6"/>
                                     <constraint firstAttribute="trailing" secondItem="98d-PF-FDA" secondAttribute="trailing" id="VHf-lR-Pb7"/>
                                     <constraint firstAttribute="bottom" secondItem="V2U-2M-vao" secondAttribute="bottom" constant="13" id="kvo-do-3aV"/>
                                     <constraint firstItem="98d-PF-FDA" firstAttribute="top" secondItem="DJN-KI-kuh" secondAttribute="top" id="nY5-qi-CAn"/>
+                                    <constraint firstItem="XnW-Dw-lVY" firstAttribute="leading" secondItem="DJN-KI-kuh" secondAttribute="leading" constant="2" id="tpL-SG-vEV"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WeB-jP-10z">
@@ -1251,6 +1283,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="btnBack" destination="XnW-Dw-lVY" id="OcO-tQ-6cC"/>
                         <outlet property="btnprofile" destination="RW0-6e-lTf" id="0hz-4P-aQi"/>
                         <outlet property="txtGrYear" destination="wwy-jU-wae" id="Aa3-DD-4Io"/>
                         <outlet property="txtMajor" destination="om3-DT-W0m" id="VAC-us-8Hr"/>

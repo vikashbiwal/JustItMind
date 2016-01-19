@@ -9,6 +9,7 @@
 #import "JIMResidentVC.h"
 #import "JIMTblSimpleCell.h"
 #import "JIMProfileVC.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface JIMResidentVC ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -46,6 +47,7 @@
     JIMTblSimpleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"residentCell"];
     User *ra =  [sections objectForKey:[sections allKeys][indexPath.section]][indexPath.row];
     cell.lblName.text = [NSString stringWithFormat:@"%@ %@", ra.firstName, ra.lastName];
+    [cell.profileImage setImageWithURL:[NSURL URLWithString:ra.profileImageUrl] placeholderImage:[UIImage imageNamed:@"user_placeholder"]];
     return cell;
 }
 
@@ -68,8 +70,8 @@
 #pragma mark : WS methods
 
 - (void)getRAUsers {
-//    id param = @{@"user_type":@"RA"};
-    id param = @{@"user_type":@"ST"};
+    id param = @{@"user_type":@"RA"};
+    //id param = @{@"user_type":@"ST"};
     [WSCall getUsers:param block:^(id JSON, WebServiceResult result) {
         if(result == WebServiceResultSuccess) {
             if ([JSON[@"status"] intValue] == 1) {

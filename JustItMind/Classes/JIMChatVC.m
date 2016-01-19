@@ -8,11 +8,14 @@
 
 #import "JIMChatVC.h"
 #import "JIMChatCell.h"
+#import "JMessage.h"
 
 @interface JIMChatVC ()<UITableViewDelegate, UITableViewDataSource>
 {
     IBOutlet NSLayoutConstraint *messageViewBottomSpace;
-    NSArray *arrMessages;
+    IBOutlet UITextView *txtView;
+    NSMutableArray *arrMessages;
+    
 }
 @end
 
@@ -24,7 +27,7 @@
     [DefaultCenter addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
     [DefaultCenter addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
     
-    arrMessages = @[@"hey man what's up?", @"Just wondering if you had those notes from according the other day", @"This new game our team definitaly win, and we will qualify for Olampyc",@"Hi",@"yes",@"Good Morning",@"hi, are you goint to participate in game"];
+    arrMessages = [NSMutableArray new];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,12 +60,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIndentifier;
-    if(indexPath.row % 2 == 0)
-        cellIndentifier = @"receiverCell";
-    else
+    JMessage *msg = arrMessages[indexPath.row];
+    if([msg.senderID isEqualToString:me.userID]) {
         cellIndentifier = @"senderCell";
+    }
+    else{
+        cellIndentifier = @"receiverCell";
+    }
     JIMChatCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
-    cell.lblMessage.text = arrMessages[indexPath.row];
+    
+    cell.lblMessage.text = msg.text;
     return cell;
 }
 
@@ -74,5 +81,29 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.view endEditing:YES];
+}
+
+#pragma mark - IBActions
+- (IBAction)messageSendBtnClicked:(id)sender
+{
+    if(txtView.text.length == 0) return;
+    
+    id param = @{@"to":_friend.userID, @"from":me.userID,@"msg": txtView.text};
+    
+    [WSCall sendChatMessage:param block:^(id JSON, WebServiceResult result) {
+        if(result == WebServiceResultSuccess) {
+            if ([JSON[@"status"] intValue] == 1) {
+                JMessage *msg = [JMessage new];
+                msg.text = txtView.text;
+                msg.senderID = me.userID;
+                msg.senderName = me.firstName;
+                msg.senderProfilePic = me.profileImageUrl;
+                msg.strTime = @"";
+                [arrMessages addObject:msg];
+                [self.tableView reloadData];
+                txtView.text = @"";
+            }
+        }
+    }];
 }
 @end
