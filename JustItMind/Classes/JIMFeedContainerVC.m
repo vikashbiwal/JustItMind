@@ -133,8 +133,26 @@
     }
 }
 
+- (BOOL)validateEventForm {
+
+    if(txtEventTitle.text.length == 0) {
+        showAlertViewMessageTitle(@"Please set title for event.", @"Message");
+        return NO;
+    }
+    if (txtVEventDisc.text.length == 0) {
+        showAlertViewMessageTitle(@"Please enter some description for event.", @"Message");
+        return NO;
+    }
+    if (location.text.length == 0 ) {
+        showAlertViewMessageTitle(@"Please enter location for event.", @"Message");
+        return NO;
+    }
+    return YES;
+}
 - (IBAction)createEventBtnClick:(UIButton*)sender {
     if(sender.selected) {
+        if (![self validateEventForm]) return;
+        
         sender.selected = !sender.selected;
         [btnCreateEvent setTitle:@"Create Event" forState:UIControlStateNormal];
         [self onTopMenuShutterBtn:nil];
@@ -145,13 +163,15 @@
         param[@"starttime"] = lblStartTime.text;
         param[@"endtime"] = lblEndTime.text;
         param[@"user_id"] = me.userID;
-        param[@"location"] = @"AES Ground, Ahmedabad";
+        param[@"location"] = location.text;
         
         [self showHud];
         [WSCall createEvent:param block:^(id JSON, WebServiceResult result) {
             [self hideHud];
             if (result == WebServiceResultSuccess) {
-              
+                if ([JSON[@"status"] intValue] == 1) {
+                
+                }
             }
             else
             {
@@ -171,6 +191,8 @@
         btnEventBottomSapace.constant = -30;
         btnCreateRequest.hidden = YES;
         viewCreateEvent.hidden = NO;
+        lblStartTime.text = [self stringFromDate:[NSDate date]];
+        lblEndTime.text = [self stringFromDate:[NSDate date]];
         [btnCreateEvent setTitle:@"Post Event" forState:UIControlStateNormal];
     }
     
@@ -179,6 +201,7 @@
 - (IBAction)createRequestBtnClick:(UIButton*)sender {
     
     if(sender.selected) {
+        if(![self validateRequestForm])return;
         sender.selected = !sender.selected;
         [self onTopMenuShutterBtn:nil];
      
@@ -229,7 +252,7 @@
 - (NSString*)stringFromDate:(NSDate*)date
 {
     NSDateFormatter *dtFormattor = [[NSDateFormatter alloc]init];
-    [dtFormattor setDateFormat:@"yyyy/MM/dd"];
+    [dtFormattor setDateFormat:@"yyyy/MM/dd hh:mm:ss"];
     //[dtFormattor setDateStyle:NSDateFormatterShortStyle];
     //[dtFormattor setTimeStyle:NSDateFormatterShortStyle];
     NSString *str = [dtFormattor stringFromDate:date];
@@ -268,14 +291,12 @@
     return YES;
 }
 
-- (BOOL)validateEventForm {
-    return false;
-}
+
 
 ///////
 UITextField *txtTemp;
 UIDatePicker *dp ;
-NSDate *StartDate;
+NSDate *StartDate ;
 NSDate *endDate;
 bool isStartTime;
 
