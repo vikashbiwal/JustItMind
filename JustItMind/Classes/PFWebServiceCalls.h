@@ -10,6 +10,7 @@
 @import UIKit;
 
 #define kBasePath @"http://api.cianinfosolutions.com/justmind/control.php"
+#define kImageBasePath  @"http://api.cianinfosolutions.com/justmind"
 
 typedef NS_ENUM (NSInteger, WebServiceResult)
 {
@@ -39,4 +40,6 @@ typedef void(^WSBlock)(id JSON,WebServiceResult result);
 + (void)getUsersFeed:(NSDictionary*)param block:(WSBlock)block;
 
 + (void)sendChatMessage:(NSDictionary*)param block:(WSBlock)block;
++ (void)getChatConversationBetweenTwoUser:(NSDictionary*)param block:(WSBlock)block ;
+
 @end

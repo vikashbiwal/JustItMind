@@ -50,8 +50,6 @@ typedef PFWebServiceCalls WSCall;
 #define kUserTypeStudent @"Student"
 #define kUserTypeRA      @"ResidentAdviser"
 
-#define kImageBasePath  @"http://api.cianinfosolutions.com/justmind"
-
 
 extern User  *me;
 extern NSDateFormatter *_serverFormatter;

@@ -11,7 +11,8 @@
 @implementation JIMChatCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    self.profilePic.layer.cornerRadius = self.profilePic.frame.size.height/2;
+    self.profilePic.clipsToBounds  = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

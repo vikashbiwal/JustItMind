@@ -236,4 +236,11 @@ static AFHTTPSessionManager *manager;
     id params = [self parametersForOperation:@"add" table:@"msg_chat" otherParam:param];
     [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
 }
+
+//api.cianinfosolutions.com/justmind/control.php?json=&method=sender_chat_list&table=msg_chat&to=1&from=19
++ (void)getChatConversationBetweenTwoUser:(NSDictionary*)param block:(WSBlock)block {
+    NSLog(@"----------getChatConversation ws---------");
+    id params = [self parametersForOperation:@"sender_chat_list" table:@"msg_chat" otherParam:param];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+}
 @end

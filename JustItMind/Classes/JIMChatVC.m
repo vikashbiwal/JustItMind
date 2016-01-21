@@ -9,6 +9,7 @@
 #import "JIMChatVC.h"
 #import "JIMChatCell.h"
 #import "JMessage.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface JIMChatVC ()<UITableViewDelegate, UITableViewDataSource>
 {
@@ -26,8 +27,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [DefaultCenter addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
     [DefaultCenter addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
-    
-    arrMessages = [NSMutableArray new];
+    [self getConversationBetweenMeAndFriend];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,13 +62,14 @@
     NSString *cellIndentifier;
     JMessage *msg = arrMessages[indexPath.row];
     if([msg.senderID isEqualToString:me.userID]) {
-        cellIndentifier = @"senderCell";
+        cellIndentifier = @"myMsgCell";
+
     }
     else{
-        cellIndentifier = @"receiverCell";
+        cellIndentifier = @"friendMsgCell";
     }
     JIMChatCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
-    
+    [cell.profilePic setImageWithURL:[NSURL URLWithString:msg.senderProfilePic] placeholderImage:[UIImage imageNamed:@"user_placeholder"]];
     cell.lblMessage.text = msg.text;
     return cell;
 }
@@ -86,8 +87,14 @@
 #pragma mark - IBActions
 - (IBAction)messageSendBtnClicked:(id)sender
 {
-    if(txtView.text.length == 0) return;
+    [self sendMessage];
+}
+
+#pragma mark - WS 
+
+- (void)sendMessage {
     
+    if(txtView.text.length == 0) return;
     id param = @{@"to":_friend.userID, @"from":me.userID,@"msg": txtView.text};
     
     [WSCall sendChatMessage:param block:^(id JSON, WebServiceResult result) {
@@ -99,11 +106,44 @@
                 msg.senderName = me.firstName;
                 msg.senderProfilePic = me.profileImageUrl;
                 msg.strTime = @"";
+                if(arrMessages == nil) {
+                    arrMessages = [NSMutableArray new];
+                }
                 [arrMessages addObject:msg];
-                [self.tableView reloadData];
+                NSIndexPath *indexpath = [NSIndexPath indexPathForItem:arrMessages.count - 1 inSection:0];
+                [self.tableView insertRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationNone];
+                [self scrollToBottom];
                 txtView.text = @"";
             }
         }
     }];
+
+}
+
+- (void)getConversationBetweenMeAndFriend {
+    id param = @{@"to": me.userID, @"from": _friend.userID};
+    [WSCall getChatConversationBetweenTwoUser:param block:^(id JSON, WebServiceResult result) {
+        if(result == WebServiceResultSuccess) {
+            if ([JSON[@"status"] intValue] == 1) {
+                NSArray *arr = JSON[@"data"];
+                arrMessages = [NSMutableArray new];
+                for(id msg in arr) {
+                    JMessage *message = [[JMessage alloc]init];
+                    [message setMessage:msg];
+                    [arrMessages addObject:message];
+                }
+                [self.tableView reloadData];
+                [self scrollToBottom];
+            }
+        
+        }
+    }];
+}
+
+- (void)scrollToBottom {
+    if (arrMessages.count > 0) {
+        NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:arrMessages.count - 1 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:lastIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 @end
