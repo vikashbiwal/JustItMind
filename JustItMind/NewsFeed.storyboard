@@ -3166,6 +3166,7 @@
                         <outlet property="lblGrYear" destination="8fe-Oc-13O" id="ivV-vu-7JV"/>
                         <outlet property="lblMajor" destination="rDm-PR-Ytr" id="FIO-rc-w7c"/>
                         <outlet property="lblName" destination="fGj-Gw-mGb" id="KZ9-af-xUJ"/>
+                        <outlet property="parentlblTitle" destination="6aG-r1-DCW" id="Uks-Bw-Gpz"/>
                         <outlet property="tableView" destination="o21-mQ-M4P" id="NXo-yR-0wV"/>
                         <outlet property="topView" destination="hgJ-Yq-7Ew" id="On4-wJ-c1F"/>
                         <outlet property="txtVBio" destination="WIF-Eb-dhY" id="GIc-g9-dOj"/>

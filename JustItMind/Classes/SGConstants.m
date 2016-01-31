@@ -13,6 +13,8 @@ NSString *discoverSelectedTab = DiscoverTabIdeology;
 User *me = nil;
 BOOL profileEditing = NO;
 NSDateFormatter *_serverFormatter = nil;
+NSDateFormatter *_localFormattor  = nil;
+
 inline bool is_iPhone5()
 {
     if ([[UIScreen mainScreen] bounds].size.height==568)
@@ -100,15 +102,19 @@ void showAlertViewMessageTitle(NSString* msg,NSString* title)
     
 }
 
+NSString *TimeStringFromTime(NSDate *date) {
+    NSDateFormatter *formator = [[NSDateFormatter alloc]init];
+    [formator setTimeZone:[NSTimeZone systemTimeZone]];
+    [formator setDateFormat:@"hh:mm a"];
+    id str = [formator stringFromDate:date];
+    return str;
+}
+
 NSString* AgoStringFromTime(NSString *strdate)
 {
-    NSDateFormatter *utcFormator = [[NSDateFormatter alloc]init];
-    [utcFormator setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
-    [utcFormator setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-    NSDate *utcDate = [_serverFormatter dateFromString:strdate];
-    
-    id strLocalDate = [utcFormator stringFromDate:utcDate];
-    NSDate *dateTime = [utcFormator dateFromString:strLocalDate];
+    NSDate *serverDate = [_serverFormatter dateFromString:strdate];
+    id strLocalDate = [_localFormattor stringFromDate:serverDate];
+    NSDate *dateTime = [_localFormattor dateFromString:strLocalDate];
 
     if(!dateTime) return @"-";
     NSDictionary *timeScale = @{@"s"  :@1,
@@ -180,6 +186,10 @@ NSString* AgoFullStringFromTime(NSDate* dateTime)
     return [NSString stringWithFormat:@"%d %@%@ ago", timeAgo, scale,s];
 }
 
+NSDate *serverDateFromDateString(NSString *strDate) {
+    NSDate *date = [_serverFormatter dateFromString:strDate];
+    return  date;
+}
 NSString *formattedStringFromTimeInterval(NSTimeInterval interval)
 {
     int totalMin = interval/60;

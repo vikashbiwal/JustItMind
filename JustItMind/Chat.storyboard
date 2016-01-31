@@ -58,7 +58,7 @@
                                 <rect key="frame" x="0.0" y="108" width="320" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="chatListCell" rowHeight="63" id="VCt-iC-yMx">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="chatListCell" rowHeight="63" id="VCt-iC-yMx" customClass="JFeedCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VCt-iC-yMx" id="NvH-Bg-8md">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -119,6 +119,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="imgView" destination="prV-vz-xdd" id="hpd-pz-0BE"/>
+                                            <outlet property="lblDescription" destination="zsD-WL-ucZ" id="aFM-qf-s9m"/>
+                                            <outlet property="lblTime" destination="eoc-mY-kiL" id="WFb-bI-JF6"/>
+                                            <outlet property="lblTitle" destination="oVy-jp-CX7" id="EI8-Ct-QqV"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -404,6 +410,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="messageViewBottomSpace" destination="ssP-D4-feI" id="iIn-2j-3dK"/>
+                        <outlet property="parentlblTitle" destination="vxC-LF-XWz" id="Amt-bF-nIN"/>
                         <outlet property="tableView" destination="U81-ez-JgJ" id="fCg-NM-Caj"/>
                         <outlet property="txtView" destination="v9h-Kc-WQD" id="Wqz-9e-Ljq"/>
                     </connections>

@@ -18,4 +18,14 @@
     self.senderProfilePic = [NSString stringWithFormat:@"%@/%@", kImageBasePath, info[@"sender_profile_pic_url"]];
     self.strTime = info[@"time"];
 }
+
+- (void)setChatUser:(NSDictionary*)info {
+    self.msgId = info[@"id"]; // this is userid
+    self.senderName = [NSString stringWithFormat:@"%@ %@", info[@"firstname"],info[@"lastname"]];
+    self.senderProfilePic = [NSString stringWithFormat:@"%@/%@", kImageBasePath, info[@"profile_pic_url"]];
+    self.text = info[@"msg"];
+    self.senderID = info[@"user_sender_id"];
+    self.strTime =  info[@"time"];
+    self.msgDateTime = serverDateFromDateString(self.strTime);
+}
 @end

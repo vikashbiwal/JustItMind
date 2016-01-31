@@ -116,7 +116,7 @@
 
 - (void)getNewsFeedWS {
 
-    id param = @{@"userid":me.userID};
+    id param = @{@"join_user_id":me.userID};
     if(!refControl.isRefreshing)
         [self showHud];
     [WSCall getNewsFeeds:param block:^(id JSON, WebServiceResult result) {

@@ -70,30 +70,6 @@ static AFHTTPSessionManager *manager;
             }];
 }
 
-/* Get method to fetch baby names not checking response flags. */
-+ (void)babyNameGetRequestWithRelativePath:(NSString*)relativePath
-                                                   paramater:(NSDictionary*)param
-                                                       block:(WSBlock)block
-{
-    NSLog(@"Relative Path : %@",relativePath);
-    NSLog(@"Param : %@",param);
-    
-     [manager GET:relativePath
-             parameters:param
-                success:^(NSURLSessionDataTask *task, id responseObject)
-            {
-                NSLog(@"Response : %@",responseObject);
-                block(responseObject,WebServiceResultSuccess);
-            }
-                failure:^(NSURLSessionDataTask *task, NSError *error)
-            {
-                NSLog(@"localizedDescription %@",error);
-                block(nil,WebServiceResultError);
-                if(error.code != -1009)
-                    showAletViewWithMessage(error.localizedDescription);
-            }];
-}
-
 
 + (void)simplePostRequestWithRelativePath:(NSString*)relativePath
                                                  parameter:(NSDictionary*)param
@@ -158,6 +134,12 @@ static AFHTTPSessionManager *manager;
     [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
 }
 
++ (void)verifyCodeForUser:(NSDictionary*)param block:(WSBlock)block {
+    NSLog(@"----------Verify code ws ---------");
+    id params = [self parametersForOperation:@"find" table:@"user_profile" otherParam:param];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+}
+
 + (void)updateProfileWithParam:(NSDictionary *)param block:(WSBlock)block
 {
     id params = [self parametersForOperation:@"update" table:@"user_profile" otherParam:param];
@@ -186,7 +168,7 @@ static AFHTTPSessionManager *manager;
 
 + (void)getNewsFeeds:(NSDictionary*)param block:(WSBlock)block {
     NSLog(@"----------Get NewsFeed List ws---------");
-    id params = [self parametersForOperation:@"news_feed_list" table:@"" otherParam:nil];
+    id params = [self parametersForOperation:@"news_feed_list" table:@"" otherParam:param];
     [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
 }
 
@@ -237,10 +219,18 @@ static AFHTTPSessionManager *manager;
     [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
 }
 
+//api.cianinfosolutions.com/justmind/control.php?json=&method=user_chat_screen_list&user_screen_id=22
++ (void)getChatList:(NSDictionary*)param block:(WSBlock)block {
+    NSLog(@"----------user_chat_list ws---------");
+    id params = [self parametersForOperation:@"user_chat_screen_list" table:@"" otherParam:param];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+}
+
 //api.cianinfosolutions.com/justmind/control.php?json=&method=sender_chat_list&table=msg_chat&to=1&from=19
 + (void)getChatConversationBetweenTwoUser:(NSDictionary*)param block:(WSBlock)block {
     NSLog(@"----------getChatConversation ws---------");
     id params = [self parametersForOperation:@"sender_chat_list" table:@"msg_chat" otherParam:param];
     [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
 }
+
 @end

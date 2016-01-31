@@ -94,9 +94,11 @@
     param[@"bio"] = txtviewBio.text;
     if(selectedImage){
         [WSCall updateImage:selectedImage param:@{@"id":me.userID} fieldName:@"profile_pic_url" block:^(id JSON, WebServiceResult result) {
-            if (result == WebServiceResultSuccess) {
-                [me setInfo:JSON[@"data"]];
-                [UserDefault setObject:JSON[@"data"] forKey:@"loginUser"];
+            if(result == WebServiceResultSuccess) {
+                if ([JSON[@"status"] intValue] == 1) {
+                    [me setInfo:JSON[@"data"]];
+                    [UserDefault setObject:JSON[@"data"] forKey:@"loginUser"];
+                }
             }
             else
             {
@@ -107,20 +109,22 @@
     
 
     [WSCall updateProfileWithParam:param block:^(id JSON, WebServiceResult result) {
-        if (result == WebServiceResultSuccess) {
-            [me setInfo:JSON[@"data"]];
-            [UserDefault setObject:JSON[@"data"] forKey:@"loginUser"];
-            if(profileEditing)
-            {
-                profileEditing = NO;
-                NSInteger count = self.navigationController.viewControllers.count;
-                [self.navigationController popToViewController:self.navigationController.viewControllers[count - 3] animated:YES];
+        if(result == WebServiceResultSuccess) {
+            if ([JSON[@"status"] intValue] == 1) {
+                [me setInfo:JSON[@"data"]];
+                [UserDefault setObject:JSON[@"data"] forKey:@"loginUser"];
+                if(profileEditing)
+                {
+                    profileEditing = NO;
+                    NSInteger count = self.navigationController.viewControllers.count;
+                    [self.navigationController popToViewController:self.navigationController.viewControllers[count - 3] animated:YES];
+                }
+                else
+                {
+                    [self.tabBarController setSelectedIndex:1];
+                }
+                [DefaultCenter postNotificationName:@"MenuShowHideNotification" object:nil];
             }
-            else
-            {
-                [self.tabBarController setSelectedIndex:1];
-            }
-            [DefaultCenter postNotificationName:@"MenuShowHideNotification" object:nil];
         }
         else
         {
@@ -131,8 +135,35 @@
    
 }
 
+- (BOOL)validate {
+    if(txtFirstname.text.length == 0) {
+        showAletViewWithMessage(@"Please enter your firstname.");
+        return NO;
+    }
+    else if(txtLastname.text.length == 0) {
+        showAletViewWithMessage(@"Please enter your lastname.");
+        return NO;
+    }
+    else if(txtGrYear.text.length == 0) {
+        showAletViewWithMessage(@"Please enter your Graduation year.");
+        return NO;
+    }
+    else if(txtResHall.text.length == 0) {
+        showAletViewWithMessage(@"Please enter about your resident hall.");
+        return NO;
+    }
+    else if(txtMajor.text.length == 0) {
+        showAletViewWithMessage(@"Please enter your major.");
+        return NO;
+
+    }
+    return YES;
+    
+    
+}
 - (IBAction)onSetupProfileClick:(id)sender
 {
+    if(![self validate])return;
     NSMutableDictionary *param = [NSMutableDictionary new];
     param[@"firstname"] = txtFirstname.text;
     param[@"lastname"] = txtLastname.text;

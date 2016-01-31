@@ -659,8 +659,8 @@
                                     <constraint firstAttribute="bottom" secondItem="3DT-Dl-DJH" secondAttribute="bottom" constant="12" id="zMy-mu-zYg"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="or8-5Y-8DS">
-                                <rect key="frame" x="320" y="30" width="200" height="250"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="or8-5Y-8DS">
+                                <rect key="frame" x="70" y="30" width="200" height="250"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="yelloBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Cv6-6x-AWQ">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
@@ -672,7 +672,7 @@
                                         <rect key="frame" x="0.0" y="44" width="200" height="206"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="36" id="xW0-CQ-VCW">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="36" id="xW0-CQ-VCW" customClass="JFeedCell">
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xW0-CQ-VCW" id="Yjy-VO-DLE">
                                                     <autoresizingMask key="autoresizingMask"/>
@@ -706,6 +706,12 @@
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="imgView" destination="2PI-fd-AaL" id="dOh-Uy-IYx"/>
+                                                    <outlet property="lblDescription" destination="e2r-Zp-2cR" id="dN9-xF-fxk"/>
+                                                    <outlet property="lblTime" destination="46h-oR-Nhr" id="3iG-bA-ecf"/>
+                                                    <outlet property="lblTitle" destination="s2v-pJ-MkH" id="wX9-2T-uSB"/>
+                                                </connections>
                                             </tableViewCell>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="moreCell" rowHeight="36" id="MEA-j7-b16">
                                                 <autoresizingMask key="autoresizingMask"/>

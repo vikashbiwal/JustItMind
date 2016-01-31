@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    parentlblTitle.text = _friendName;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [DefaultCenter addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
     [DefaultCenter addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -95,7 +96,7 @@
 - (void)sendMessage {
     
     if(txtView.text.length == 0) return;
-    id param = @{@"to":_friend.userID, @"from":me.userID,@"msg": txtView.text};
+    id param = @{@"to":_friendID, @"from":me.userID,@"msg": txtView.text};
     
     [WSCall sendChatMessage:param block:^(id JSON, WebServiceResult result) {
         if(result == WebServiceResultSuccess) {
@@ -121,7 +122,7 @@
 }
 
 - (void)getConversationBetweenMeAndFriend {
-    id param = @{@"to": me.userID, @"from": _friend.userID};
+    id param = @{@"to": _friendID, @"from": me.userID};
     [WSCall getChatConversationBetweenTwoUser:param block:^(id JSON, WebServiceResult result) {
         if(result == WebServiceResultSuccess) {
             if ([JSON[@"status"] intValue] == 1) {

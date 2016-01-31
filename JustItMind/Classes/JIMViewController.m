@@ -31,7 +31,6 @@
         txtCode.text = me.verificationCode;
     }
     
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,7 +63,19 @@
 
 - (IBAction)onLetsGoBtnClick:(id)sender
 {
-  [self performSegueWithIdentifier:@"nextToProfileSegue" sender:nil];
+    if(txtCode.text.length > 0) {
+        id param = @{@"id": me.userID, @"randomCode":txtCode.text};
+        [WSCall verifyCodeForUser:param block:^(id JSON, WebServiceResult result) {
+            if(result == WebServiceResultSuccess) {
+                if ([JSON[@"status"] intValue] == 1) {
+                    [self performSegueWithIdentifier:@"nextToProfileSegue" sender:nil];
+                }
+            }
+        }];
+    }
+    else{
+        showAletViewWithMessage(@"Please enter code.");
+    }
 }
 
 - (void)setUI
@@ -89,7 +100,10 @@
 - (BOOL)validateInput {
     NSLog(@"emal : %@",txtEmail.text);
     if(txtEmail.text.length > 0) {
-        
+        if (![self validateEmailWithString:txtEmail.text]){
+            showAletViewWithMessage(@"Please enter your valid email.");
+            return NO;
+        }
     }
     else {
         showAletViewWithMessage(@"Please enter your email.");
@@ -106,4 +120,14 @@
     }
     return YES;
 }
+
+
+- (BOOL)validateEmailWithString:(NSString*)email
+{
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:email];
+}
+
 @end
+

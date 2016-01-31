@@ -26,6 +26,7 @@ typedef void(^WSBlock)(id JSON,WebServiceResult result);
 @interface PFWebServiceCalls : NSObject
 
 + (void)registerUserWithParam:(NSDictionary*)param block:(WSBlock)block;
++ (void)verifyCodeForUser:(NSDictionary*)param block:(WSBlock)block ;
 + (void)updateProfileWithParam:(NSDictionary *)param block:(WSBlock)block;
 + (void)updateImage:(UIImage*)image param:(NSDictionary*)param fieldName:(NSString*)fieldname block:(WSBlock)block;
 + (void)getUserProfile:(NSDictionary *)param block:(WSBlock)block;
@@ -40,6 +41,7 @@ typedef void(^WSBlock)(id JSON,WebServiceResult result);
 + (void)getUsersFeed:(NSDictionary*)param block:(WSBlock)block;
 
 + (void)sendChatMessage:(NSDictionary*)param block:(WSBlock)block;
++ (void)getChatList:(NSDictionary*)param block:(WSBlock)block;
 + (void)getChatConversationBetweenTwoUser:(NSDictionary*)param block:(WSBlock)block ;
 
 @end

@@ -53,6 +53,7 @@ typedef PFWebServiceCalls WSCall;
 
 extern User  *me;
 extern NSDateFormatter *_serverFormatter;
+extern NSDateFormatter *_localFormattor;
 extern NSString * discoverSelectedTab;
 extern BOOL profileEditing;
 /* device check */
@@ -68,11 +69,13 @@ extern  NSString* NSImageNameStringFromCurrentDate(void);
 extern  NSString* NSStringWithMergeofString(NSString* first,NSString* last);
 extern  NSString* NSStringFullname(NSDictionary* aDict);
 extern  void showAletViewWithMessage(NSString* msg);
+
+extern NSString *TimeStringFromTime(NSDate *date);
 extern  NSString* AgoStringFromTime(NSString *strdate);
 extern NSString* NSStringFromExpiryDate(NSString* expDate);
 extern void showAlertViewMessageTitle(NSString* msg,NSString* title);
 extern NSString *formattedStringFromTimeInterval(NSTimeInterval interval);
-
+extern NSDate *serverDateFromDateString(NSString *strDate);
 
 extern NSString* DocumentDirectoryPath();
 

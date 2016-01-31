@@ -9,5 +9,6 @@
 #import "JIMParentViewController.h"
 
 @interface JIMChatVC : JIMParentViewController
-@property (nonatomic, strong)User *friend;
+@property (nonatomic, strong)NSString *friendID;
+@property (nonatomic, strong) NSString *friendName;
 @end

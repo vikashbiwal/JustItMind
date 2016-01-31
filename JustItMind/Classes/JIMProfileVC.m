@@ -42,9 +42,12 @@
     [super viewDidLoad];
     if (_strUserID) {
         [self getUserProfileInfo];
+        parentlblTitle.text = @"";
     }
     else{
         user = me;
+        parentlblTitle.text = @"My Profile";
+
         [self setProfileData];
         [self getUserFeeds:user.userID];
     }
@@ -76,11 +79,12 @@
 
 - (IBAction)onMessageBtnClick:(id)sender {
     if([user.userID isEqualToString:me.userID])return;
-     //id chatUserlistVC = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatListVC"];
-    //[self.navigationController pushViewController:chatUserlistVC animated:NO];
-
+//    id chatUserlistVC = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatListVC"];
+//    [self.navigationController pushViewController:chatUserlistVC animated:NO];
+    
     JIMChatVC *chatVC = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatVC"];
-     chatVC.friend = user;
+    chatVC.friendID = user.userID;
+    chatVC.friendName = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
     [self.navigationController pushViewController:chatVC animated:YES];
 }
 

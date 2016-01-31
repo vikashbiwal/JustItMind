@@ -19,13 +19,42 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self directLogin];
     [self setDateFormator];
+    [self registerForPushNotifications];
     return YES;
+}
+
+- (void)registerForPushNotifications {
+    float ver = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if(ver >= 8 && ver<9)
+    {
+        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
+        {
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
+            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
+            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+            
+        }
+    }else if (ver >=9){
+        
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else{
+        //iOS6 and iOS7 specific code
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert];
+    }
 }
 
 - (void)setDateFormator {
     _serverFormatter = [[NSDateFormatter alloc]init];
     [_serverFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     [_serverFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
+    
+    _localFormattor = [[NSDateFormatter alloc]init];
+    [_localFormattor setTimeZone:[NSTimeZone systemTimeZone]];
+    [_localFormattor setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
 }
 - (void)directLogin {
     if([UserDefault objectForKey:@"loginUser"]) {
@@ -38,6 +67,13 @@
         [containerVC.tabbarController setSelectedIndex:1];
         nav.viewControllers = @[regVC, containerVC];
     }
+}
+
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSString *strToken = [[NSString alloc]initWithData:deviceToken encoding: NSUTF8StringEncoding];
+    NSLog(@"Device Token : %@", strToken);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

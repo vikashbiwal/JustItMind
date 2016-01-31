@@ -7,6 +7,8 @@
 //
 
 #import "JIMContainerVC.h"
+#import "JMessage.h"
+#import "TableViewCells.h"
 
 #define bottomMenuValue -140
 #define leftMenuValue -200
@@ -32,34 +34,13 @@
     BOOL isLeftOpen;
     BOOL isRightOpen;
     BOOL isBottomOpen;
+    
+    NSMutableArray *msgNotifications;
 }
 @end
 
 @implementation JIMContainerVC
 
-- (void)setShadowLeftToView:(UIView*)view
-{
-    [view.layer setShadowColor:[UIColor blackColor].CGColor];
-    [view.layer setShadowOpacity:0.8];
-    [view.layer setShadowRadius:3.0];
-    
-    [view.layer setShadowOffset:CGSizeMake(-3.0, 3.0)];
-}
-- (void)setShadowRightToView:(UIView*)view
-{
-    [view.layer setShadowColor:[UIColor blackColor].CGColor];
-    [view.layer setShadowOpacity:0.8];
-    [view.layer setShadowRadius:3.0];
-    [view.layer setShadowOffset:CGSizeMake(0.0, 0.0)];
-}
-
-- (void)setShadowToView:(UIView*)view
-{
-    [view.layer setShadowColor:[UIColor blackColor].CGColor];
-    [view.layer setShadowOpacity:0.8];
-    [view.layer setShadowRadius:5.0];
-    [view.layer setShadowOffset:CGSizeMake(0.0, 0.0)];
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -69,7 +50,7 @@
     //[self setShadowRightToView:leftMenuBtnView];
     [self setShadowRightToView:leftMenuView];
     [self setShadowToView:bottomMenuBgImgV];
-    
+    [self getMessageNotifications];
     //UINavigationController *navNewsFeedVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_NewsFeedNav"];
     UIViewController *feedContainerVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_FeedContainervc"];
 
@@ -231,40 +212,41 @@
     }
 }
 
-#pragma mark - Other
-- (void)showMenusNotification:(NSNotification*)notify
-{
-    [self showMenus];
-}
-- (void)showMenus
-{
-    BOOL choice;
-    if(me)
-        choice = NO;
-    else
-        choice = YES;
-    
-    bottomMenu.hidden = choice;
-    leftMenuBtnView.hidden = choice;
-    leftMenuView.hidden = choice;
-    rightMenuView.hidden = choice;
-    rightMenuBtnView.hidden = choice;
 
-}
-
-#pragma Tableview Delegate and data source
+#pragma mark - Tableview Delegate and data source
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    NSInteger numberOfCell;
+    if(tableView == tableViewChat) {
+        if(msgNotifications == nil)
+            numberOfCell = 1;
+        else if(msgNotifications.count < 5)
+            numberOfCell = msgNotifications.count + 1;
+        else
+            numberOfCell = 6;
+    }
+    else{
+        numberOfCell = 6;
+    }
+    return  numberOfCell;
 }
 - (UITableViewCell *)tableView:(UITableView *)tblView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableViewChat == tblView)
     {
-    UITableViewCell *cell = [tblView dequeueReusableCellWithIdentifier:@"cell"];
-    if (indexPath.row == 5)
-        cell = [tableViewChat dequeueReusableCellWithIdentifier:@"moreCell"];
-    return cell;
+        JFeedCell *cell;
+        if (indexPath.row == ([tableViewChat numberOfRowsInSection:0] - 1))
+        {
+            cell = [tableViewChat dequeueReusableCellWithIdentifier:@"moreCell"];
+            return cell;
+        }
+        
+        cell = [tblView dequeueReusableCellWithIdentifier:@"cell"];
+        JMessage *cht = msgNotifications[indexPath.row];
+        cell.lblTitle.text = cht.senderName;
+        cell.lblDescription.text = cht.text;
+        cell.lblTime.text = TimeStringFromTime(cht.msgDateTime);
+        return cell;
     }
     else
     {
@@ -285,13 +267,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(tableView == tableViewChat){
-            UINavigationController *chatNav = [ChatStBoard instantiateViewControllerWithIdentifier:@"SBID_ChatNav"];
-            [self.tabbarController addChildViewController:chatNav];
-            [self.tabbarController setSelectedIndex:2];
+        [self setTabbarSelectedIndex:3];
     }
     else
     {
-    
+        
     }
 }
 
@@ -312,5 +292,73 @@
     isBottomOpen = NO;
     isRightOpen = NO;
     isLeftOpen  = NO;
+}
+
+- (void)showMenusNotification:(NSNotification*)notify
+{
+    [self showMenus];
+}
+- (void)showMenus
+{
+    BOOL choice;
+    if(me)
+        choice = NO;
+    else
+        choice = YES;
+    
+    bottomMenu.hidden = choice;
+    leftMenuBtnView.hidden = choice;
+    leftMenuView.hidden = choice;
+    rightMenuView.hidden = choice;
+    rightMenuBtnView.hidden = choice;
+    
+}
+
+- (void)setShadowLeftToView:(UIView*)view
+{
+    [view.layer setShadowColor:[UIColor blackColor].CGColor];
+    [view.layer setShadowOpacity:0.8];
+    [view.layer setShadowRadius:3.0];
+    [view.layer setShadowOffset:CGSizeMake(-3.0, 3.0)];
+}
+- (void)setShadowRightToView:(UIView*)view
+{
+    [view.layer setShadowColor:[UIColor blackColor].CGColor];
+    [view.layer setShadowOpacity:0.8];
+    [view.layer setShadowRadius:3.0];
+    [view.layer setShadowOffset:CGSizeMake(0.0, 0.0)];
+}
+
+- (void)setShadowToView:(UIView*)view
+{
+    [view.layer setShadowColor:[UIColor blackColor].CGColor];
+    [view.layer setShadowOpacity:0.8];
+    [view.layer setShadowRadius:5.0];
+    [view.layer setShadowOffset:CGSizeMake(0.0, 0.0)];
+}
+
+#pragma mark - WS CAll
+
+- (void)getMessageNotifications {
+    id param = @{@"user_screen_id": me.userID};
+    [WSCall getChatList:param block:^(id JSON, WebServiceResult result) {
+        if(result == WebServiceResultSuccess) {
+            if ([JSON[@"status"] intValue] == 1) {
+                id arr = JSON[@"data"];
+                msgNotifications = [NSMutableArray new];
+                for(id jchat in arr)
+                {
+                    JMessage *chat = [JMessage new];
+                    [chat setChatUser:jchat];
+                    [msgNotifications addObject:chat];
+                }
+                [tableViewChat reloadData];
+            }
+        }
+        else{
+            
+        }
+    }];
+
 }
 @end
