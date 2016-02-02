@@ -45,7 +45,10 @@
         return;
     }
     
-    id dic = @{@"university_id" : txtUniversityId.text,  @"universityemail": txtEmail.text, @"user_type":@"RA"};
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"university_id" : txtUniversityId.text,  @"universityemail": txtEmail.text, @"user_type":@"RA"}];
+    if(DeviceToken)
+        dic[@"device_id"] = DeviceToken;
+    
     [self showHud];
     [WSCall registerUserWithParam:dic  block:^(id JSON, WebServiceResult result) {
         [self hideHud];

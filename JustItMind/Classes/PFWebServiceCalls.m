@@ -150,7 +150,6 @@ static AFHTTPSessionManager *manager;
 {
     NSLog(@"----------update image---------");
     id params = [self parametersForOperation:@"update" table:@"user_profile" otherParam:param];
-   
     [self simpleMultipartPostRequestWithRelativePath:@"" parameter:params image:image fieldname:fieldname block:block];
 }
 

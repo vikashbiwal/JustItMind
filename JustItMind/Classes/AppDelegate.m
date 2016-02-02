@@ -20,6 +20,7 @@
     [self directLogin];
     [self setDateFormator];
     [self registerForPushNotifications];
+
     return YES;
 }
 
@@ -72,8 +73,25 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSString *strToken = [[NSString alloc]initWithData:deviceToken encoding: NSUTF8StringEncoding];
-    NSLog(@"Device Token : %@", strToken);
+    
+     DeviceToken = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""] stringByReplacingOccurrencesOfString: @">" withString: @""]stringByReplacingOccurrencesOfString: @" " withString: @""];
+    
+    NSLog(@"device token string is : %@",DeviceToken);
+    if(me) {
+        id param = @{@"id": me.userID, @"device_id":DeviceToken};
+        [WSCall updateProfileWithParam:param block:^(id JSON, WebServiceResult result) {
+        
+        }];
+    }
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    NSLog(@"Payload : %@", userInfo);
+     NSString *nType = userInfo[@"NotificationType"];
+    if([nType isEqualToString:kNotificationTypeChat]) {
+    [DefaultCenter postNotificationName:kNotificationTypeChat object:nil userInfo:@{@"message": userInfo}];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -98,4 +116,77 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
 @end
+
+/*
+ Push Payload for JIM
+ 
+ Event -
+ 
+ {
+ 
+ aps: {
+ alert: {
+ message: "Vikash kumar has created a news feed",
+ NotificationType: "event",
+ TargetId: "27"
+ },
+ sound: "default"
+ }
+ }
+ 
+ ———————————————
+ 
+ Dorm feed, simple Post
+ 
+ {
+ 
+ aps: {
+ alert: {
+ message: "Vikash kumar has created a news feed",
+ NotificationType: “news_feed",
+ TargetId: "27"
+ },
+ sound: "default"
+ }
+ }
+ 
+ 
+ —————————
+ 
+ Comment
+ 
+ {
+ 
+ aps: {
+ alert: {
+ message: "Vikash kumar has commented on feed",
+ NotificationType: "news_feed_comment",
+ TargetId: "1"
+ },
+ sound: "default"
+ }
+ }
+ 
+ 
+ 
+ ————————————
+ 
+ Message -
+ 
+ {
+ 
+ aps: {
+ alert: {
+ message: "hi sami how r you ?",
+ NotificationType: "chat",
+ TargetId: "24",
+ profile_pic_url: "upload/95_image.jpeg",
+ firstname: "Ashish ",
+ lastname: "kumar"
+ },
+ sound: "default"
+ }
+ }
+ */

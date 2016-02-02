@@ -14,6 +14,7 @@ User *me = nil;
 BOOL profileEditing = NO;
 NSDateFormatter *_serverFormatter = nil;
 NSDateFormatter *_localFormattor  = nil;
+NSString *DeviceToken = nil;
 
 inline bool is_iPhone5()
 {

@@ -25,10 +25,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     parentlblTitle.text = _friendName;
+    arrMessages = [NSMutableArray new];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [DefaultCenter addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
     [DefaultCenter addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
+    [DefaultCenter addObserver:self selector:@selector(didReceiveMessage:) name:kNotificationTypeChat object:nil];
     [self getConversationBetweenMeAndFriend];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [DefaultCenter removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +57,21 @@
 - (void)keyboardHide:(NSNotification*)notify
 {
     messageViewBottomSpace.constant = 10;
+}
+
+#pragma mark - push notification 
+- (void)didReceiveMessage:(NSNotification *)notify {
+    id message = notify.userInfo[@"message"];
+    if([message[@"TargetId"] isEqualToString:_friendID]) {
+        JMessage *msg = [JMessage new];
+        msg.text = message[@"message"];
+        msg.senderID = message[@"TargetId"];
+        msg.senderName = message[@"firstname"];
+        msg.senderProfilePic = [NSString stringWithFormat:@"%@/%@",kImageBasePath, message[@"profile_pic_url"]];
+        [arrMessages addObject:msg];
+        NSIndexPath *indexpath = [NSIndexPath indexPathForItem:[self.tableView numberOfRowsInSection:0] inSection:0] ;
+        [self.tableView insertRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 #pragma  mark - Tableview Delegate and datasource
@@ -107,11 +129,9 @@
                 msg.senderName = me.firstName;
                 msg.senderProfilePic = me.profileImageUrl;
                 msg.strTime = @"";
-                if(arrMessages == nil) {
-                    arrMessages = [NSMutableArray new];
-                }
+                
                 [arrMessages addObject:msg];
-                NSIndexPath *indexpath = [NSIndexPath indexPathForItem:arrMessages.count - 1 inSection:0];
+                NSIndexPath *indexpath = [NSIndexPath indexPathForItem:[self.tableView numberOfRowsInSection:0] inSection:0] ;
                 [self.tableView insertRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationNone];
                 [self scrollToBottom];
                 txtView.text = @"";

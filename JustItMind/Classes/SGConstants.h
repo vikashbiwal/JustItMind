@@ -46,6 +46,11 @@ typedef PFWebServiceCalls WSCall;
 #define DiscoverTabLifestyle  @"DiscvoerTabLifestyle"
 #define DiscoverTabResidents   @"DiscvoerTabResidents"
 //
+
+#define kNotificationTypeChat @"chat"
+#define kNotificationTypeEvent @"event"
+#define kNotificationtTypeFeed @"news_feed"
+
 //user Types
 #define kUserTypeStudent @"Student"
 #define kUserTypeRA      @"ResidentAdviser"
@@ -54,6 +59,7 @@ typedef PFWebServiceCalls WSCall;
 extern User  *me;
 extern NSDateFormatter *_serverFormatter;
 extern NSDateFormatter *_localFormattor;
+extern NSString *DeviceToken;
 extern NSString * discoverSelectedTab;
 extern BOOL profileEditing;
 /* device check */

@@ -23,16 +23,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [DefaultCenter addObserver:self selector:@selector(didReceiveMessage:) name:kNotificationTypeChat object:nil];
 }
 - (void)viewWillAppear:(BOOL)animated
 {
     [self getChatListWSCall];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [DefaultCenter removeObserver:self];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - push notification
+- (void)didReceiveMessage:(NSNotification *)notify {
+    [self getChatListWSCall];
 }
 
 #pragma mark - Tableview datasource and delegate
