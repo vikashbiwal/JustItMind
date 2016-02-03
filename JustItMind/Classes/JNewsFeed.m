@@ -21,6 +21,7 @@
     self.adminFirstName = info[@"firstname"];
     self.adminLastName = info[@"lastname"];
     self.userId = info[@"user_id"];
+    self.feedDate = serverDateFromDateString(info[@"inserted_date"]);
     self.profileImage = [NSString stringWithFormat:@"%@/%@", kImageBasePath, info[@"profile_pic_url"]];
     self.isJoined = [info[@"isJoined"] isEqualToString:@"no"] ? NO : YES;
 }

@@ -188,6 +188,12 @@
     }
 }
 
+- (NSArray *)sortArray:(NSArray*)array fieldName:(NSString*)strKey {
+    NSSortDescriptor *des = [NSSortDescriptor sortDescriptorWithKey:strKey ascending:NO];
+    id arr =  [array sortedArrayUsingDescriptors:@[des]];
+    return arr;
+}
+
 #pragma mark - utility methods
 -(BOOL)checkTextfieldValue:(UITextField *)textField{
     

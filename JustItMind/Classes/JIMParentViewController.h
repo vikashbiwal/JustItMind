@@ -32,7 +32,7 @@
 -(IBAction)parentDismissAction:(id)sender;
 -(IBAction)parentBackDismissAction:(id)sender;
 -(IBAction)shutterAction:(id)sender;
-
+- (NSArray *)sortArray:(NSArray*)array fieldName:(NSString*)strKey;
 #pragma mark - utility methods
 -(BOOL)checkTextfieldValue:(UITextField *)textField;
 -(BOOL)validateEmail:(NSString *)candidate;

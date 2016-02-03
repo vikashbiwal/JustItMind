@@ -284,8 +284,9 @@
 #pragma mark - Validation
 - (BOOL)validateRequestForm {
     NSString *strMessage;
-    if(txtVReqDisc.text.length > 0 ) {
+    if(txtVReqDisc.text.length == 0 ) {
         strMessage = @"Please enter request description.";
+        showAlertViewMessageTitle(strMessage, @"Error");
         return NO;
     }
     return YES;

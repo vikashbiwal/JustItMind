@@ -124,10 +124,6 @@
 #pragma mark - IBActions
 - (IBAction)onRightMenuBtnTapped:(id)sender
 {
-    
-    
-
-
     if(isRightOpen){
         [UIView animateWithDuration:0.5 animations:^{
             rightMenuTraillingSpace.constant = rightMenuValue;

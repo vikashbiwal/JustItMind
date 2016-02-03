@@ -18,18 +18,12 @@ NSString *DeviceToken = nil;
 
 inline bool is_iPhone5()
 {
-    if ([[UIScreen mainScreen] bounds].size.height==568)
-        return YES;
-    else
-        return NO;
+    return  ([[UIScreen mainScreen] bounds].size.height==568) ? YES : NO;
 }
 
 inline bool is_iPad()
 {
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        return YES;
-    else
-        return NO;
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? YES : NO;
 }
 
  NSString* NSStringWithoutSpace(NSString* string)
@@ -49,7 +43,6 @@ NSString* NSStringFromBirthDate(NSDate* birthDate)
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
     return [formatter stringFromDate:birthDate];
-    
 }
 
 NSString* NSStringFromExpiryDate(NSString* expDate)
@@ -85,12 +78,7 @@ NSString* NSStringFromExpiryDate(NSString* expDate)
 
 void showAletViewWithMessage(NSString* msg)
 {
-    [[[UIAlertView alloc]initWithTitle:@""
-                                          message:msg
-                                         delegate:nil
-                                cancelButtonTitle:@"Dismiss"
-                                otherButtonTitles:nil, nil]show];
-  
+    [[[UIAlertView alloc]initWithTitle:@"" message:msg delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil]show];
 }
 
 void showAlertViewMessageTitle(NSString* msg,NSString* title)

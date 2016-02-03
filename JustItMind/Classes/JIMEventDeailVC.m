@@ -131,6 +131,7 @@
                 [comment setComment:jcomment];
                 comment.userName = [NSString stringWithFormat:@"%@ %@", me.firstName, me.lastName];
                 comment.strProfilePic = me.profileImageUrl;
+                //comment.time = TimeStringFromTime([NSDate date]);
                 [commentList insertObject:comment atIndex:0];
                 [self.tableView reloadData];
                 
@@ -185,6 +186,7 @@
                     [comment setComment:jcomment];
                     [commentList addObject:comment];
                 }
+               commentList = (id)[self sortArray:commentList fieldName:@"time"];
                 [self.tableView reloadData];
             }
             else

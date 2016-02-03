@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSString *adminFirstName;
 @property (nonatomic, strong) NSString *adminLastName;
 @property (nonatomic, strong) NSString *profileImage;
+@property (nonatomic, strong) NSDate *feedDate;
 @property (nonatomic) BOOL isJoined;
 
 - (void)setFeedInfo: (NSDictionary *)info;

@@ -131,6 +131,8 @@
                     [feed setFeedInfo:obj];
                     [arrNewsFeed addObject:feed];
                 }
+                arrNewsFeed = (id)[self sortArray:arrNewsFeed fieldName:@"feedDate"];
+
                 [self.tableView reloadData];
             }
         }
@@ -156,6 +158,7 @@
                     [feed setFeedInfo:obj];
                     [arrNewsFeed addObject:feed];
                 }
+                arrNewsFeed = (id)[self sortArray:arrNewsFeed fieldName:@"feedDate"];
                 [self.tableView reloadData];
             }
             else
@@ -168,6 +171,8 @@
         }
     }];
 }
+
+
 
 #pragma mark - Navigation
 
