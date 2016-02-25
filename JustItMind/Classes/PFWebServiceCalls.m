@@ -185,6 +185,14 @@ static AFHTTPSessionManager *manager;
     [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
 }
 
+//api.cianinfosolutions.com/justmind/control.php/?json=&method=delete&table=join_event&userid=4&eventid=8
++ (void)unJoinEvent:(NSDictionary *)param block: (WSBlock)block {
+    NSLog(@"----------UnJoin Event ws---------");
+    id params = [self parametersForOperation:@"delete" table:@"join_event" otherParam:param];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+
+}
+
 //api.cianinfosolutions.com/justmind/control.php?json=&table=news_feed_comment&method=add&news_feed_id=1&news_feed_comment=comment&comment_by=1&inserted_date=date
 + (void)addCommentOnEvent:(NSDictionary*)param block:(WSBlock)block {
     NSLog(@"----------Add Comment ws---------");

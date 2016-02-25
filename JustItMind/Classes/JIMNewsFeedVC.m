@@ -44,13 +44,11 @@
 
 
 #pragma mark - TAbleview Datasource
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectio {
     return arrNewsFeed.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     JNewsFeed *feed = arrNewsFeed[indexPath.row];
     JFeedCell *cell;
     if([feed.feedType isEqualToString:@"message"]) {
@@ -66,7 +64,7 @@
         cell.lblTitle.text = feed.title;
         cell.lblDate.text = feed.startTime;
         cell.lblTime.text = feed.endTime;
-
+        cell.lblJoinUserCount.text  = feed.joinUserCount;
     }
     [cell.imgView setImageWithURL:[NSURL URLWithString:feed.profileImage] placeholderImage:[UIImage imageNamed:@"photo_bg"]];
     return cell;

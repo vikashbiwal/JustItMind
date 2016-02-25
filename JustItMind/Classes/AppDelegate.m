@@ -73,7 +73,6 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    
      DeviceToken = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""] stringByReplacingOccurrencesOfString: @">" withString: @""]stringByReplacingOccurrencesOfString: @" " withString: @""];
     
     NSLog(@"device token string is : %@",DeviceToken);
@@ -92,6 +91,10 @@
     if([nType isEqualToString:kNotificationTypeChat]) {
     [DefaultCenter postNotificationName:kNotificationTypeChat object:nil userInfo:@{@"message": userInfo}];
     }
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Payload : %@", error);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

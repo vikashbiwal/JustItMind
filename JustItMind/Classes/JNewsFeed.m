@@ -24,6 +24,7 @@
     self.feedDate = serverDateFromDateString(info[@"inserted_date"]);
     self.profileImage = [NSString stringWithFormat:@"%@/%@", kImageBasePath, info[@"profile_pic_url"]];
     self.isJoined = [info[@"isJoined"] isEqualToString:@"no"] ? NO : YES;
+    self.joinUserCount = info[@"joinedUserCount"];
 }
 @end
 

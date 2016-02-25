@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString *profileImage;
 @property (nonatomic, strong) NSDate *feedDate;
 @property (nonatomic) BOOL isJoined;
+@property (nonatomic, strong) NSString *joinUserCount;
 
 - (void)setFeedInfo: (NSDictionary *)info;
 @end

@@ -63,10 +63,13 @@
     profileImageView.clipsToBounds = YES;
     
     if(_eventFeed.isJoined) {
+        
         btnJoin.selected = YES;
         btnJoin2.selected = YES;
+        [btnJoin2 setBackgroundImage:nil forState:UIControlStateNormal];
         [btnJoin2 setTitle:@"" forState:UIControlStateNormal];
          tfCommentPlaceholder.placeholder = @"Add a comment...";
+        
     }
     else{
         btnJoin.selected = NO;
@@ -152,7 +155,25 @@
 
 - (void)joinEvent {
     if (_eventFeed.isJoined) {
-        
+        id param = @{@"userid": me.userID, @"eventid": _eventFeed.feedId, };
+        [WSCall unJoinEvent:param block:^(id JSON, WebServiceResult result) {
+            if(result == WebServiceResultSuccess) {
+                if([JSON[@"status"] intValue] == 1) {
+                    _eventFeed.isJoined = NO;
+                    if(!_eventFeed.isJoined) {
+                   
+                        btnJoin.selected = NO;
+                        btnJoin2.selected = NO;
+                        [btnJoin2 setTitle:@"Join" forState:UIControlStateNormal];
+                        [btnJoin2 setBackgroundImage:[UIImage imageNamed:@"join_btn_bg"] forState:UIControlStateNormal];
+
+                        tfCommentPlaceholder.placeholder = @"Joint the event to add a commet...";
+
+                    }
+                }
+                
+            }
+        }];
     }
     else {
         btnJoin.selected = !btnJoin.selected;
@@ -160,10 +181,19 @@
         [WSCall joinEvent:param block:^(id JSON, WebServiceResult result) {
             if(result == WebServiceResultSuccess) {
                 if([JSON[@"status"] intValue] == 1) {
-                    id jComment = JSON[@"data"];
-                    Comment *comment = [[Comment alloc]init];
-                    [comment setComment:jComment];
-                    [self.tableView reloadData];
+                    _eventFeed.isJoined = YES;
+                    if(_eventFeed.isJoined) {
+                        btnJoin.selected = YES;
+                        btnJoin2.selected = YES;
+                        [btnJoin2 setBackgroundImage:nil forState:UIControlStateNormal];
+                        [btnJoin2 setTitle:@"" forState:UIControlStateNormal];
+                        tfCommentPlaceholder.placeholder = @"Add a comment...";
+                    }
+                    else{
+                        btnJoin.selected = NO;
+                        btnJoin2.selected = NO;
+                    }
+
                 }
                 else {
                     btnJoin.selected = !btnJoin.selected;

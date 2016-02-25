@@ -320,7 +320,7 @@
                                                                 <constraint firstAttribute="width" constant="40" id="uMP-AR-2or"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                                            <state key="normal" title="Join" image="join_btn_bg">
+                                                            <state key="normal" title="Join" backgroundImage="join_btn_bg">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <state key="selected" image="art_history_icon"/>
@@ -2173,9 +2173,16 @@
                                                     <color key="textColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaN-ev-kDp">
+                                                    <rect key="frame" x="295" y="70" width="13" height="13"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="KTH-Oj-8jc" firstAttribute="leading" secondItem="sA7-Ie-aIu" secondAttribute="leading" constant="4" id="1PT-FE-Arm"/>
+                                                <constraint firstAttribute="trailing" secondItem="uaN-ev-kDp" secondAttribute="trailing" constant="12" id="5F5-Oq-yqr"/>
                                                 <constraint firstItem="sLK-IB-kVj" firstAttribute="top" secondItem="sA7-Ie-aIu" secondAttribute="top" constant="12" id="5Li-hX-547"/>
                                                 <constraint firstItem="KTH-Oj-8jc" firstAttribute="trailing" secondItem="FTE-is-LgG" secondAttribute="trailing" constant="4" id="5vf-qi-qcv"/>
                                                 <constraint firstItem="DXf-I2-eDb" firstAttribute="leading" secondItem="sLK-IB-kVj" secondAttribute="trailing" constant="8" id="8Ca-Uj-Dad"/>
@@ -2184,6 +2191,7 @@
                                                 <constraint firstItem="jHU-bb-wCG" firstAttribute="centerY" secondItem="sLK-IB-kVj" secondAttribute="centerY" id="EI6-sc-Hb6"/>
                                                 <constraint firstItem="Bi2-6w-hsp" firstAttribute="top" secondItem="OCB-pz-3je" secondAttribute="bottom" id="Ekq-PR-a3M"/>
                                                 <constraint firstAttribute="trailing" secondItem="KTH-Oj-8jc" secondAttribute="trailing" constant="4" id="GaQ-zs-2rA"/>
+                                                <constraint firstAttribute="bottom" secondItem="uaN-ev-kDp" secondAttribute="bottom" constant="10" id="Jbv-fS-mgw"/>
                                                 <constraint firstItem="FTE-is-LgG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bi2-6w-hsp" secondAttribute="trailing" constant="10" id="Ndl-FB-TQV"/>
                                                 <constraint firstItem="KTH-Oj-8jc" firstAttribute="top" secondItem="sA7-Ie-aIu" secondAttribute="top" id="Nh9-A6-8QP"/>
                                                 <constraint firstItem="KTH-Oj-8jc" firstAttribute="bottom" secondItem="FTE-is-LgG" secondAttribute="bottom" constant="5" id="NuD-CE-NbB"/>
@@ -2211,6 +2219,7 @@
                                         <connections>
                                             <outlet property="imgView" destination="sLK-IB-kVj" id="G6x-PK-8Gc"/>
                                             <outlet property="lblDate" destination="7A3-Ui-4Cf" id="uHv-Mc-vcg"/>
+                                            <outlet property="lblJoinUserCount" destination="uaN-ev-kDp" id="SBR-o0-sez"/>
                                             <outlet property="lblLocation" destination="DAQ-At-p3R" id="xLY-Ln-ycU"/>
                                             <outlet property="lblTime" destination="oiY-mS-jO9" id="4rk-5J-C2G"/>
                                             <outlet property="lblTitle" destination="DXf-I2-eDb" id="5Mx-59-ATK"/>
@@ -2225,7 +2234,7 @@
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="content_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ne0-iX-gqQ">
                                                     <rect key="frame" x="4" y="0.0" width="312" height="88"/>
                                                 </imageView>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="content_notification_bg" translatesAutoresizingMaskIntoConstraints="NO" id="31m-CW-xQ9">
+                                                <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="content_notification_bg" translatesAutoresizingMaskIntoConstraints="NO" id="31m-CW-xQ9">
                                                     <rect key="frame" x="290" y="64" width="22" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="0ww-Qz-fQZ"/>
@@ -2342,7 +2351,7 @@
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="content_bg" translatesAutoresizingMaskIntoConstraints="NO" id="epa-Bc-bLW">
                                                     <rect key="frame" x="4" y="0.0" width="312" height="88"/>
                                                 </imageView>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="content_notification_bg" translatesAutoresizingMaskIntoConstraints="NO" id="DiH-mo-00w">
+                                                <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="content_notification_bg" translatesAutoresizingMaskIntoConstraints="NO" id="DiH-mo-00w">
                                                     <rect key="frame" x="290" y="64" width="22" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="i66-CM-pol"/>
@@ -3210,7 +3219,7 @@
         <image name="yelloBackground" width="240" height="61"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sKs-mD-7zj"/>
-        <segue reference="xBo-Ez-JGG"/>
+        <segue reference="7Xs-od-rfE"/>
+        <segue reference="JdO-3T-twi"/>
     </inferredMetricsTieBreakers>
 </document>

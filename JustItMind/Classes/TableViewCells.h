@@ -14,6 +14,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *lblTime;
 @property (nonatomic, strong) IBOutlet UILabel *lblLocation;
 @property (nonatomic, strong) IBOutlet UILabel *lblDescription;
+@property (nonatomic, strong) IBOutlet UILabel *lblJoinUserCount;
 @property (nonatomic, strong) IBOutlet UIImageView *imgView;
 @end
 
