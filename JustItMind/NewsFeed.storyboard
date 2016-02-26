@@ -244,7 +244,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mja-Lf-BR6">
                                             <rect key="frame" x="0.0" y="182" width="320" height="90"/>
                                             <subviews>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="userImg" translatesAutoresizingMaskIntoConstraints="NO" id="kFX-Ft-62T">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="userIm" translatesAutoresizingMaskIntoConstraints="NO" id="kFX-Ft-62T">
                                                     <rect key="frame" x="10" y="7" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="Weo-JL-UHs"/>
@@ -538,7 +538,13 @@
                             <constraint firstAttribute="trailing" secondItem="Mya-99-FEH" secondAttribute="trailing" id="WP7-6t-MfE"/>
                             <constraint firstAttribute="trailing" secondItem="uDL-ww-Vyw" secondAttribute="trailing" id="cH2-3R-ZWz"/>
                             <constraint firstItem="C5C-kL-COz" firstAttribute="top" secondItem="Mya-99-FEH" secondAttribute="bottom" id="fDq-px-3qm"/>
+                            <constraint firstAttribute="bottom" secondItem="Mya-99-FEH" secondAttribute="bottom" id="zvv-R8-QPC"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fDq-px-3qm"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="HiH-qE-0KJ"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -549,6 +555,7 @@
                         <outlet property="commentAddView" destination="Bjz-SC-ioF" id="q4l-I2-a9b"/>
                         <outlet property="coverImageView" destination="uDL-ww-Vyw" id="OMf-aE-HRE"/>
                         <outlet property="coverimageHeight" destination="h4x-Hw-UWv" id="WEJ-jk-j7A"/>
+                        <outlet property="imgJoinedUser" destination="kFX-Ft-62T" id="Mru-oW-bht"/>
                         <outlet property="lblCreator" destination="W03-dc-4b9" id="FY1-N1-WWv"/>
                         <outlet property="lblDescription" destination="yjb-vd-Aei" id="XWg-mW-K4J"/>
                         <outlet property="lblEndDate" destination="iq9-nF-5s7" id="vp8-y7-nMG"/>
@@ -557,6 +564,7 @@
                         <outlet property="lblStartDate" destination="e7h-02-NHz" id="hib-Rr-byX"/>
                         <outlet property="profileImageView" destination="9Db-jf-PFM" id="jkO-rB-2vd"/>
                         <outlet property="tableView" destination="Mya-99-FEH" id="Ua1-PQ-J3o"/>
+                        <outlet property="tablviewBottomConstraint" destination="zvv-R8-QPC" id="RrW-i2-00X"/>
                         <outlet property="tfCommentPlaceholder" destination="gby-3x-Cr8" id="9fg-Bk-G4Y"/>
                         <outlet property="tvComment" destination="qr7-9K-bhT" id="53g-6A-R0T"/>
                     </connections>
@@ -3215,6 +3223,7 @@
         <image name="profileCover" width="415" height="182"/>
         <image name="shadow" width="554" height="49"/>
         <image name="sponsceIcn" width="96" height="80"/>
+        <image name="userIm" width="540" height="78"/>
         <image name="userImg" width="119" height="79"/>
         <image name="yelloBackground" width="240" height="61"/>
     </resources>

@@ -34,8 +34,11 @@ typedef void(^WSBlock)(id JSON,WebServiceResult result);
 
 + (void)createEvent:(NSDictionary*)param block:(WSBlock)block ;
 + (void)getNewsFeeds:(NSDictionary*)param block:(WSBlock)block;
+
 + (void)joinEvent:(NSDictionary *)param block:(WSBlock)block ;
 + (void)unJoinEvent:(NSDictionary *)param block: (WSBlock)block ;
++ (void)listOfJoinedUserOfEvent:(NSString*)eventID block:(WSBlock)block;
+
 + (void)addCommentOnEvent:(NSDictionary*)param block:(WSBlock)block;
 + (void)getCommentsOfFeed:(NSDictionary *)param block:(WSBlock)block;
 + (void)getDormFeeds:(NSDictionary *)param block:(WSBlock)block;

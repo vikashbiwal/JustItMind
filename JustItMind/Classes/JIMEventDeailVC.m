@@ -14,7 +14,7 @@
 {
     IBOutlet UIView *commentAddView;
     IBOutlet NSLayoutConstraint *coverimageHeight;
-
+    IBOutlet NSLayoutConstraint *tablviewBottomConstraint;
     IBOutlet UILabel *lblEventTitle;
     IBOutlet UILabel *lblStartDate;
     IBOutlet UILabel *lblEndDate;
@@ -30,8 +30,9 @@
     IBOutlet UITextField *tfCommentPlaceholder;
     IBOutlet UIImageView *profileImageView;
     IBOutlet UIImageView *coverImageView;
-    
+    IBOutlet UIImageView *imgJoinedUser;
     NSMutableArray *commentList;
+    NSMutableArray *eventJoinedUserList;
 }
 @end
 
@@ -44,6 +45,7 @@
     commentAddView.hidden = YES;
     [self setEventInfo];
     [self getComments];
+    [self getJoinedUserLIstOfEvent];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,7 +63,8 @@
     [profileImageView setImageWithURL:[NSURL URLWithString:_eventFeed.profileImage] placeholderImage:[UIImage imageNamed:@"photo_bg"]];
     profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2;
     profileImageView.clipsToBounds = YES;
-    
+    imgJoinedUser.layer.cornerRadius = imgJoinedUser.frame.size.height/2;
+    imgJoinedUser.clipsToBounds = YES;
     if(_eventFeed.isJoined) {
         
         btnJoin.selected = YES;
@@ -108,10 +111,12 @@
 }
 
 
-- (IBAction)commentEditingBegin:(id)sender {
+- (IBAction)commentEditingBegin:(UITextField*)sender {
     if(_eventFeed.isJoined) {
         commentAddView.hidden = NO;
         [tvComment becomeFirstResponder];
+    } else {
+        [self.view endEditing:YES];
     }
 }
 
@@ -140,15 +145,9 @@
                 
                 commentAddView.hidden = YES;
                 [tvComment resignFirstResponder];
+            } else {
             }
-            else
-            {
-                
-            }
-        }
-        else
-        {
-            
+        } else {
         }
     }];
 }
@@ -168,14 +167,12 @@
                         [btnJoin2 setBackgroundImage:[UIImage imageNamed:@"join_btn_bg"] forState:UIControlStateNormal];
 
                         tfCommentPlaceholder.placeholder = @"Joint the event to add a commet...";
-
                     }
                 }
                 
             }
         }];
-    }
-    else {
+    } else {
         btnJoin.selected = !btnJoin.selected;
         id param = @{@"userid":me.userID, @"eventid":_eventFeed.feedId};
         [WSCall joinEvent:param block:^(id JSON, WebServiceResult result) {
@@ -188,14 +185,11 @@
                         [btnJoin2 setBackgroundImage:nil forState:UIControlStateNormal];
                         [btnJoin2 setTitle:@"" forState:UIControlStateNormal];
                         tfCommentPlaceholder.placeholder = @"Add a comment...";
-                    }
-                    else{
+                    } else{
                         btnJoin.selected = NO;
                         btnJoin2.selected = NO;
                     }
-
-                }
-                else {
+                } else {
                     btnJoin.selected = !btnJoin.selected;
                 }
             }
@@ -218,15 +212,27 @@
                 }
                commentList = (id)[self sortArray:commentList fieldName:@"time"];
                 [self.tableView reloadData];
+            } else {
             }
-            else
-            {
-            
-            }
+        } else {
         }
-        else
-        {
-            
+    }];
+}
+
+- (void)getJoinedUserLIstOfEvent {
+    [WSCall listOfJoinedUserOfEvent:_eventFeed.feedId block:^(id JSON, WebServiceResult result) {
+        if(result == WebServiceResultSuccess) {
+            if([JSON[@"status"] intValue] == 1) {
+                eventJoinedUserList = [NSMutableArray new];
+                id data = JSON[@"data"] ;
+                for (id usr in data) {
+                    User *u = [[User alloc]init];
+                    [u setInfo:usr];
+                    [eventJoinedUserList addObject:u];
+                }
+                User *user = eventJoinedUserList.lastObject;
+                [imgJoinedUser setImageWithURL:[NSURL URLWithString:user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"user_placeholder"]];
+            }
         }
     }];
 }
@@ -235,12 +241,14 @@
 
 - (void)keyboardShow:(NSNotification*)notify
 {
-   
+    CGRect rect = [notify.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    tablviewBottomConstraint.constant = rect.size.height;
 }
 
 - (void)keyboardHide:(NSNotification*)notify
 {
     commentAddView.hidden = YES;
+    tablviewBottomConstraint.constant = 0;
 }
 
 - (void)viewDidDisappear:(BOOL)animated

@@ -10,8 +10,7 @@
 
 @implementation User
 
-- (void)setInfo:(NSDictionary*)info
-{ 
+- (void)setInfo:(NSDictionary*)info {
     _userID         = info[@"id"];
     _universityID   = info[@"university_id"];
     _email          = info[@"universityemail"];
@@ -22,7 +21,12 @@
     _major          = info[@"major"];
     _verificationCode = info[@"randomCode"];
     _bio            = info[@"bio"];
-    _profileImageUrl = [NSString stringWithFormat:@"%@/%@", kImageBasePath, info[@"profile_pic_url"]];
+    if (info[@"profile_pic_url"]) {
+        _profileImageUrl = [NSString stringWithFormat:@"%@/%@", kImageBasePath, info[@"profile_pic_url"]];
+    } else {
+        _profileImageUrl = [NSString stringWithFormat:@"%@/%@", kImageBasePath, info[@"sender_profile_pic_url"]];
+    }
+
     _userType        = kUserTypeRA; //kUserTypeStudent
     _coverImageUrl  = info[@"show_profile_pic"];
 }
