@@ -16,8 +16,9 @@
 @property (nonatomic, strong) NSString *senderProfilePic;
 @property (nonatomic, strong) NSString *strTime;
 @property (nonatomic, strong) NSDate *msgDateTime;
+@property (nonatomic, strong) NSString *type;
 
 - (void)setMessage:(NSDictionary*)info ;
 - (void)setChatUser:(NSDictionary*)info;
-
+- (void)setNotification:(NSDictionary*)info;
 @end

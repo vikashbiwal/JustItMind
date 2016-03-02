@@ -246,4 +246,11 @@ static AFHTTPSessionManager *manager;
     [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
 }
 
+//api.cianinfosolutions.com/justmind/control.php?json=&method=select&reciver_id=2&table=notification_msg_recive
++ (void)getNotificationsWithBlock:(WSBlock)block {
+    NSLog(@"----------getNotifications ws---------");
+    id params = [self parametersForOperation:@"select" table:@"notification_msg_recive" otherParam:@{@"reciver_id": me.userID}];
+    [self simpleGetRequestWithRelativePath:@"" paramater:params block:block];
+}
+
 @end

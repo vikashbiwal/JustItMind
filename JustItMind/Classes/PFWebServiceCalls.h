@@ -22,7 +22,6 @@ typedef NS_ENUM (NSInteger, WebServiceResult)
 typedef void(^WSBlock)(id JSON,WebServiceResult result);
 
 
-
 @interface PFWebServiceCalls : NSObject
 
 + (void)registerUserWithParam:(NSDictionary*)param block:(WSBlock)block;
@@ -47,5 +46,7 @@ typedef void(^WSBlock)(id JSON,WebServiceResult result);
 + (void)sendChatMessage:(NSDictionary*)param block:(WSBlock)block;
 + (void)getChatList:(NSDictionary*)param block:(WSBlock)block;
 + (void)getChatConversationBetweenTwoUser:(NSDictionary*)param block:(WSBlock)block ;
+
++ (void)getNotificationsWithBlock:(WSBlock)block ;
 
 @end

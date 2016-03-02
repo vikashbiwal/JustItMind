@@ -9,6 +9,7 @@
 #import "JIMContainerVC.h"
 #import "JMessage.h"
 #import "TableViewCells.h"
+#import "UIImageView+AFNetworking.h"
 
 #define bottomMenuValue -140
 #define leftMenuValue -200
@@ -36,6 +37,7 @@
     BOOL isBottomOpen;
     
     NSMutableArray *msgNotifications;
+    NSMutableArray *notifications;
 }
 @end
 
@@ -44,14 +46,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   // tableViewChat.layer.shadowColor = [UIColor blackColor].CGColor;
-    //[self setShadowLeftToView:rightMenuBtnView];
     [self setShadowLeftToView:rightMenuView];
-    //[self setShadowRightToView:leftMenuBtnView];
     [self setShadowRightToView:leftMenuView];
     [self setShadowToView:bottomMenuBgImgV];
     [self getMessageNotifications];
-    //UINavigationController *navNewsFeedVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_NewsFeedNav"];
+    [self getNotifications];
     UIViewController *feedContainerVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_FeedContainervc"];
 
     id profileVC = [newsFeedStBoard instantiateViewControllerWithIdentifier:@"SBID_ProfileVC"];
@@ -67,13 +66,10 @@
     [self.tabbarController addChildViewController:residentsVC];//4
     [self.tabbarController addChildViewController:myDiscoverVC]; //5
     
-     if(appDelegate.isDirectLogin && profileEditing == NO)
-     {
+     if(appDelegate.isDirectLogin && profileEditing == NO) {
          [self showMenus];
          [self.tabbarController setSelectedIndex:1];
-     }
-    else
-    {
+     } else {
         [self.tabbarController setSelectedIndex:0];
         leftMenuBtnView.hidden = YES;
         leftMenuView.hidden = YES;
@@ -94,36 +90,29 @@
 
 #pragma mark - Bottom menu actions
 
-- (IBAction)onClickEventMenu:(id)sender
-{
+- (IBAction)onClickEventMenu:(id)sender {
     [self setTabbarSelectedIndex:1];
 }
-- (IBAction)onClickDiscoverMenu:(id)sender
-{
+- (IBAction)onClickDiscoverMenu:(id)sender {
     [self setTabbarSelectedIndex:5];
 }
 
-- (IBAction)onClickResidentsMenu:(id)sender
-{
+- (IBAction)onClickResidentsMenu:(id)sender {
     [self setTabbarSelectedIndex:4];
 }
 
-- (IBAction)onClickProfileMenu:(id)sender
-{
+- (IBAction)onClickProfileMenu:(id)sender {
     [self setTabbarSelectedIndex:2];
-    
 }
 
 #pragma mark - Right menu Button Action
 
-- (IBAction)onClickAllMessageBtn:(id)sender
-{
+- (IBAction)onClickAllMessageBtn:(id)sender {
     [self setTabbarSelectedIndex:3];
 }
 
 #pragma mark - IBActions
-- (IBAction)onRightMenuBtnTapped:(id)sender
-{
+- (IBAction)onRightMenuBtnTapped:(id)sender {
     if(isRightOpen){
         [UIView animateWithDuration:0.5 animations:^{
             rightMenuTraillingSpace.constant = rightMenuValue;
@@ -132,9 +121,7 @@
             messageIcn.image = [UIImage imageNamed:@"chat_icon"];
         }];
         isRightOpen = NO;
-    }
-    else
-    {
+    } else {
         [UIView animateWithDuration:0.5 animations:^{
             rightMenuTraillingSpace.constant = 0;
             leftMenuLeadingSpace.constant = leftMenuValue;
@@ -147,13 +134,10 @@
         isRightOpen = YES;
         isLeftOpen = NO;
         isBottomOpen = NO;
-
     }
-
 }
 
-- (IBAction)onLeftMenuBtnTapped:(id)sender
-{
+- (IBAction)onLeftMenuBtnTapped:(id)sender {
    
     if(isLeftOpen){
         [UIView animateWithDuration:0.5 animations:^{
@@ -184,8 +168,7 @@
 
 }
 
-- (IBAction)onBottomMenuBtnTapped:(id)sender
-{
+- (IBAction)onBottomMenuBtnTapped:(id)sender {
     //static BOOL isBottomOpen = NO;
     if(isBottomOpen) {
         [UIView animateWithDuration:0.5 animations:^{
@@ -193,9 +176,7 @@
             [self.view layoutIfNeeded];
         }];
         isBottomOpen = NO;
-    }
-    else
-    {
+    } else {
         [UIView animateWithDuration:0.5 animations:^{
             bottomMenuBottomSapce.constant = 0;
             leftMenuLeadingSpace.constant = leftMenuValue;
@@ -210,8 +191,7 @@
 
 
 #pragma mark - Tableview Delegate and data source
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger numberOfCell;
     if(tableView == tableViewChat) {
         if(msgNotifications == nil)
@@ -220,19 +200,15 @@
             numberOfCell = msgNotifications.count + 1;
         else
             numberOfCell = 6;
-    }
-    else{
-        numberOfCell = 6;
+    } else {
+        numberOfCell = notifications.count;
     }
     return  numberOfCell;
 }
-- (UITableViewCell *)tableView:(UITableView *)tblView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (tableViewChat == tblView)
-    {
+- (UITableViewCell *)tableView:(UITableView *)tblView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableViewChat == tblView) {
         JFeedCell *cell;
-        if (indexPath.row == ([tableViewChat numberOfRowsInSection:0] - 1))
-        {
+        if (indexPath.row == ([tableViewChat numberOfRowsInSection:0] - 1)) {
             cell = [tableViewChat dequeueReusableCellWithIdentifier:@"moreCell"];
             return cell;
         }
@@ -243,10 +219,11 @@
         cell.lblDescription.text = cht.text;
         cell.lblTime.text = TimeStringFromTime(cht.msgDateTime);
         return cell;
-    }
-    else
-    {
-     UITableViewCell *cell = [tblView dequeueReusableCellWithIdentifier:@"cell"];
+    } else {
+        JFeedCell *cell = [tblView dequeueReusableCellWithIdentifier:@"cell"];
+        JMessage *nf = notifications[indexPath.row];
+        cell.lblTitle.text = nf.text;
+        [cell.imgView setImageWithURL:[NSURL URLWithString:nf.senderProfilePic] placeholderImage:[UIImage imageNamed:@""]];
         return  cell;
     }
     
@@ -355,6 +332,22 @@
             
         }
     }];
+}
 
+- (void)getNotifications {
+    [WSCall getNotificationsWithBlock:^(id JSON, WebServiceResult result) {
+        if(result == WebServiceResultSuccess) {
+            if ([JSON[@"status"] intValue] == 1) {
+                id arr = JSON[@"data"];
+                notifications = [NSMutableArray new];
+                for(id jchat in arr) {
+                    JMessage *notification = [JMessage new];
+                    [notification setNotification:jchat];
+                    [notifications addObject:notification];
+                }
+                [self.tableView reloadData];
+            }
+        }
+    }];
 }
 @end

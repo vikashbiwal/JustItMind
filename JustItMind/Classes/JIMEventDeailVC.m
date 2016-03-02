@@ -135,12 +135,13 @@
             if ([JSON[@"status"] intValue] == 1) {
                 
                 id jcomment = JSON[@"data"];
-                Comment *comment = [Comment new];
+                Comment *comment = [[Comment alloc]init];
                 [comment setComment:jcomment];
                 comment.userName = [NSString stringWithFormat:@"%@ %@", me.firstName, me.lastName];
                 comment.strProfilePic = me.profileImageUrl;
-                //comment.time = TimeStringFromTime([NSDate date]);
+                comment.time = TimeStringFromTime([NSDate date]);
                 [commentList insertObject:comment atIndex:0];
+                //[commentList addObject:comment];
                 [self.tableView reloadData];
                 
                 commentAddView.hidden = YES;
@@ -210,7 +211,8 @@
                     [comment setComment:jcomment];
                     [commentList addObject:comment];
                 }
-               commentList = (id)[self sortArray:commentList fieldName:@"time"];
+               id hmm = [self sortArray:commentList fieldName:@"time"] ;
+                commentList = [NSMutableArray arrayWithArray:hmm];
                 [self.tableView reloadData];
             } else {
             }
@@ -245,8 +247,7 @@
     tablviewBottomConstraint.constant = rect.size.height;
 }
 
-- (void)keyboardHide:(NSNotification*)notify
-{
+- (void)keyboardHide:(NSNotification*)notify {
     commentAddView.hidden = YES;
     tablviewBottomConstraint.constant = 0;
 }

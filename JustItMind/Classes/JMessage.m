@@ -28,4 +28,15 @@
     self.strTime =  info[@"time"];
     self.msgDateTime = serverDateFromDateString(self.strTime);
 }
+
+- (void)setNotification:(NSDictionary*)info {
+    self.msgId = info[@"id"]; // this is userid
+    self.senderName = [NSString stringWithFormat:@"%@ %@", info[@"sender_firstname"],info[@"sender_lastname"]];
+    self.senderProfilePic = [NSString stringWithFormat:@"%@/%@", kImageBasePath, info[@"sender_profile_pic_url"]];
+    self.text = info[@"notification_msg"];
+    self.senderID = info[@"sender_id"];
+    self.type = info[@"notificaiton_type"];
+    self.strTime =  info[@"notificaiton_date"];
+    self.msgDateTime = serverDateFromDateString(self.strTime);
+}
 @end
